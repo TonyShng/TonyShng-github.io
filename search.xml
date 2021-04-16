@@ -1,28 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/04/09/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span> </span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a> </p>
-]]></content>
-  </entry>
-  <entry>
     <title>Chapter1:Hello，World</title>
     <url>/2021/04/15/Chapter1-Hello-World/</url>
-    <content><![CDATA[<p>欢迎，你将要开启一个如何使用 <a href="https://www.python.org/">Python</a> 和 <a href="https://flask.palletsprojects.com/en/1%E3%80%821%E3%80%82x/">Flask</a> 框架创建 web应用程序的学习之旅。在第一章，你将会学习如何去新建一个 Flask项目。在本章结束时，你将会在你的电脑上运行一个简单的 Flask Web应用！</p>
-<p><em>本章节的 GitHub链接: <a href="https://github.com/miguelgrinberg/microblog/tree/v0%E3%80%821">Browse</a>，<a href="https://github.com/miguelgrinberg/microblog/archive/v0%E3%80%821%E3%80%82zip">Zip</a>，<a href="https://github.com/miguelgrinberg/microblog/compare/v0%E3%80%820%E3%80%82%E3%80%82%E3%80%82v0%E3%80%821">Diff</a>。</em></p>
+    <content><![CDATA[<p>欢迎，你将要开启一个如何使用 <a href="https://www.python.org/">Python</a> 和 <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a> 框架创建 web应用程序的学习之旅。在第一章，你将会学习如何去新建一个 Flask项目。在本章结束时，你将会在你的电脑上运行一个简单的 Flask Web应用！</p>
+<p><em>本章节的 GitHub链接: <a href="https://github.com/miguelgrinberg/microblog/tree/v0.1">Browse</a>，<a href="https://github.com/miguelgrinberg/microblog/archive/v0.1.zip">Zip</a>，<a href="https://github.com/miguelgrinberg/microblog/compare/v0.0...v0.1">Diff</a>。</em></p>
+<span id="more"></span>
+
 <h3 id="安装-Python"><a href="#安装-Python" class="headerlink" title="安装 Python"></a>安装 Python</h3><p>如果你没有在你的电脑上安装 Python ，那么现在就开始安装吧！如果你的操作系统没有提供 Python 包，你可以通过 <a href="https://www.python.org/downloads/">Python 官方网站</a> 来下载进行安装。如果你使用 Microsoft Windows 操作系统与WSL或者 Cygwin，请注意你不应使用 Windows 版本的 Python，而是一个能够支持 Ubuntu(如果你使用的是WSL) 或者 Cygwin 的 Unix 版本。</p>
 <p>为了确保你安装的 Python 是可运行的，你可以打开终端窗口并输入 <code>python3</code> ，如果这不起作用的话，就试试 <code>python</code> 。以下就是应该呈现的效果：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3</span></span><br><span class="line">Python 3.9.2 (default, Mar 15 2021, 17:37:51)</span><br><span class="line">[Clang 12.0.0 (clang-1200.0.32.29)] on darwin</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;</span> </span><br></pre></td></tr></table></figure>
@@ -34,13 +18,64 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip install &lt;package-name&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>有趣的是，在大多数情况下安装第三方包的这个方法不会有效。如果你在你电脑上安装的全局的 Python解释器，很可能你的普通账号没有权限去修改它，因此只有一种方法让上面的命令工作就是通过管理员账号运行。但是即使没有这种复杂的情况，也要思考下你用上述方法安装第三方包时会发生什么。<code>pip</code> 工具会从 PyPI 上下载包，然后添加到 Python 的安装中。从这时起，在你系统上的每个 Python 脚本都可以访问这个包。 想象一下这样一个情况当你用当时最新的版本 Flask 0.11版本完成了一个 web 应用，但是现在已经支持 0.12版本了。你现在想用 0.12版本开始做第二个应用，但是替换掉0.11版本会让老的程序无法运行。现在你看到问题了么？现在解决方法是为老的应用安装 0.11版本的 Flask，为新的应用安装0.12版本的Flask。</p>
-<p>To address the issue of</p>
+<p>为了解决</p>
 ]]></content>
       <categories>
         <category>Flask</category>
       </categories>
       <tags>
         <tag>Flask</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Chapter1:课前甜点</title>
+    <url>/2021/04/16/Chapter1-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Python 是一种高层次的结合了解释性、编译性、互动性的面向对象的脚本语言。</p>
+<p>Python 的设计具有很强的可读性，相比其他语言经常食用英文关键字，其他语言的一些标点符号，它具有比其他语言更具特色的语法结构。</p>
+<span id="more"></span>
+
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>易于学习：Python 是一种代表简单主义思想的语言，阅读一个良好的 Python 程序就感觉像是在读英语一样，当然这个英语的要求非常严格！Python 的这种伪代码本质是它最大的优点之一，可以使你专注于解决问题而不是搞懂语言本身。</li>
+<li>免费开源：Python 是 FLOSS(自由/开放源码软件)之一。你可以自动的发布这个软件的拷贝、阅读它的源码、对它做出改动等等。FLOSS 是基于一个团体分享知识的概念，即它是由一群希望看到更加优秀的 Python 的人创建并维护的。</li>
+<li>高级语言：当你在用 Python 语言编写程序的时候，不需要考虑管理内存之类的底层细节。</li>
+<li>可移植性：由于它的开源本质，Python 可以被移植在许多平台上。例如Linux、Windows、FreeBSD、MacOS、Macintosh等等。</li>
+<li>解释性：当使用 C 或 C++ 进行编程时，我们在写完代码之后的源代码要进行编译成目标文件才可以运行。而  Python 语言写的程序不需要编译称二进制代码，可以直接从源代码运行程序。即在计算机内部，Python 解释器把源代码转换成称为字节码的中间形式，然后再把它翻译成计算机使用的机器语言并运行。</li>
+<li>面向对象：Python 既支持面向过程的编程也支持面向对象的编程。在“面向对象”的语言中，程序是由过程仅仅是可以重用代码的函数构建起来的。在“面向对象”的语言中，程序是由数据和功能组合而成的对象构建起来的。</li>
+<li>可拓展性：如果你需要你的一段关键代码运行的更快或者某些算法不公开，你可以把你的部分程序用 C 或 C++ 编写，然后在 Python 程序中使用它们。</li>
+<li>丰富的库：Python 的标准库非常庞大，可以帮助你处理各种工作。包括正则表达式、文档生成、单元测试、线程、数据库、网页浏览器、CGI、FTP、电子邮件、XML、XML-RPC、HTML、WAV  文件、密码系统、GUI（图形用户界面）、Tk 和其他与系统有关的操作。记住，只要安装了 Python，所有这些功能都是可用的。这被称作  Python 的“功能齐全”理念。除了标准库以外，还有许多其他高质量的库，如 wxPython、Twisted 和 Python 图像库等等。</li>
+</ul>
+<h4 id="主要应用领域"><a href="#主要应用领域" class="headerlink" title="主要应用领域"></a>主要应用领域</h4><ul>
+<li>云计算：云计算最热的语言，典型的应用 OpenStack</li>
+<li>WEB开发：许多优秀的 WEB 框架例如 Django、Flask等。许多网站也是通过 Python 开发的，如 YouTube、DropBox、豆瓣、知乎等</li>
+<li>科学计算和人工智能：典型的图书馆 NumPy、SciPy、Matplotlib、Enided图书馆、熊猫</li>
+<li>系统操作和维护：操作和维护人员的基本语言</li>
+<li>金融：定量交易、金融分析，在金融工程领域，Python 不仅使用最多，而且其重要性逐年增加</li>
+<li>图形GUI：PyQT、WXPython、TkInter</li>
+</ul>
+<h4 id="安装Python"><a href="#安装Python" class="headerlink" title="安装Python"></a>安装Python</h4><p>如果你的电脑本身没有自带 Python 的话，可以通过 <a href="https://www.python.org/downloads/">Python 官方网站</a> 来下载安装，然后根据步骤一步步按章即可。Mac和 Linux 平台的话可以通过访问 <a href="https://www.python.org/downloads/source/">资源 </a>这里来下载适用的安装包，解压后在终端执行 <code>./configure</code> 脚本和 <code>make &amp;&amp; make install</code> 进行编译安装。此时 Python 会安装在 <code>/usr/local/bin</code> 目录中，Python 库会安装在 <code>/usr/local/lib/pythonXX</code>，XX为你使用的 Python 版本号。</p>
+<p>此时在终端输入下面命令验证安装是否成功:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> Python3 -V</span></span><br><span class="line">Python 3.9.2</span><br></pre></td></tr></table></figure>
+
+<p>这里出现 Python 及版本号意味着安装成功，此时可以通过 Python 开始进行编程操作了。</p>
+<h4 id="交互式解释器"><a href="#交互式解释器" class="headerlink" title="交互式解释器"></a>交互式解释器</h4><p>当我们在终端输入<code>Python3</code> 时，此时下面会显示主提示符 <code>&gt;&gt;&gt;</code> ，提示输入下一条指令；当输入连续行时，显示次要提示符 <code>...</code> 。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3</span></span><br><span class="line">Python 3.9.2 (default, Mar 15 2021, 17:37:51)</span><br><span class="line">[Clang 12.0.0 (clang-1200.0.32.29)] on darwin</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; the_world_is_flat = True</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="keyword">if</span> the_world_is_flat:</span></span><br><span class="line">...     print(&quot;Be careful not to fall off!&quot;)</span><br><span class="line">...</span><br><span class="line">Be careful not to fall off!</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意出现次要提示符的时候，需要进行缩进，一般为四个空格或者一个 tab。</p>
+</blockquote>
+<p>最后推荐一款交互式 shell <a href="https://ipython.org/install.html">官方地址</a> 支持变量自动补全，自动缩进和 bash shell 命令等</p>
+<p>安装：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip install ipython</span></span><br></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ipython</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
         <tag>Python</tag>
       </tags>
   </entry>

@@ -1,7 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>[Flask]Chapter1:Hello，World</title>
+    <title>【Python】Chapter1:课前甜点</title>
+    <url>/2021/04/16/Chapter1-%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<p>Python 是著名的“龟叔” Guido van Rossum 在1989年圣诞节为了打发时间而编写的一个编程语言。</p>
+<p>Python 的设计具有很强的可读性，相比其他语言经常食用英文关键字，其他语言的一些标点符号，它具有比其他语言更具特色的语法结构。</p>
+<span id="more"></span>
+
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>易于学习：龟叔给 Python 的定位就是“优雅”、“明确”、“简单”，所以Python 程序看上去简单易懂，初学者学习，不但入门快，而且将来深入，也可以编写非常复杂的程序。</li>
+<li>免费开源：Python 是 FLOSS(自由/开放源码软件)之一。你可以自动的发布这个软件的拷贝、阅读它的源码、对它做出改动等等。</li>
+<li>高级语言：当你在用 Python 语言编写程序的时候，不需要考虑管理内存之类的底层细节。</li>
+<li>面向对象：Python 既支持面向过程的编程也支持面向对象的编程。在“面向对象”的语言中，程序是由过程仅仅是可以重用代码的函数构建起来的。在“面向对象”的语言中，程序是由数据和功能组合而成的对象构建起来的。</li>
+<li>可拓展性：如果你需要你的一段关键代码运行的更快或者某些算法不公开，你可以把你的部分程序用 C 或 C++ 编写，然后在 Python 程序中使用它们。</li>
+<li>丰富的库：Python 的标准库非常庞大，可以帮助你处理各种工作。包括正则表达式、文档生成、单元测试、线程、数据库、网页浏览器、CGI、FTP、电子邮件、XML、XML-RPC、HTML、WAV  文件、密码系统、GUI（图形用户界面）、Tk 和其他与系统有关的操作。记住，只要安装了 Python，所有这些功能都是可用的。这被称作  Python 的“功能齐全”理念。除了标准库以外，还有许多其他高质量的库，如 wxPython、Twisted 和 Python 图像库等等。</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>运行速度慢:和 C 程序相比非常慢，因为 Python 是解释型语言，你的代码会在执行的时候一行一行地翻译成 CPU 能理解的机器码，这个翻译过程非常耗时，所以很慢。而C程序是运行前直接编译成CPU能执行的机器码，所以很快。</li>
+<li>代码无法加密：如果要发布Python程序，就是发布源码，像C语言，只需要把编译后的机器码发布出去即可。所以编译型的语言不存在这个问题。</li>
+</ul>
+<h4 id="主要应用领域"><a href="#主要应用领域" class="headerlink" title="主要应用领域"></a>主要应用领域</h4><ul>
+<li>云计算：云计算最热的语言，典型的应用 OpenStack</li>
+<li>WEB开发：许多优秀的 WEB 框架例如 Django、Flask等。许多网站也是通过 Python 开发的，如 YouTube、DropBox、豆瓣、知乎等</li>
+<li>科学计算和人工智能：典型的图书馆 NumPy、SciPy、Matplotlib、Enided图书馆、熊猫</li>
+<li>系统操作和维护：操作和维护人员的基本语言</li>
+<li>金融：定量交易、金融分析，在金融工程领域，Python 不仅使用最多，而且其重要性逐年增加</li>
+<li>图形GUI：PyQT、WXPython、TkInter</li>
+</ul>
+<h4 id="安装Python"><a href="#安装Python" class="headerlink" title="安装Python"></a>安装Python</h4><p>如果你的电脑本身没有自带 Python 的话，可以通过 <a href="https://www.python.org/downloads/">Python 官方网站</a> 来下载安装，然后根据步骤一步步按章即可。Mac和 Linux 平台的话可以通过访问 <a href="https://www.python.org/downloads/source/">资源 </a>这里来下载适用的安装包，解压后在终端执行 <code>./configure</code> 脚本和 <code>make &amp;&amp; make install</code> 进行编译安装。此时 Python 会安装在 <code>/usr/local/bin</code> 目录中，Python 库会安装在 <code>/usr/local/lib/pythonXX</code>，XX为你使用的 Python 版本号。</p>
+<p>此时在终端输入下面命令验证安装是否成功:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> Python3 -V</span></span><br><span class="line">Python 3.9.2</span><br></pre></td></tr></table></figure>
+
+<p>这里出现 Python 及版本号意味着安装成功，此时可以通过 Python 开始进行编程操作了。</p>
+<h4 id="交互式解释器"><a href="#交互式解释器" class="headerlink" title="交互式解释器"></a>交互式解释器</h4><p>当我们在终端输入<code>Python3</code> 时，此时下面会显示主提示符 <code>&gt;&gt;&gt;</code> ，提示输入下一条指令；当输入连续行时，显示次要提示符 <code>...</code> 。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3</span></span><br><span class="line">Python 3.9.2 (default, Mar 15 2021, 17:37:51)</span><br><span class="line">[Clang 12.0.0 (clang-1200.0.32.29)] on darwin</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; the_world_is_flat = True</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="keyword">if</span> the_world_is_flat:</span></span><br><span class="line">...     print(&quot;Be careful not to fall off!&quot;)</span><br><span class="line">...</span><br><span class="line">Be careful not to fall off!</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意出现次要提示符的时候，需要进行缩进，一般为四个空格或者一个 tab。退出Python的话，可以用<code>exit()</code>函数来退出。</p>
+</blockquote>
+<p>在这里，我们就可以编写第一个 Python 程序了:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3</span></span><br><span class="line">Python 3.9.2 (default, Mar 15 2021, 17:37:51)</span><br><span class="line">[Clang 12.0.0 (clang-1200.0.32.29)] on darwin</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(<span class="string">&quot;Hello, world&quot;</span>)</span></span><br><span class="line">Hello, world</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">exit</span>()</span></span><br></pre></td></tr></table></figure>
+
+<p>欢迎来到Python世界～</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Flask】Chapter1:Hello，World</title>
     <url>/2021/04/15/Chapter1-Hello-World/</url>
     <content><![CDATA[<p>欢迎，你将要开启一个如何使用 <a href="https://www.python.org/">Python</a> 和 <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a> 框架创建 web应用程序的学习之旅。在第一章，你将会学习如何去新建一个 Flask项目。在本章结束时，你将会在你的电脑上运行一个简单的 Flask Web应用！</p>
 <p><em>本章节的 GitHub链接: <a href="https://github.com/miguelgrinberg/microblog/tree/v0.1">Browse</a>，<a href="https://github.com/miguelgrinberg/microblog/archive/v0.1.zip">Zip</a>，<a href="https://github.com/miguelgrinberg/microblog/compare/v0.0...v0.1">Diff</a>。</em></p>
@@ -18,18 +68,26 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip install &lt;package-name&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>有趣的是，在大多数情况下安装第三方包的这个方法不会有效。如果你在你电脑上安装的全局的 Python解释器，很可能你的普通账号没有权限去修改它，因此只有一种方法让上面的命令工作就是通过管理员账号运行。但是即使没有这种复杂的情况，也要思考下你用上述方法安装第三方包时会发生什么。<code>pip</code> 工具会从 PyPI 上下载包，然后添加到 Python 的安装中。从这时起，在你系统上的每个 Python 脚本都可以访问这个包。 想象一下这样一个情况当你用当时最新的版本 Flask 0.11版本完成了一个 web 应用，但是现在已经支持 0.12版本了。你现在想用 0.12版本开始做第二个应用，但是替换掉0.11版本会让老的程序无法运行。现在你看到问题了么？现在解决方法是为老的应用安装 0.11版本的 Flask，为新的应用安装0.12版本的Flask。</p>
-<p>为了解决</p>
+<p>为了处理不同应用维护不同版本的第三方包的问题，Python 使用虚拟环境的概念。虚拟环境是 Python 解释器的完整副本。当你在虚拟环境中安装第三方包时，系统范围的Python解释器不受影响，只有副本受影响。因此要完全自由地为每个应用安装任何版本的三方包，解决方案就是为每个应用使用不同的虚拟环境。虚拟环境还有一个好处就是它们归创建者所拥有，因此不需要管理员账号。</p>
+<p>让我们开始创建一个项目所在的目录。我先把这个目录命名为 <em>microblog</em>, 这便是这个程序的名称：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ mkdir microblog</span><br><span class="line">$ <span class="built_in">cd</span> microblog</span><br></pre></td></tr></table></figure>
+
+<p>如果你正在使用 Python 3 版本，虚拟环境已经成为内置模块，你可以用下面的命令去创建它:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3 -m venv venv</span></span><br></pre></td></tr></table></figure>
+
+<p>通过这个命令，我用 Python 通过运行 <code>venv</code> 这个包创建一个名为 <code>venv</code> 的虚拟环境。命令中的第一个 <code>venv</code> 是 Python 虚拟环境包的名称，第二个 <code>venv</code> 是我要用来表示这个特定的虚拟环境的名称。如果你觉得很困惑，你可以用其他你想给虚拟环境命名的名字去替换第二个 venv 。通常我在项目中都用 venv 这个名字给创建的虚拟环境命名，所以无论何时我 cd 到一个项目中都能找到相应的虚拟环境。</p>
+<p>命令执行完，在你的目录下将会有一个名为 venv 的目录用来存储虚拟环境相关文件。</p>
 ]]></content>
       <categories>
         <category>Flask</category>
       </categories>
       <tags>
-        <tag>Flask</tag>
         <tag>Python</tag>
+        <tag>Flask</tag>
       </tags>
   </entry>
   <entry>
-    <title>[Python]Chapter2:基础语法</title>
+    <title>【Python】Chapter2:基础语法</title>
     <url>/2021/04/16/Chapter2-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<p>Python 是一种计算机编程语言。计算机编程语言和我们日常使用的自然语言有所不同，最大的区别就是，自然语言在不同的语境下有不同的理解，而计算机要根据编程语言执行任务，就必须保证编程语言写出来的程序绝不能有歧义，所以任何一种编程语言都有自己的一套语法，编译器或者解释器就是负责把符合语法的程序代码转换成 CPU 能执行的机器码，然后执行。Python 也不例外。</p>
 <span id="more"></span>
@@ -197,47 +255,112 @@
       </tags>
   </entry>
   <entry>
-    <title>[Python]Chapter1:课前甜点</title>
-    <url>/2021/04/16/Chapter1-%E7%AE%80%E4%BB%8B/</url>
-    <content><![CDATA[<p>Python 是著名的“龟叔” Guido van Rossum 在1989年圣诞节为了打发时间而编写的一个编程语言。</p>
-<p>Python 的设计具有很强的可读性，相比其他语言经常食用英文关键字，其他语言的一些标点符号，它具有比其他语言更具特色的语法结构。</p>
+    <title>【Python】Chapter3:基本数据类型</title>
+    <url>/2021/04/19/Chapter3-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<p>计算机顾名思义就是可以做数学计算的机器，因此，计算机程序理所当然地可以处理各种数值。但是，计算机能处理的远不止数值，还可以处理文本、图形、音频、视频、网页等各种各样的数据，不同的数据，需要定义不同的数据类型。</p>
 <span id="more"></span>
 
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
-<li>易于学习：龟叔给 Python 的定位就是“优雅”、“明确”、“简单”，所以Python 程序看上去简单易懂，初学者学习，不但入门快，而且将来深入，也可以编写非常复杂的程序。</li>
-<li>免费开源：Python 是 FLOSS(自由/开放源码软件)之一。你可以自动的发布这个软件的拷贝、阅读它的源码、对它做出改动等等。</li>
-<li>高级语言：当你在用 Python 语言编写程序的时候，不需要考虑管理内存之类的底层细节。</li>
-<li>面向对象：Python 既支持面向过程的编程也支持面向对象的编程。在“面向对象”的语言中，程序是由过程仅仅是可以重用代码的函数构建起来的。在“面向对象”的语言中，程序是由数据和功能组合而成的对象构建起来的。</li>
-<li>可拓展性：如果你需要你的一段关键代码运行的更快或者某些算法不公开，你可以把你的部分程序用 C 或 C++ 编写，然后在 Python 程序中使用它们。</li>
-<li>丰富的库：Python 的标准库非常庞大，可以帮助你处理各种工作。包括正则表达式、文档生成、单元测试、线程、数据库、网页浏览器、CGI、FTP、电子邮件、XML、XML-RPC、HTML、WAV  文件、密码系统、GUI（图形用户界面）、Tk 和其他与系统有关的操作。记住，只要安装了 Python，所有这些功能都是可用的。这被称作  Python 的“功能齐全”理念。除了标准库以外，还有许多其他高质量的库，如 wxPython、Twisted 和 Python 图像库等等。</li>
-</ul>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
-<li>运行速度慢:和 C 程序相比非常慢，因为 Python 是解释型语言，你的代码会在执行的时候一行一行地翻译成 CPU 能理解的机器码，这个翻译过程非常耗时，所以很慢。而C程序是运行前直接编译成CPU能执行的机器码，所以很快。</li>
-<li>代码无法加密：如果要发布Python程序，就是发布源码，像C语言，只需要把编译后的机器码发布出去即可。所以编译型的语言不存在这个问题。</li>
-</ul>
-<h4 id="主要应用领域"><a href="#主要应用领域" class="headerlink" title="主要应用领域"></a>主要应用领域</h4><ul>
-<li>云计算：云计算最热的语言，典型的应用 OpenStack</li>
-<li>WEB开发：许多优秀的 WEB 框架例如 Django、Flask等。许多网站也是通过 Python 开发的，如 YouTube、DropBox、豆瓣、知乎等</li>
-<li>科学计算和人工智能：典型的图书馆 NumPy、SciPy、Matplotlib、Enided图书馆、熊猫</li>
-<li>系统操作和维护：操作和维护人员的基本语言</li>
-<li>金融：定量交易、金融分析，在金融工程领域，Python 不仅使用最多，而且其重要性逐年增加</li>
-<li>图形GUI：PyQT、WXPython、TkInter</li>
-</ul>
-<h4 id="安装Python"><a href="#安装Python" class="headerlink" title="安装Python"></a>安装Python</h4><p>如果你的电脑本身没有自带 Python 的话，可以通过 <a href="https://www.python.org/downloads/">Python 官方网站</a> 来下载安装，然后根据步骤一步步按章即可。Mac和 Linux 平台的话可以通过访问 <a href="https://www.python.org/downloads/source/">资源 </a>这里来下载适用的安装包，解压后在终端执行 <code>./configure</code> 脚本和 <code>make &amp;&amp; make install</code> 进行编译安装。此时 Python 会安装在 <code>/usr/local/bin</code> 目录中，Python 库会安装在 <code>/usr/local/lib/pythonXX</code>，XX为你使用的 Python 版本号。</p>
-<p>此时在终端输入下面命令验证安装是否成功:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> Python3 -V</span></span><br><span class="line">Python 3.9.2</span><br></pre></td></tr></table></figure>
-
-<p>这里出现 Python 及版本号意味着安装成功，此时可以通过 Python 开始进行编程操作了。</p>
-<h4 id="交互式解释器"><a href="#交互式解释器" class="headerlink" title="交互式解释器"></a>交互式解释器</h4><p>当我们在终端输入<code>Python3</code> 时，此时下面会显示主提示符 <code>&gt;&gt;&gt;</code> ，提示输入下一条指令；当输入连续行时，显示次要提示符 <code>...</code> 。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3</span></span><br><span class="line">Python 3.9.2 (default, Mar 15 2021, 17:37:51)</span><br><span class="line">[Clang 12.0.0 (clang-1200.0.32.29)] on darwin</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; the_world_is_flat = True</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="keyword">if</span> the_world_is_flat:</span></span><br><span class="line">...     print(&quot;Be careful not to fall off!&quot;)</span><br><span class="line">...</span><br><span class="line">Be careful not to fall off!</span><br></pre></td></tr></table></figure>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p>Python 中变量不需要声明。每个变量在使用前都必须赋值，变量赋值以后该变量才会被创建。在Python中，变量就是变量，它没有类型，我们所说的”类型“是变量所指的内存中对象的类型。</p>
+<p>这种变量本身类型不固定的语言称之为 <strong>动态语言</strong> ，与之相对的是 <strong>静态语言</strong>。静态语言在定义变量时必须指定变量类型，如果赋值的时候类型不匹配，就会报错。如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">123</span>;</span><br><span class="line">a = <span class="string">&quot;ABC&quot;</span>;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>注意出现次要提示符的时候，需要进行缩进，一般为四个空格或者一个 tab。退出Python的话，可以用<code>exit()</code>函数来退出。</p>
+<p>和静态语言相比，动态语言更灵活，就是这个原因。</p>
 </blockquote>
-<p>在这里，我们就可以编写第一个 Python 程序了:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3</span></span><br><span class="line">Python 3.9.2 (default, Mar 15 2021, 17:37:51)</span><br><span class="line">[Clang 12.0.0 (clang-1200.0.32.29)] on darwin</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(<span class="string">&quot;Hello, world&quot;</span>)</span></span><br><span class="line">Hello, world</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">exit</span>()</span></span><br></pre></td></tr></table></figure>
+<p>等号( <code>=</code> )用来给变量赋值。等号( = )运算符左边是一个变量名，等号( = )运算符右边是存储在变量中的值。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">counter = <span class="number">100</span> <span class="comment"># 整型变量</span></span><br><span class="line">miles   = <span class="number">1000.0</span> <span class="comment"># 浮点型变量</span></span><br><span class="line">name    = <span class="string">&quot;RainTwo&quot;</span>  <span class="comment"># 字符串</span></span><br></pre></td></tr></table></figure>
 
-<p>欢迎来到Python世界～</p>
+<p>在这里Python解释器干了两件事：</p>
+<ol>
+<li>在内存中创建了一个 <code>RainTwo</code> 的字符串；</li>
+<li>在内存中创建了一个名为 <code>name</code> 的变量，并把它指向 <code>RainTwo</code>。</li>
+</ol>
+<p>也可以把一个变量 <code>a</code> 赋值给另一个变量 <code>b</code> ，这个操作实际上就是把变量 <code>b</code> 指向变量 <code>a</code> 所指向的数据。</p>
+<p>Python 允许你同时为多个变量赋值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = b = c = <span class="number">1</span></span><br><span class="line">a, b, c = <span class="number">1</span>, <span class="number">2</span>, <span class="string">&quot;RainTwo&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>所谓常量就是不能变的变量，比如常用的数字常数 π 就是一个常量。在 Python 中，通常用全部大写的变量名表示常量:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">PI = <span class="number">3.141592653</span></span><br></pre></td></tr></table></figure>
+
+<p>但事实上 PI 仍然是一个变量，Python 根本没有任何机制保证 PI 不会被改变，所以，用全部大写的变量名表示常量只是一个习惯上的用法，如果你一定要改变变量 PI 的值，也没人能拦住你。</p>
+<p>最后解释下整数的除法为什么也是精确的。在 Python 中，有两种除法，一种是 <code>/</code> ：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 10 / 3</span></span><br><span class="line">3.3333333333333335</span><br></pre></td></tr></table></figure>
+
+<p><code>/</code> 除法计算结果是浮点数，即使是两个整数恰好整除，结果也是浮点数：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 9 / 3</span></span><br><span class="line">3.0</span><br></pre></td></tr></table></figure>
+
+<p>还有一种除法是 <code>//</code> ，称为地板除，两个整数的除法仍然是整数：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 10 // 3</span></span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<p>即整数的地板除 <code>//</code> 永远是整数，即使除不尽。要做精确的除法，使用 <code>/</code> 就可以。</p>
+<p>因为 // 除法只取结果的整数部分，所以 Python 还提供一个余数计算，可以得到两个整数相除的余数：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 10 % 3</span></span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<h4 id="标准数据类型"><a href="#标准数据类型" class="headerlink" title="标准数据类型"></a>标准数据类型</h4><p>Python3 有六个标准的数据类型：</p>
+<ul>
+<li>Number  (数字)</li>
+<li>String  (字符串)</li>
+<li>List (列表)</li>
+<li>Tuple (元组)</li>
+<li>Set (集合)</li>
+<li>Dictionary (字典)</li>
+</ul>
+<p>分为<strong>不可变数据</strong>: Number、String、Tuple；</p>
+<p>和<strong>可变数据</strong>: List、Dictionary、Set。</p>
+<h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><p>Python3 支持 <strong>int</strong>、<strong>float</strong>、<strong>bool</strong>、<strong>complex</strong>(复数)</p>
+<p>内置的 <code>type()</code> 函数可以用来查询变量所指的对象类型:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; a, b, c, d = 20, 5.5, True, 4+3j</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(<span class="built_in">type</span>(a), <span class="built_in">type</span>(b), <span class="built_in">type</span>(c), <span class="built_in">type</span>(d))</span></span><br><span class="line">&lt;class &#x27;int&#x27;&gt; &lt;class &#x27;float&#x27;&gt; &lt;class &#x27;bool&#x27;&gt; &lt;class &#x27;complex&#x27;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>此外还可以用 <code>isinstance</code> 来判断:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; a = 111</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; isinstance(a, int)</span></span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+
+<p>isinstance 和 type 的区别在于：</p>
+<ul>
+<li>type() 不会认为子类是一种父类类型</li>
+<li>isinstance() 会认为子类是一种父类类型</li>
+</ul>
+<h5 id="数值运算"><a href="#数值运算" class="headerlink" title="数值运算"></a>数值运算</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 5 + 4  <span class="comment"># 加法</span></span></span><br><span class="line">9</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 4.3 - 2 <span class="comment"># 减法</span></span></span><br><span class="line">2.3</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 3 * 7  <span class="comment"># 乘法</span></span></span><br><span class="line">21</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 / 4  <span class="comment"># 除法，得到浮点数</span></span></span><br><span class="line">0.5</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 // 4 <span class="comment"># 除法，得到整数</span></span></span><br><span class="line">0</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 17 % 3 <span class="comment"># 取余</span></span></span><br><span class="line">2</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 ** 5 <span class="comment"># 乘方</span></span></span><br><span class="line">32</span><br></pre></td></tr></table></figure>
+
+<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><p>Python 中的字符串用单引号 <code>&#39;</code> 或双引号 <code>&quot;</code> 括起来，同时使用反斜杠 <code>\</code> 转义特殊字符。</p>
+<p>加号 <code>+</code> 是字符串的连接符，星号 <code>*</code> 表示复制当前字符串，与之结合的数字为复制的次数。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">str</span> = <span class="string">&#x27;RainTwo&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>[<span class="number">0</span>:-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span> * <span class="number">2</span>)  <span class="comment"># 输出字符串两次，也可以写成 print(2 * str)  RainTwoRainTwo</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span> + <span class="string">&quot;TEST&quot;</span>)  <span class="comment"># 连接字符串 输出 RainTwoTEST</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ol>
+<li>反斜杠可以用来转义，使用 r 可以让反斜杠不发生转义</li>
+<li>字符串可以用 + 运算符连接在一起，用 * 运算符重复</li>
+<li>Python 中的字符串有两种索引方式，从左往右以0开始，从右往左以 -1 开始。</li>
+<li>Python 中的字符串不能改变。</li>
+</ol>
+<h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><p>List(列表) 是 Python 中使用最频繁的数据类型。</p>
+<p>列表可以完成大多数集合类的数据结构实现。列表中元素的类型可以不相同，它支持数字，字符串甚至可以包含列表(所谓嵌套)。</p>
+<p>列表是卸载方括号 <code>[]</code> 之间、用逗号分隔开的元素列表。</p>
+<p>和字符串一样，列表同样可以被索引和截取，列表被截取后返回一个包含所需元素的新列表。</p>
+<p>列表截取的语法格式：<code>变量[头下标:尾下标]</code> , 索引值以 <code>0</code> 为开始，<code>-1</code> 为从末尾的开始位置。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">t = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>]</span><br><span class="line">      <span class="number">0</span>    <span class="number">1</span>    <span class="number">2</span>    <span class="number">3</span>    <span class="number">4</span></span><br><span class="line">     -<span class="number">5</span>   -<span class="number">4</span>   -<span class="number">3</span>   -<span class="number">2</span>   -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>加号 + 是列表连接运算符，星号 * 是重复操作。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="built_in">list</span> = [<span class="string">&#x27;abcd&#x27;</span>, <span class="number">789</span>, <span class="number">2.23</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="number">70.2</span>]</span><br><span class="line">tinylist = [<span class="number">123</span>, <span class="string">&#x27;runoob&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span> * <span class="number">2</span>) <span class="comment"># 输出两次列表</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span> + tinylist) <span class="comment"># 连接列表</span></span><br></pre></td></tr></table></figure>
+
+<p>与 Python 的字符串不一样的是，列表中的元素是可以改变的。</p>
+<p>注意:</p>
+<ol>
+<li>List写在方括号之间，元素用逗号隔开。</li>
+<li>和字符串一样，List 可以被索引和切片。</li>
+<li>List 可以使用 <code>+</code> 操作符进行拼接。</li>
+<li>List 中的元素是可以改变的。</li>
+</ol>
+<p>Python 列表截取可以接收第三个参数，参数作用是截取的步长，以下实例在索引1到索引4的位置并设置步长为2(间隔一个位置)来截取字符串:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; letters = [<span class="string">&#x27;r&#x27;</span>, <span class="string">&#x27;u&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; letters[1:4:2]</span></span><br><span class="line">[&#x27;u&#x27;, &#x27;o&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h4 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h4><p>元组与列表类似，不同之处在于元组的元素不能修改。元组写在小括号 <code>()</code> 里，元素之间用逗号隔开。</p>
+<p>元组中的元素类型也可以不相同:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">tuple</span> = (<span class="string">&#x27;abcd&#x27;</span>, <span class="number">789</span>, <span class="number">2.23</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="number">79.2</span>)</span><br><span class="line">tinytuple = (<span class="number">123</span>, <span class="string">&#x27;runoob&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>)             <span class="comment"># 输出元组</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">0</span>])          <span class="comment"># 输出元组第一个元素</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">1</span>:<span class="number">3</span>])        <span class="comment"># 输出从第二个元素开始到第三个元素</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">2</span>:])         <span class="comment"># 输出从第三个元素开始的所有元素</span></span><br><span class="line"><span class="built_in">print</span>(tinytuple *<span class="number">2</span>)      <span class="comment"># 输出两次元组</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span> + tinytuple) <span class="comment"># 连接元组</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
 ]]></content>
       <categories>
         <category>Python</category>

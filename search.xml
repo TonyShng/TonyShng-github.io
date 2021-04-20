@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>【Python】Chapter1:课前甜点</title>
-    <url>/2021/04/16/Chapter1-%E7%AE%80%E4%BB%8B/</url>
+    <url>/2021/04/16/%E3%80%90Python%E3%80%91Chapter1-%E7%AE%80%E4%BB%8B/</url>
     <content><![CDATA[<p>Python 是著名的“龟叔” Guido van Rossum 在1989年圣诞节为了打发时间而编写的一个编程语言。</p>
 <p>Python 的设计具有很强的可读性，相比其他语言经常食用英文关键字，其他语言的一些标点符号，它具有比其他语言更具特色的语法结构。</p>
 <span id="more"></span>
@@ -52,7 +52,7 @@
   </entry>
   <entry>
     <title>【Flask】Chapter1:Hello，World</title>
-    <url>/2021/04/15/Chapter1-Hello-World/</url>
+    <url>/2021/04/15/%E3%80%90Flask%E3%80%91Chapter1-Hello-World/</url>
     <content><![CDATA[<p>欢迎，你将要开启一个如何使用 <a href="https://www.python.org/">Python</a> 和 <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a> 框架创建 web应用程序的学习之旅。在第一章，你将会学习如何去新建一个 Flask项目。在本章结束时，你将会在你的电脑上运行一个简单的 Flask Web应用！</p>
 <p><em>本章节的 GitHub链接: <a href="https://github.com/miguelgrinberg/microblog/tree/v0.1">Browse</a>，<a href="https://github.com/miguelgrinberg/microblog/archive/v0.1.zip">Zip</a>，<a href="https://github.com/miguelgrinberg/microblog/compare/v0.0...v0.1">Diff</a>。</em></p>
 <span id="more"></span>
@@ -88,7 +88,7 @@
   </entry>
   <entry>
     <title>【Python】Chapter2:基础语法</title>
-    <url>/2021/04/16/Chapter2-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
+    <url>/2021/04/16/%E3%80%90Python%E3%80%91Chapter2-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<p>Python 是一种计算机编程语言。计算机编程语言和我们日常使用的自然语言有所不同，最大的区别就是，自然语言在不同的语境下有不同的理解，而计算机要根据编程语言执行任务，就必须保证编程语言写出来的程序绝不能有歧义，所以任何一种编程语言都有自己的一套语法，编译器或者解释器就是负责把符合语法的程序代码转换成 CPU 能执行的机器码，然后执行。Python 也不例外。</p>
 <span id="more"></span>
 
@@ -255,8 +255,162 @@
       </tags>
   </entry>
   <entry>
+    <title>【Python】Chapter4:运算符</title>
+    <url>/2021/04/20/%E3%80%90Python%E3%80%91Chapter4-%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
+    <content><![CDATA[<p>运算符用于执行程序代码运算，会针对一个以上操作数项目来进行运算。例如 <code>4 + 5 = 9</code> 中 4 和 5 被称为<strong>操作数</strong> ， <code>+</code> 被称为<strong>运算符</strong>。</p>
+<p>Python主要有以下类型的运算符： 算数运算符、比较(关系)运算符、赋值运算符、逻辑运算符、位运算符、成员运算符、身份运算符等。</p>
+<span id="more"></span>
+
+<h4 id="算符运算符"><a href="#算符运算符" class="headerlink" title="算符运算符"></a>算符运算符</h4><p>以下假设变量 a 为 10, 变量 b 为 21:</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>加 两个对象相加</td>
+<td>a + b 结果输出 31</td>
+</tr>
+<tr>
+<td>-</td>
+<td>减 得到负数或是一个数减去另一个数</td>
+<td>a - b 结果输出 -11</td>
+</tr>
+<tr>
+<td>*</td>
+<td>乘 两个数相乘或是返回一个被重复若干次的字符串</td>
+<td>a * b 结果输出 210</td>
+</tr>
+<tr>
+<td>/</td>
+<td>除 x 除以 y</td>
+<td>b / a 结果输出 2.1</td>
+</tr>
+<tr>
+<td>%</td>
+<td>取模 返回除法的余数</td>
+<td>b % a 结果输出 1</td>
+</tr>
+<tr>
+<td>**</td>
+<td>幂 返回 x 的 y 次幂</td>
+<td>a**b 为10的21次方</td>
+</tr>
+<tr>
+<td>//</td>
+<td>取整除 向下取接近商的整数</td>
+<td>9//2 = 4    -9//2 = -5</td>
+</tr>
+</tbody></table>
+<h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><p>同样假设变量 a 为 10, 变量 b 为 20:</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>==</td>
+<td>等于  比较对象是否相等</td>
+<td>(a == b)  返回 False</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>不等于  比较两个对象是否不相等</td>
+<td>(a != b)  返回 True</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于  返回 x 是否大于 y</td>
+<td>(a &gt; b) 返回 False</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于  返回 x 是否小于 y</td>
+<td>(a &lt; b) 返回 True</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大于等于 返回 x 是否大于等于 y</td>
+<td>(a &gt;= b) 返回 False</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小于等于 返回 x 是否小于等于 y</td>
+<td>(a &lt;= b) 返回 True</td>
+</tr>
+</tbody></table>
+<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>=</td>
+<td>简单的赋值运算符</td>
+<td><code>c = a + b</code> 将 a + b 的运算结果赋值给 c</td>
+</tr>
+<tr>
+<td>+=</td>
+<td>加法赋值运算符</td>
+<td><code>c += a</code> 等效于 <code>c = c + a</code></td>
+</tr>
+<tr>
+<td>-=</td>
+<td>减法赋值运算符</td>
+<td><code>c -= a</code> 等效于 <code>c = c - a</code></td>
+</tr>
+<tr>
+<td>*=</td>
+<td>乘法赋值运算符</td>
+<td><code>c *= a</code> 等效于 <code>c = c * a</code></td>
+</tr>
+<tr>
+<td>/=</td>
+<td>除法赋值运算符</td>
+<td><code>c /= a</code> 等效于 <code>c = c / a</code></td>
+</tr>
+<tr>
+<td>%=</td>
+<td>取模赋值运算符</td>
+<td><code>c %= a</code> 等效于 <code>c = c % a</code></td>
+</tr>
+<tr>
+<td>**=</td>
+<td>幂赋值运算符</td>
+<td><code>c **= a</code> 等效于 <code>c = c ** a</code></td>
+</tr>
+<tr>
+<td>//=</td>
+<td>取整除赋值运算符</td>
+<td><code>c //= a</code> 等效于 <code>c = c //a</code></td>
+</tr>
+<tr>
+<td>:=</td>
+<td>海象运算符，可在表达式内部为变量赋值</td>
+<td>if (n := len(a)) &gt; 10:<br />    print(f”List is too long ({n} elements, expected &lt;= 10)”)</td>
+</tr>
+</tbody></table>
+<h4 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h4>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【Python】Chapter3:基本数据类型</title>
-    <url>/2021/04/19/Chapter3-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <url>/2021/04/19/%E3%80%90Python%E3%80%91Chapter3-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
     <content><![CDATA[<p>计算机顾名思义就是可以做数学计算的机器，因此，计算机程序理所当然地可以处理各种数值。但是，计算机能处理的远不止数值，还可以处理文本、图形、音频、视频、网页等各种各样的数据，不同的数据，需要定义不同的数据类型。</p>
 <span id="more"></span>
 
@@ -357,10 +511,113 @@
 <p>元组中的元素类型也可以不相同:</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">tuple</span> = (<span class="string">&#x27;abcd&#x27;</span>, <span class="number">789</span>, <span class="number">2.23</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="number">79.2</span>)</span><br><span class="line">tinytuple = (<span class="number">123</span>, <span class="string">&#x27;runoob&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>)             <span class="comment"># 输出元组</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">0</span>])          <span class="comment"># 输出元组第一个元素</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">1</span>:<span class="number">3</span>])        <span class="comment"># 输出从第二个元素开始到第三个元素</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">2</span>:])         <span class="comment"># 输出从第三个元素开始的所有元素</span></span><br><span class="line"><span class="built_in">print</span>(tinytuple *<span class="number">2</span>)      <span class="comment"># 输出两次元组</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span> + tinytuple) <span class="comment"># 连接元组</span></span><br></pre></td></tr></table></figure>
 
+<p>元组与字符串类似，可以被索引且下标索引从0开始，-1 为从末尾开始的位置。也可以进行截取，可以把字符串看作一种特殊的元组。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; tup = (1, 2, 3, 4, 5, 6)</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(tup[0])</span></span><br><span class="line">1</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(tup[1:5])</span></span><br><span class="line">(2, 3, 4, 5)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; tup[0] = 11</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">TypeError: &#x27;tuple&#x27; object does not support item assignment</span><br></pre></td></tr></table></figure>
 
+<p>虽然 tuple 的元素不可改变，但它可以包含可变的对象，比如 list 列表。</p>
+<p>构造包含 0 个或 1个元素的元组比较特殊，所以有一些额外的语法规则：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tup1 = ()     <span class="comment"># 空元组</span></span><br><span class="line">tup2 = (<span class="number">20</span>,)  <span class="comment"># 一个元素，需要在元素后面添加逗号</span></span><br></pre></td></tr></table></figure>
 
+<p>string、list 和 tuple 都属于 sequence(序列)。</p>
+<p>注意：</p>
+<ol>
+<li>与字符串一样，元组的元素不能修改</li>
+<li>元组也可以被索引和切片，方法一样</li>
+<li>注意构造包含0 或 1 个元素的元组的特殊语法规则</li>
+<li>元组也可以使用 <code>+</code> 操作符进行拼接</li>
+</ol>
+<h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><p>集合是由一个或数个形态各异的大小整体组成，构成集合的事物或者对象称作元素或是成员。</p>
+<p>基本功能是进行成员关系测试和删除重复元素。</p>
+<p>可以使用大括号 <code>&#123;&#125;</code> 或者 <code>set()</code> 函数创建集合，注意：创建一个空集合必须用 <code>set()</code> 而不是 <code>&#123;&#125;</code>，因为 <code>&#123;&#125;</code> 是用来创建一个空字典的。</p>
+<p>创建格式:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">parame = &#123;value01, value02, ...&#125;</span><br><span class="line"><span class="built_in">set</span>(value)</span><br><span class="line"></span><br><span class="line">sites = &#123;<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;Taobao&#x27;</span>, <span class="string">&#x27;Runoob&#x27;</span>, <span class="string">&#x27;Facebook&#x27;</span>, <span class="string">&#x27;Tencent&#x27;</span>, <span class="string">&#x27;Baidu&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(sites)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 成员测试</span></span><br><span class="line"><span class="keyword">if</span> <span class="string">&#x27;Runoob&#x27;</span> <span class="keyword">in</span> sites:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Runoob 在集合中&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Runoob 不在集合中&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># set可以进行集合运算</span></span><br><span class="line">a = <span class="built_in">set</span>(<span class="string">&#x27;abracadabra&#x27;</span>)</span><br><span class="line">b = <span class="built_in">set</span>(<span class="string">&#x27;alacazam&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(a - b)  <span class="comment"># a 和 b 的差集  &#123;&#x27;r&#x27;, &#x27;b&#x27;, &#x27;d&#x27;&#125;</span></span><br><span class="line"><span class="built_in">print</span>(a | b)  <span class="comment"># a 和 b 的并集  &#123;&#x27;b&#x27;, &#x27;c&#x27;, &#x27;a&#x27;, &#x27;z&#x27;, &#x27;m&#x27;, &#x27;r&#x27;, &#x27;l&#x27;, &#x27;d&#x27;&#125;</span></span><br><span class="line"><span class="built_in">print</span>(a &amp; b)  <span class="comment"># a 和 b 的交集  &#123;&#x27;c&#x27;, &#x27;a&#x27;&#125;</span></span><br><span class="line"><span class="built_in">print</span>(a ^ b)  <span class="comment"># a 和 b 中不同时存在的元素  &#123;&#x27;z&#x27;, &#x27;b&#x27;, &#x27;m&#x27;, &#x27;r&#x27;, &#x27;l&#x27;, &#x27;d&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
 
+<h4 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h4><p>字典是 Python 中另一个非常有用的内置数据类型。</p>
+<p>列表是<strong>有序</strong>的对象集合，字典是<strong>无序</strong>的对象集合。两者之间的区别在于: 字典当中的元素是通过键来存取的，而不是通过偏移存取。</p>
+<p>字典是一种映射类型，字典用 <code>&#123;&#125;</code> 标识，它是一个无序的 <strong>键(key) : 值(value)</strong> 的集合。</p>
+<p>键(key) 必须使用不可变类型。</p>
+<p>在同一个字典中，键(key)必须是唯一的。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">dict</span> = &#123;&#125;</span><br><span class="line"><span class="built_in">dict</span>[<span class="string">&#x27;one&#x27;</span>] = <span class="string">&quot;1 - 啦啦啦&quot;</span></span><br><span class="line"><span class="built_in">dict</span>[<span class="number">2</span>] = <span class="string">&quot;2 - 啦啦啦&quot;</span></span><br><span class="line"></span><br><span class="line">tinydict = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;code&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;site&#x27;</span>: <span class="string">&#x27;www.raintwo.wang&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">dict</span>[<span class="string">&#x27;one&#x27;</span>])       <span class="comment"># 输出键为 &#x27;one&#x27; 的值</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">dict</span>[<span class="number">2</span>])           <span class="comment"># 输出键为 2 的值</span></span><br><span class="line"><span class="built_in">print</span>(tinydict)          <span class="comment"># 输出完整的字典</span></span><br><span class="line"><span class="built_in">print</span>(tinydict.keys())   <span class="comment"># 输出所有键</span></span><br><span class="line"><span class="built_in">print</span>(tinydict.values()) <span class="comment"># 输出所有值</span></span><br></pre></td></tr></table></figure>
 
+<p>构造函数 <code>dict()</code> 可以直接从键值对序列中构建字典如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>([(<span class="string">&#x27;Runoob&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;Google&#x27;</span>, <span class="number">2</span>), (<span class="string">&#x27;Taobao&#x27;</span>, <span class="number">3</span>)])</span><br><span class="line">&#123;<span class="string">&#x27;Runoob&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Google&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Taobao&#x27;</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&#123;x: x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> (<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>)&#125;</span><br><span class="line">&#123;<span class="number">2</span>: <span class="number">4</span>, <span class="number">4</span>: <span class="number">16</span>, <span class="number">6</span>: <span class="number">36</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>(Runoob=<span class="number">1</span>, Google=<span class="number">2</span>, Taobao=<span class="number">3</span>)</span><br><span class="line">&#123;<span class="string">&#x27;Runoob&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Google&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Taobao&#x27;</span>: <span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另外，字典类型也有一些内置的函数，例如 clear()、keys()、values() 等。</p>
+<p>注意:</p>
+<ol>
+<li>字典是一种映射类型，它的元素是键值对。</li>
+<li>字典的关键字必须为不可变类型，且不能重复。</li>
+<li>创建空字典使用 <code>&#123;&#125;</code></li>
+</ol>
+<h4 id="Python数据类型转换"><a href="#Python数据类型转换" class="headerlink" title="Python数据类型转换"></a>Python数据类型转换</h4><p>有时候，我们需要对数据内置的类型进行转换，数据类型的转换，你只需要将数据类型作为函数名即可。</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int(x, [base])</td>
+<td>将 x 转换为一个整数</td>
+</tr>
+<tr>
+<td>float(x)</td>
+<td>将 x 转换到一个浮点数</td>
+</tr>
+<tr>
+<td>complex(real, [image])</td>
+<td>创建一个复数</td>
+</tr>
+<tr>
+<td>str(x)</td>
+<td>将对象 x 转换为字符串</td>
+</tr>
+<tr>
+<td>repr(x)</td>
+<td>将对象 x 转换为表达式字符串</td>
+</tr>
+<tr>
+<td>eval(str)</td>
+<td>用来计算在字符串中的有效Python表达式，并返回一个对象</td>
+</tr>
+<tr>
+<td>tuple(s)</td>
+<td>将序列 s 转换为一个元组</td>
+</tr>
+<tr>
+<td>list(s)</td>
+<td>将序列 s 转换为一个列表</td>
+</tr>
+<tr>
+<td>set(s)</td>
+<td>转换为可变集合</td>
+</tr>
+<tr>
+<td>dict(d)</td>
+<td>创建一个字典。d 必须是一个(key, value) 元组序列</td>
+</tr>
+<tr>
+<td>frozenset(s)</td>
+<td>转换为不可变集合</td>
+</tr>
+<tr>
+<td>chr(x)</td>
+<td>将一个整数转换为一个字符串</td>
+</tr>
+<tr>
+<td>ord(x)</td>
+<td>将一个字符转换为它的整数值</td>
+</tr>
+<tr>
+<td>hex(x)</td>
+<td>将一个整数转换为一个十六进制字符串</td>
+</tr>
+<tr>
+<td>oct(x)</td>
+<td>将一个整数转换为一个八进制字符串</td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
         <category>Python</category>

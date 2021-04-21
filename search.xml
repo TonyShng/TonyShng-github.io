@@ -77,6 +77,21 @@
 
 <p>通过这个命令，我用 Python 通过运行 <code>venv</code> 这个包创建一个名为 <code>venv</code> 的虚拟环境。命令中的第一个 <code>venv</code> 是 Python 虚拟环境包的名称，第二个 <code>venv</code> 是我要用来表示这个特定的虚拟环境的名称。如果你觉得很困惑，你可以用其他你想给虚拟环境命名的名字去替换第二个 venv 。通常我在项目中都用 venv 这个名字给创建的虚拟环境命名，所以无论何时我 cd 到一个项目中都能找到相应的虚拟环境。</p>
 <p>命令执行完，在你的目录下将会有一个名为 venv 的目录用来存储虚拟环境相关文件。</p>
+<p>不管用什么方式创建了虚拟环境，你应该已经创建了虚拟环境。现在你需要告诉系统你想使用用虚拟环境，然后激活它。要激活全新的虚拟环境你需要使用下面的命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> venv/bin/activate</span></span><br><span class="line">(venv) $_</span><br></pre></td></tr></table></figure>
+
+<p>如果你使用的是Windows的命令提示符窗口，激活命令略有不同：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> venv\Script\activate</span></span><br><span class="line">(venv) $_</span><br></pre></td></tr></table></figure>
+
+<p>当你激活虚拟环境，终端会话的配置环境会被修改，之后你键入 <code>Python</code> 的时候，实际上是调用的虚拟环境中的 Python 解释器。此外，终端提示符也被修改成包含被激活的虚拟环境的名称的格式。这种对终端对话框的改变是临时的私有的，因此当你关闭终端窗口它们不会保留。如果你同时打开多个终端窗口，在每个窗口激活不同的虚拟环境是非常合适的。</p>
+<p>现在你已经创建并激活虚拟环境，你可以通过这个来安装 Flask:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">(venv)$</span><span class="bash"> pip install flask</span></span><br></pre></td></tr></table></figure>
+
+<p>如果你想验证虚拟环境中是否成功安装了 Flask，你可以开启 Python 解释器并导入 Flask:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; import flask</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; _</span></span><br></pre></td></tr></table></figure>
+
+<p>如果没有提示任何错误那么恭喜你，Flask 已经被成功安装并准备好被使用了。</p>
+<h4 id="A-“Hello-World”-Flask-Application"><a href="#A-“Hello-World”-Flask-Application" class="headerlink" title="A “Hello, World” Flask Application"></a>A “Hello, World” Flask Application</h4><p>如果你去 <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask website</a>, 你会得到一个非常简单的示例程序，仅仅只有五行代码。</p>
 ]]></content>
       <categories>
         <category>Flask</category>
@@ -255,6 +270,18 @@
       </tags>
   </entry>
   <entry>
+    <title>【Python】Chapter5:Number</title>
+    <url>/2021/04/21/%E3%80%90Python%E3%80%91Chapter5-Number/</url>
+    <content><![CDATA[<p>Python 数字数据类型用于存储数值，数据类型是不允许改变的，这就意味着如果改变数字数据类型的值，将会重新分配内存空间。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【Python】Chapter4:运算符</title>
     <url>/2021/04/20/%E3%80%90Python%E3%80%91Chapter4-%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
     <content><![CDATA[<p>运算符用于执行程序代码运算，会针对一个以上操作数项目来进行运算。例如 <code>4 + 5 = 9</code> 中 4 和 5 被称为<strong>操作数</strong> ， <code>+</code> 被称为<strong>运算符</strong>。</p>
@@ -397,10 +424,182 @@
 <tr>
 <td>:=</td>
 <td>海象运算符，可在表达式内部为变量赋值</td>
-<td>if (n := len(a)) &gt; 10:<br />    print(f”List is too long ({n} elements, expected &lt;= 10)”)</td>
+<td>if (n := len(a)) &gt; 10:<br />       print(f”List is too long ({n} elements, expected &lt;= 10)”)</td>
 </tr>
 </tbody></table>
-<h4 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h4>]]></content>
+<h4 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h4><p>按位运算符是把数字看作二进制来进行计算的。下列变量 a 为60 二进制为 0011 1100，b 为13 二进制为 0000 1101</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;</td>
+<td>按位与运算符：参与运算的两个值，如果两个相应位都为1，则该位的结果为1，否则为0</td>
+<td>(a &amp; b) 输出结果为12，二进制解释：0000 1100</td>
+</tr>
+<tr>
+<td>|</td>
+<td>按位或运算符：只要对应的两个二进位有一个为1时，结果位为1。</td>
+<td>(a | b) 输出结果为61，二进制解释： 0011 1101</td>
+</tr>
+<tr>
+<td>^</td>
+<td>按位异或运算符：当两对应的二进位相异时，结果为1</td>
+<td>(a ^ b) 输出结果 49，二进制解释： 0011 0001</td>
+</tr>
+<tr>
+<td>~</td>
+<td>按位取反运算符：对数据的每个二进制位取反，即把1变为0，把0变为1。 ~x 类似于 -x-1</td>
+<td>(~a) 输出结果 -61，二进制解释：1100 0011，在一个有符号二进制数的补码形式</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>左移动运算符：运算数的各二进位全部左移若干位，由”&lt;&lt;”右边的数指定易懂的位数，高位丢弃，低位补0</td>
+<td>a &lt;&lt; 2，输出结果 240，二进制解释：1111 0000</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>右移动运算符：把”&gt;&gt;”左边的运算数的各二进位全部右移若干位，”&gt;&gt;”右边的数指定移动的位数</td>
+<td>a &gt;&gt; a 输出结果为15，二进制解释：0000 1111</td>
+</tr>
+</tbody></table>
+<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><p>Python语言支持逻辑运算符，假设变量 a 为 10, 变量 b 为 20:</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>逻辑表达式</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>and</td>
+<td>x and y</td>
+<td>布尔”与” 从左到右计算表达式，若所有值均为真，则返回最后一个值，若存在假，返回第一个假值 (数字0为假，其他皆为真；字符”” 为假，其他皆为真)</td>
+<td>(a and b) 返回 20.</td>
+</tr>
+<tr>
+<td>or</td>
+<td>x or y</td>
+<td>布尔”或” 从左到右计算，返回第一个为真多值</td>
+<td>(a or b) 返回 10</td>
+</tr>
+<tr>
+<td>not</td>
+<td>not x</td>
+<td>布尔”非” 如果 x 为 True, 返回 False。如果 x 为 False，它返回 True</td>
+<td>not(a and b) 返回 False</td>
+</tr>
+</tbody></table>
+<h4 id="成员运算符"><a href="#成员运算符" class="headerlink" title="成员运算符"></a>成员运算符</h4><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>in</td>
+<td>如果在指定的序列中找到值返回 True，否则返回 False</td>
+<td>x 在 y 序列中，如果 x 在 y 序列中返回 True</td>
+</tr>
+<tr>
+<td>not in</td>
+<td>如果在指定的序列中没有找到值返回 True，否则返回 False</td>
+<td>x 不在 y 序列中，如果 x 不在 y 序列中返回 True</td>
+</tr>
+</tbody></table>
+<h4 id="身份运算符"><a href="#身份运算符" class="headerlink" title="身份运算符"></a>身份运算符</h4><p>身份运算符用于比较两个对象的存储单元。</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>is</td>
+<td>is 是判断两个标识符是不是引用自一个对象</td>
+<td><code>x is y</code>,类似<code>id(x) == id(y)</code>，如果引用的是同一个对象则返回 True，否则返回 False</td>
+</tr>
+<tr>
+<td>is not</td>
+<td>is not 是判断两个标识符是不是引用自不同对象</td>
+<td><code>x is not y</code>,类似 <code>id(a) != id(b)</code>。如果引用的不是同一个对象则返回结果 True,否则返回 False.</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注：<code>id()</code> 函数用于获取对象内存地址。</p>
+</blockquote>
+<h4 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h4><p>以下表格列出了从最高到最低优先级的所有运算符：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>**</td>
+<td>指数(最高优先级)</td>
+</tr>
+<tr>
+<td>~ + -</td>
+<td>按位翻转，一元加号和减号(最后两个的方法为 +@ 和 -@)</td>
+</tr>
+<tr>
+<td>* / % //</td>
+<td>乘，除，求余数和取整除</td>
+</tr>
+<tr>
+<td>+ -</td>
+<td>加法减法</td>
+</tr>
+<tr>
+<td>&gt;&gt; &lt;&lt;</td>
+<td>右移，左移运算符</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>位 ‘AND’</td>
+</tr>
+<tr>
+<td>^  |</td>
+<td>位运算符</td>
+</tr>
+<tr>
+<td>&lt;= &lt; &gt; &gt;=</td>
+<td>比较运算符</td>
+</tr>
+<tr>
+<td>==  !=</td>
+<td>等于运算符</td>
+</tr>
+<tr>
+<td>=  %=  /=  //=  -=  +=  *=  **=</td>
+<td>赋值运算符</td>
+</tr>
+<tr>
+<td>is  is not</td>
+<td>身份运算符</td>
+</tr>
+<tr>
+<td>in   not in</td>
+<td>成员运算符</td>
+</tr>
+<tr>
+<td>not and or</td>
+<td>逻辑运算符</td>
+</tr>
+</tbody></table>
+]]></content>
       <categories>
         <category>Python</category>
       </categories>

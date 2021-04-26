@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>【Flask】Chapter1:Hello，World</title>
+    <url>/2021/04/15/%E3%80%90Flask%E3%80%91Chapter1-Hello-World/</url>
+    <content><![CDATA[<p>欢迎，你将要开启一个如何使用 <a href="https://www.python.org/">Python</a> 和 <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a> 框架创建 web应用程序的学习之旅。在第一章，你将会学习如何去新建一个 Flask项目。在本章结束时，你将会在你的电脑上运行一个简单的 Flask Web应用！</p>
+<p><em>本章节的 GitHub链接: <a href="https://github.com/miguelgrinberg/microblog/tree/v0.1">Browse</a>，<a href="https://github.com/miguelgrinberg/microblog/archive/v0.1.zip">Zip</a>，<a href="https://github.com/miguelgrinberg/microblog/compare/v0.0...v0.1">Diff</a>。</em></p>
+<span id="more"></span>
+
+<h3 id="安装-Python"><a href="#安装-Python" class="headerlink" title="安装 Python"></a>安装 Python</h3><p>如果你没有在你的电脑上安装 Python ，那么现在就开始安装吧！如果你的操作系统没有提供 Python 包，你可以通过 <a href="https://www.python.org/downloads/">Python 官方网站</a> 来下载进行安装。如果你使用 Microsoft Windows 操作系统与WSL或者 Cygwin，请注意你不应使用 Windows 版本的 Python，而是一个能够支持 Ubuntu(如果你使用的是WSL) 或者 Cygwin 的 Unix 版本。</p>
+<p>为了确保你安装的 Python 是可运行的，你可以打开终端窗口并输入 <code>python3</code> ，如果这不起作用的话，就试试 <code>python</code> 。以下就是应该呈现的效果：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3</span></span><br><span class="line">Python 3.9.2 (default, Mar 15 2021, 17:37:51)</span><br><span class="line">[Clang 12.0.0 (clang-1200.0.32.29)] on darwin</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>Python解释器现在正等待一个交互式提醒，你可以在这里输入 Python 语句。在接下来的几章，你将会了解到这种交互式提醒是非常有用的。但是现在，你已经通过这个确认了你的系统上安装了 Python。退出这个交互式解释器，你可以输入 <code>exit()</code> 加 Enter 键。在 Linux 和 Mac 系统上你也可以通过 Ctrl-D 快捷键来退出解释器。在 Windows 上，可以使用 Ctrl-Z 加 Enter键来退出。</p>
+<h3 id="Installing-Flask"><a href="#Installing-Flask" class="headerlink" title="Installing Flask"></a>Installing Flask</h3><p>接下来的步骤是安装 Flask，但是在此之前我想告诉你关于如何安装 Python 包的最佳实践。</p>
+<p>在 Python 中，像 Flask 这样的包是支持公共仓库的，任何人都可以下载并安装它们。官方 Python 包仓库叫做 <a href="https://pypi.org/">PyPI</a> ，表示 Python Package Index 的缩写(有些人也将这个仓库戏称为”cheese shop”)。在 PyPI 上安装第三方包非常简单，因为 Python 专门提供了一个名为 <code>pip</code> 的工具来做这个工作(在 Python 2.7中 <code>pip</code> 没有被集成，需要单独安装)。</p>
+<p>在你的电脑上安装第三方包，你可以像下面这样使用 <code>pip</code>：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip install &lt;package-name&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>有趣的是，在大多数情况下安装第三方包的这个方法不会有效。如果你在你电脑上安装的全局的 Python解释器，很可能你的普通账号没有权限去修改它，因此只有一种方法让上面的命令工作就是通过管理员账号运行。但是即使没有这种复杂的情况，也要思考下你用上述方法安装第三方包时会发生什么。<code>pip</code> 工具会从 PyPI 上下载包，然后添加到 Python 的安装中。从这时起，在你系统上的每个 Python 脚本都可以访问这个包。 想象一下这样一个情况当你用当时最新的版本 Flask 0.11版本完成了一个 web 应用，但是现在已经支持 0.12版本了。你现在想用 0.12版本开始做第二个应用，但是替换掉0.11版本会让老的程序无法运行。现在你看到问题了么？现在解决方法是为老的应用安装 0.11版本的 Flask，为新的应用安装0.12版本的Flask。</p>
+<p>为了处理不同应用维护不同版本的第三方包的问题，Python 使用虚拟环境的概念。虚拟环境是 Python 解释器的完整副本。当你在虚拟环境中安装第三方包时，系统范围的Python解释器不受影响，只有副本受影响。因此要完全自由地为每个应用安装任何版本的三方包，解决方案就是为每个应用使用不同的虚拟环境。虚拟环境还有一个好处就是它们归创建者所拥有，因此不需要管理员账号。</p>
+<p>让我们开始创建一个项目所在的目录。我先把这个目录命名为 <em>microblog</em>, 这便是这个程序的名称：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ mkdir microblog</span><br><span class="line">$ <span class="built_in">cd</span> microblog</span><br></pre></td></tr></table></figure>
+
+<p>如果你正在使用 Python 3 版本，虚拟环境已经成为内置模块，你可以用下面的命令去创建它:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3 -m venv venv</span></span><br></pre></td></tr></table></figure>
+
+<p>通过这个命令，我用 Python 通过运行 <code>venv</code> 这个包创建一个名为 <code>venv</code> 的虚拟环境。命令中的第一个 <code>venv</code> 是 Python 虚拟环境包的名称，第二个 <code>venv</code> 是我要用来表示这个特定的虚拟环境的名称。如果你觉得很困惑，你可以用其他你想给虚拟环境命名的名字去替换第二个 venv 。通常我在项目中都用 venv 这个名字给创建的虚拟环境命名，所以无论何时我 cd 到一个项目中都能找到相应的虚拟环境。</p>
+<p>命令执行完，在你的目录下将会有一个名为 venv 的目录用来存储虚拟环境相关文件。</p>
+<p>不管用什么方式创建了虚拟环境，你应该已经创建了虚拟环境。现在你需要告诉系统你想使用用虚拟环境，然后激活它。要激活全新的虚拟环境你需要使用下面的命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> venv/bin/activate</span></span><br><span class="line">(venv) $_</span><br></pre></td></tr></table></figure>
+
+<p>如果你使用的是Windows的命令提示符窗口，激活命令略有不同：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> venv\Script\activate</span></span><br><span class="line">(venv) $_</span><br></pre></td></tr></table></figure>
+
+<p>当你激活虚拟环境，终端会话的配置环境会被修改，之后你键入 <code>Python</code> 的时候，实际上是调用的虚拟环境中的 Python 解释器。此外，终端提示符也被修改成包含被激活的虚拟环境的名称的格式。这种对终端对话框的改变是临时的私有的，因此当你关闭终端窗口它们不会保留。如果你同时打开多个终端窗口，在每个窗口激活不同的虚拟环境是非常合适的。</p>
+<p>现在你已经创建并激活虚拟环境，你可以通过这个来安装 Flask:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">(venv)$</span><span class="bash"> pip install flask</span></span><br></pre></td></tr></table></figure>
+
+<p>如果你想验证虚拟环境中是否成功安装了 Flask，你可以开启 Python 解释器并导入 Flask:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; import flask</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; _</span></span><br></pre></td></tr></table></figure>
+
+<p>如果没有提示任何错误那么恭喜你，Flask 已经被成功安装并准备好被使用了。</p>
+<h4 id="A-“Hello-World”-Flask-Application"><a href="#A-“Hello-World”-Flask-Application" class="headerlink" title="A “Hello, World” Flask Application"></a>A “Hello, World” Flask Application</h4><p>如果你去 <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask website</a>, 你会得到一个非常简单的示例程序，仅仅只有五行代码。我将会想你展示稍微复杂的示例，它将为你编写更大的应用程序提供一个良好的基础结构，而不是重复那个简单的示例。</p>
+<p>应用程序是存在于包中的。在 Python 中，包含 <code>__init__.py</code> 文件的子目录被认为是一个包，能够被导入。当你导入包时，<code>__init__.py</code> 会执行并定位这个包暴露给外界的属性。</p>
+<p>让我们创建一个名为 <em>app</em> 的包吧，它将承载整个程序。确定你是在 <em>mrcoblog</em> 目录下运行下面的命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">(venv) $ mkdir app</span><br></pre></td></tr></table></figure>
+
+<p>app目录下创建<code>__init__.py</code> 文件，并输入以下代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> app <span class="keyword">import</span> routes</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Flask</category>
+      </categories>
+      <tags>
+        <tag>Flask</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【Python】Chapter1:课前甜点</title>
     <url>/2021/04/16/%E3%80%90Python%E3%80%91Chapter1-%E7%AE%80%E4%BB%8B/</url>
     <content><![CDATA[<p>Python 是著名的“龟叔” Guido van Rossum 在1989年圣诞节为了打发时间而编写的一个编程语言。</p>
@@ -48,57 +116,6 @@
       </categories>
       <tags>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【Flask】Chapter1:Hello，World</title>
-    <url>/2021/04/15/%E3%80%90Flask%E3%80%91Chapter1-Hello-World/</url>
-    <content><![CDATA[<p>欢迎，你将要开启一个如何使用 <a href="https://www.python.org/">Python</a> 和 <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a> 框架创建 web应用程序的学习之旅。在第一章，你将会学习如何去新建一个 Flask项目。在本章结束时，你将会在你的电脑上运行一个简单的 Flask Web应用！</p>
-<p><em>本章节的 GitHub链接: <a href="https://github.com/miguelgrinberg/microblog/tree/v0.1">Browse</a>，<a href="https://github.com/miguelgrinberg/microblog/archive/v0.1.zip">Zip</a>，<a href="https://github.com/miguelgrinberg/microblog/compare/v0.0...v0.1">Diff</a>。</em></p>
-<span id="more"></span>
-
-<h3 id="安装-Python"><a href="#安装-Python" class="headerlink" title="安装 Python"></a>安装 Python</h3><p>如果你没有在你的电脑上安装 Python ，那么现在就开始安装吧！如果你的操作系统没有提供 Python 包，你可以通过 <a href="https://www.python.org/downloads/">Python 官方网站</a> 来下载进行安装。如果你使用 Microsoft Windows 操作系统与WSL或者 Cygwin，请注意你不应使用 Windows 版本的 Python，而是一个能够支持 Ubuntu(如果你使用的是WSL) 或者 Cygwin 的 Unix 版本。</p>
-<p>为了确保你安装的 Python 是可运行的，你可以打开终端窗口并输入 <code>python3</code> ，如果这不起作用的话，就试试 <code>python</code> 。以下就是应该呈现的效果：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3</span></span><br><span class="line">Python 3.9.2 (default, Mar 15 2021, 17:37:51)</span><br><span class="line">[Clang 12.0.0 (clang-1200.0.32.29)] on darwin</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;</span> </span><br></pre></td></tr></table></figure>
-
-<p>Python解释器现在正等待一个交互式提醒，你可以在这里输入 Python 语句。在接下来的几章，你将会了解到这种交互式提醒是非常有用的。但是现在，你已经通过这个确认了你的系统上安装了 Python。退出这个交互式解释器，你可以输入 <code>exit()</code> 加 Enter 键。在 Linux 和 Mac 系统上你也可以通过 Ctrl-D 快捷键来退出解释器。在 Windows 上，可以使用 Ctrl-Z 加 Enter键来退出。</p>
-<h3 id="Installing-Flask"><a href="#Installing-Flask" class="headerlink" title="Installing Flask"></a>Installing Flask</h3><p>接下来的步骤是安装 Flask，但是在此之前我想告诉你关于如何安装 Python 包的最佳实践。</p>
-<p>在 Python 中，像 Flask 这样的包是支持公共仓库的，任何人都可以下载并安装它们。官方 Python 包仓库叫做 <a href="https://pypi.org/">PyPI</a> ，表示 Python Package Index 的缩写(有些人也将这个仓库戏称为”cheese shop”)。在 PyPI 上安装第三方包非常简单，因为 Python 专门提供了一个名为 <code>pip</code> 的工具来做这个工作(在 Python 2.7中 <code>pip</code> 没有被集成，需要单独安装)。</p>
-<p>在你的电脑上安装第三方包，你可以像下面这样使用 <code>pip</code>：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip install &lt;package-name&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>有趣的是，在大多数情况下安装第三方包的这个方法不会有效。如果你在你电脑上安装的全局的 Python解释器，很可能你的普通账号没有权限去修改它，因此只有一种方法让上面的命令工作就是通过管理员账号运行。但是即使没有这种复杂的情况，也要思考下你用上述方法安装第三方包时会发生什么。<code>pip</code> 工具会从 PyPI 上下载包，然后添加到 Python 的安装中。从这时起，在你系统上的每个 Python 脚本都可以访问这个包。 想象一下这样一个情况当你用当时最新的版本 Flask 0.11版本完成了一个 web 应用，但是现在已经支持 0.12版本了。你现在想用 0.12版本开始做第二个应用，但是替换掉0.11版本会让老的程序无法运行。现在你看到问题了么？现在解决方法是为老的应用安装 0.11版本的 Flask，为新的应用安装0.12版本的Flask。</p>
-<p>为了处理不同应用维护不同版本的第三方包的问题，Python 使用虚拟环境的概念。虚拟环境是 Python 解释器的完整副本。当你在虚拟环境中安装第三方包时，系统范围的Python解释器不受影响，只有副本受影响。因此要完全自由地为每个应用安装任何版本的三方包，解决方案就是为每个应用使用不同的虚拟环境。虚拟环境还有一个好处就是它们归创建者所拥有，因此不需要管理员账号。</p>
-<p>让我们开始创建一个项目所在的目录。我先把这个目录命名为 <em>microblog</em>, 这便是这个程序的名称：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ mkdir microblog</span><br><span class="line">$ <span class="built_in">cd</span> microblog</span><br></pre></td></tr></table></figure>
-
-<p>如果你正在使用 Python 3 版本，虚拟环境已经成为内置模块，你可以用下面的命令去创建它:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3 -m venv venv</span></span><br></pre></td></tr></table></figure>
-
-<p>通过这个命令，我用 Python 通过运行 <code>venv</code> 这个包创建一个名为 <code>venv</code> 的虚拟环境。命令中的第一个 <code>venv</code> 是 Python 虚拟环境包的名称，第二个 <code>venv</code> 是我要用来表示这个特定的虚拟环境的名称。如果你觉得很困惑，你可以用其他你想给虚拟环境命名的名字去替换第二个 venv 。通常我在项目中都用 venv 这个名字给创建的虚拟环境命名，所以无论何时我 cd 到一个项目中都能找到相应的虚拟环境。</p>
-<p>命令执行完，在你的目录下将会有一个名为 venv 的目录用来存储虚拟环境相关文件。</p>
-<p>不管用什么方式创建了虚拟环境，你应该已经创建了虚拟环境。现在你需要告诉系统你想使用用虚拟环境，然后激活它。要激活全新的虚拟环境你需要使用下面的命令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> venv/bin/activate</span></span><br><span class="line">(venv) $_</span><br></pre></td></tr></table></figure>
-
-<p>如果你使用的是Windows的命令提示符窗口，激活命令略有不同：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> venv\Script\activate</span></span><br><span class="line">(venv) $_</span><br></pre></td></tr></table></figure>
-
-<p>当你激活虚拟环境，终端会话的配置环境会被修改，之后你键入 <code>Python</code> 的时候，实际上是调用的虚拟环境中的 Python 解释器。此外，终端提示符也被修改成包含被激活的虚拟环境的名称的格式。这种对终端对话框的改变是临时的私有的，因此当你关闭终端窗口它们不会保留。如果你同时打开多个终端窗口，在每个窗口激活不同的虚拟环境是非常合适的。</p>
-<p>现在你已经创建并激活虚拟环境，你可以通过这个来安装 Flask:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">(venv)$</span><span class="bash"> pip install flask</span></span><br></pre></td></tr></table></figure>
-
-<p>如果你想验证虚拟环境中是否成功安装了 Flask，你可以开启 Python 解释器并导入 Flask:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; import flask</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; _</span></span><br></pre></td></tr></table></figure>
-
-<p>如果没有提示任何错误那么恭喜你，Flask 已经被成功安装并准备好被使用了。</p>
-<h4 id="A-“Hello-World”-Flask-Application"><a href="#A-“Hello-World”-Flask-Application" class="headerlink" title="A “Hello, World” Flask Application"></a>A “Hello, World” Flask Application</h4><p>如果你去 <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask website</a>, 你会得到一个非常简单的示例程序，仅仅只有五行代码。</p>
-]]></content>
-      <categories>
-        <category>Flask</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Flask</tag>
       </tags>
   </entry>
   <entry>
@@ -270,9 +287,215 @@
       </tags>
   </entry>
   <entry>
-    <title>【Python】Chapter5:Number</title>
-    <url>/2021/04/21/%E3%80%90Python%E3%80%91Chapter5-Number/</url>
-    <content><![CDATA[<p>Python 数字数据类型用于存储数值，数据类型是不允许改变的，这就意味着如果改变数字数据类型的值，将会重新分配内存空间。</p>
+    <title>【Python】Chapter3:基本数据类型</title>
+    <url>/2021/04/19/%E3%80%90Python%E3%80%91Chapter3-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<p>计算机顾名思义就是可以做数学计算的机器，因此，计算机程序理所当然地可以处理各种数值。但是，计算机能处理的远不止数值，还可以处理文本、图形、音频、视频、网页等各种各样的数据，不同的数据，需要定义不同的数据类型。</p>
+<span id="more"></span>
+
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p>Python 中变量不需要声明。每个变量在使用前都必须赋值，变量赋值以后该变量才会被创建。在Python中，变量就是变量，它没有类型，我们所说的”类型“是变量所指的内存中对象的类型。</p>
+<p>这种变量本身类型不固定的语言称之为 <strong>动态语言</strong> ，与之相对的是 <strong>静态语言</strong>。静态语言在定义变量时必须指定变量类型，如果赋值的时候类型不匹配，就会报错。如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">123</span>;</span><br><span class="line">a = <span class="string">&quot;ABC&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>和静态语言相比，动态语言更灵活，就是这个原因。</p>
+</blockquote>
+<p>等号( <code>=</code> )用来给变量赋值。等号( = )运算符左边是一个变量名，等号( = )运算符右边是存储在变量中的值。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">counter = <span class="number">100</span> <span class="comment"># 整型变量</span></span><br><span class="line">miles   = <span class="number">1000.0</span> <span class="comment"># 浮点型变量</span></span><br><span class="line">name    = <span class="string">&quot;RainTwo&quot;</span>  <span class="comment"># 字符串</span></span><br></pre></td></tr></table></figure>
+
+<p>在这里Python解释器干了两件事：</p>
+<ol>
+<li>在内存中创建了一个 <code>RainTwo</code> 的字符串；</li>
+<li>在内存中创建了一个名为 <code>name</code> 的变量，并把它指向 <code>RainTwo</code>。</li>
+</ol>
+<p>也可以把一个变量 <code>a</code> 赋值给另一个变量 <code>b</code> ，这个操作实际上就是把变量 <code>b</code> 指向变量 <code>a</code> 所指向的数据。</p>
+<p>Python 允许你同时为多个变量赋值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = b = c = <span class="number">1</span></span><br><span class="line">a, b, c = <span class="number">1</span>, <span class="number">2</span>, <span class="string">&quot;RainTwo&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>所谓常量就是不能变的变量，比如常用的数字常数 π 就是一个常量。在 Python 中，通常用全部大写的变量名表示常量:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">PI = <span class="number">3.141592653</span></span><br></pre></td></tr></table></figure>
+
+<p>但事实上 PI 仍然是一个变量，Python 根本没有任何机制保证 PI 不会被改变，所以，用全部大写的变量名表示常量只是一个习惯上的用法，如果你一定要改变变量 PI 的值，也没人能拦住你。</p>
+<p>最后解释下整数的除法为什么也是精确的。在 Python 中，有两种除法，一种是 <code>/</code> ：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 10 / 3</span></span><br><span class="line">3.3333333333333335</span><br></pre></td></tr></table></figure>
+
+<p><code>/</code> 除法计算结果是浮点数，即使是两个整数恰好整除，结果也是浮点数：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 9 / 3</span></span><br><span class="line">3.0</span><br></pre></td></tr></table></figure>
+
+<p>还有一种除法是 <code>//</code> ，称为地板除，两个整数的除法仍然是整数：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 10 // 3</span></span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<p>即整数的地板除 <code>//</code> 永远是整数，即使除不尽。要做精确的除法，使用 <code>/</code> 就可以。</p>
+<p>因为 // 除法只取结果的整数部分，所以 Python 还提供一个余数计算，可以得到两个整数相除的余数：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 10 % 3</span></span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<h4 id="标准数据类型"><a href="#标准数据类型" class="headerlink" title="标准数据类型"></a>标准数据类型</h4><p>Python3 有六个标准的数据类型：</p>
+<ul>
+<li>Number  (数字)</li>
+<li>String  (字符串)</li>
+<li>List (列表)</li>
+<li>Tuple (元组)</li>
+<li>Set (集合)</li>
+<li>Dictionary (字典)</li>
+</ul>
+<p>分为<strong>不可变数据</strong>: Number、String、Tuple；</p>
+<p>和<strong>可变数据</strong>: List、Dictionary、Set。</p>
+<h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><p>Python3 支持 <strong>int</strong>、<strong>float</strong>、<strong>bool</strong>、<strong>complex</strong>(复数)</p>
+<p>内置的 <code>type()</code> 函数可以用来查询变量所指的对象类型:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; a, b, c, d = 20, 5.5, True, 4+3j</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(<span class="built_in">type</span>(a), <span class="built_in">type</span>(b), <span class="built_in">type</span>(c), <span class="built_in">type</span>(d))</span></span><br><span class="line">&lt;class &#x27;int&#x27;&gt; &lt;class &#x27;float&#x27;&gt; &lt;class &#x27;bool&#x27;&gt; &lt;class &#x27;complex&#x27;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>此外还可以用 <code>isinstance</code> 来判断:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; a = 111</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; isinstance(a, int)</span></span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+
+<p>isinstance 和 type 的区别在于：</p>
+<ul>
+<li>type() 不会认为子类是一种父类类型</li>
+<li>isinstance() 会认为子类是一种父类类型</li>
+</ul>
+<h5 id="数值运算"><a href="#数值运算" class="headerlink" title="数值运算"></a>数值运算</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 5 + 4  <span class="comment"># 加法</span></span></span><br><span class="line">9</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 4.3 - 2 <span class="comment"># 减法</span></span></span><br><span class="line">2.3</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 3 * 7  <span class="comment"># 乘法</span></span></span><br><span class="line">21</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 / 4  <span class="comment"># 除法，得到浮点数</span></span></span><br><span class="line">0.5</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 // 4 <span class="comment"># 除法，得到整数</span></span></span><br><span class="line">0</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 17 % 3 <span class="comment"># 取余</span></span></span><br><span class="line">2</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 ** 5 <span class="comment"># 乘方</span></span></span><br><span class="line">32</span><br></pre></td></tr></table></figure>
+
+<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><p>Python 中的字符串用单引号 <code>&#39;</code> 或双引号 <code>&quot;</code> 括起来，同时使用反斜杠 <code>\</code> 转义特殊字符。</p>
+<p>加号 <code>+</code> 是字符串的连接符，星号 <code>*</code> 表示复制当前字符串，与之结合的数字为复制的次数。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">str</span> = <span class="string">&#x27;RainTwo&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>[<span class="number">0</span>:-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span> * <span class="number">2</span>)  <span class="comment"># 输出字符串两次，也可以写成 print(2 * str)  RainTwoRainTwo</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span> + <span class="string">&quot;TEST&quot;</span>)  <span class="comment"># 连接字符串 输出 RainTwoTEST</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ol>
+<li>反斜杠可以用来转义，使用 r 可以让反斜杠不发生转义</li>
+<li>字符串可以用 + 运算符连接在一起，用 * 运算符重复</li>
+<li>Python 中的字符串有两种索引方式，从左往右以0开始，从右往左以 -1 开始。</li>
+<li>Python 中的字符串不能改变。</li>
+</ol>
+<h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><p>List(列表) 是 Python 中使用最频繁的数据类型。</p>
+<p>列表可以完成大多数集合类的数据结构实现。列表中元素的类型可以不相同，它支持数字，字符串甚至可以包含列表(所谓嵌套)。</p>
+<p>列表是卸载方括号 <code>[]</code> 之间、用逗号分隔开的元素列表。</p>
+<p>和字符串一样，列表同样可以被索引和截取，列表被截取后返回一个包含所需元素的新列表。</p>
+<p>列表截取的语法格式：<code>变量[头下标:尾下标]</code> , 索引值以 <code>0</code> 为开始，<code>-1</code> 为从末尾的开始位置。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">t = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>]</span><br><span class="line">      <span class="number">0</span>    <span class="number">1</span>    <span class="number">2</span>    <span class="number">3</span>    <span class="number">4</span></span><br><span class="line">     -<span class="number">5</span>   -<span class="number">4</span>   -<span class="number">3</span>   -<span class="number">2</span>   -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>加号 + 是列表连接运算符，星号 * 是重复操作。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="built_in">list</span> = [<span class="string">&#x27;abcd&#x27;</span>, <span class="number">789</span>, <span class="number">2.23</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="number">70.2</span>]</span><br><span class="line">tinylist = [<span class="number">123</span>, <span class="string">&#x27;runoob&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span> * <span class="number">2</span>) <span class="comment"># 输出两次列表</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span> + tinylist) <span class="comment"># 连接列表</span></span><br></pre></td></tr></table></figure>
+
+<p>与 Python 的字符串不一样的是，列表中的元素是可以改变的。</p>
+<p>注意:</p>
+<ol>
+<li>List写在方括号之间，元素用逗号隔开。</li>
+<li>和字符串一样，List 可以被索引和切片。</li>
+<li>List 可以使用 <code>+</code> 操作符进行拼接。</li>
+<li>List 中的元素是可以改变的。</li>
+</ol>
+<p>Python 列表截取可以接收第三个参数，参数作用是截取的步长，以下实例在索引1到索引4的位置并设置步长为2(间隔一个位置)来截取字符串:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; letters = [<span class="string">&#x27;r&#x27;</span>, <span class="string">&#x27;u&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; letters[1:4:2]</span></span><br><span class="line">[&#x27;u&#x27;, &#x27;o&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h4 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h4><p>元组与列表类似，不同之处在于元组的元素不能修改。元组写在小括号 <code>()</code> 里，元素之间用逗号隔开。</p>
+<p>元组中的元素类型也可以不相同:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">tuple</span> = (<span class="string">&#x27;abcd&#x27;</span>, <span class="number">789</span>, <span class="number">2.23</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="number">79.2</span>)</span><br><span class="line">tinytuple = (<span class="number">123</span>, <span class="string">&#x27;runoob&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>)             <span class="comment"># 输出元组</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">0</span>])          <span class="comment"># 输出元组第一个元素</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">1</span>:<span class="number">3</span>])        <span class="comment"># 输出从第二个元素开始到第三个元素</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">2</span>:])         <span class="comment"># 输出从第三个元素开始的所有元素</span></span><br><span class="line"><span class="built_in">print</span>(tinytuple *<span class="number">2</span>)      <span class="comment"># 输出两次元组</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span> + tinytuple) <span class="comment"># 连接元组</span></span><br></pre></td></tr></table></figure>
+
+<p>元组与字符串类似，可以被索引且下标索引从0开始，-1 为从末尾开始的位置。也可以进行截取，可以把字符串看作一种特殊的元组。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; tup = (1, 2, 3, 4, 5, 6)</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(tup[0])</span></span><br><span class="line">1</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(tup[1:5])</span></span><br><span class="line">(2, 3, 4, 5)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; tup[0] = 11</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">TypeError: &#x27;tuple&#x27; object does not support item assignment</span><br></pre></td></tr></table></figure>
+
+<p>虽然 tuple 的元素不可改变，但它可以包含可变的对象，比如 list 列表。</p>
+<p>构造包含 0 个或 1个元素的元组比较特殊，所以有一些额外的语法规则：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tup1 = ()     <span class="comment"># 空元组</span></span><br><span class="line">tup2 = (<span class="number">20</span>,)  <span class="comment"># 一个元素，需要在元素后面添加逗号</span></span><br></pre></td></tr></table></figure>
+
+<p>string、list 和 tuple 都属于 sequence(序列)。</p>
+<p>注意：</p>
+<ol>
+<li>与字符串一样，元组的元素不能修改</li>
+<li>元组也可以被索引和切片，方法一样</li>
+<li>注意构造包含0 或 1 个元素的元组的特殊语法规则</li>
+<li>元组也可以使用 <code>+</code> 操作符进行拼接</li>
+</ol>
+<h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><p>集合是由一个或数个形态各异的大小整体组成，构成集合的事物或者对象称作元素或是成员。</p>
+<p>基本功能是进行成员关系测试和删除重复元素。</p>
+<p>可以使用大括号 <code>&#123;&#125;</code> 或者 <code>set()</code> 函数创建集合，注意：创建一个空集合必须用 <code>set()</code> 而不是 <code>&#123;&#125;</code>，因为 <code>&#123;&#125;</code> 是用来创建一个空字典的。</p>
+<p>创建格式:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">parame = &#123;value01, value02, ...&#125;</span><br><span class="line"><span class="built_in">set</span>(value)</span><br><span class="line"></span><br><span class="line">sites = &#123;<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;Taobao&#x27;</span>, <span class="string">&#x27;Runoob&#x27;</span>, <span class="string">&#x27;Facebook&#x27;</span>, <span class="string">&#x27;Tencent&#x27;</span>, <span class="string">&#x27;Baidu&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(sites)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 成员测试</span></span><br><span class="line"><span class="keyword">if</span> <span class="string">&#x27;Runoob&#x27;</span> <span class="keyword">in</span> sites:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Runoob 在集合中&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Runoob 不在集合中&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># set可以进行集合运算</span></span><br><span class="line">a = <span class="built_in">set</span>(<span class="string">&#x27;abracadabra&#x27;</span>)</span><br><span class="line">b = <span class="built_in">set</span>(<span class="string">&#x27;alacazam&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(a - b)  <span class="comment"># a 和 b 的差集  &#123;&#x27;r&#x27;, &#x27;b&#x27;, &#x27;d&#x27;&#125;</span></span><br><span class="line"><span class="built_in">print</span>(a | b)  <span class="comment"># a 和 b 的并集  &#123;&#x27;b&#x27;, &#x27;c&#x27;, &#x27;a&#x27;, &#x27;z&#x27;, &#x27;m&#x27;, &#x27;r&#x27;, &#x27;l&#x27;, &#x27;d&#x27;&#125;</span></span><br><span class="line"><span class="built_in">print</span>(a &amp; b)  <span class="comment"># a 和 b 的交集  &#123;&#x27;c&#x27;, &#x27;a&#x27;&#125;</span></span><br><span class="line"><span class="built_in">print</span>(a ^ b)  <span class="comment"># a 和 b 中不同时存在的元素  &#123;&#x27;z&#x27;, &#x27;b&#x27;, &#x27;m&#x27;, &#x27;r&#x27;, &#x27;l&#x27;, &#x27;d&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h4><p>字典是 Python 中另一个非常有用的内置数据类型。</p>
+<p>列表是<strong>有序</strong>的对象集合，字典是<strong>无序</strong>的对象集合。两者之间的区别在于: 字典当中的元素是通过键来存取的，而不是通过偏移存取。</p>
+<p>字典是一种映射类型，字典用 <code>&#123;&#125;</code> 标识，它是一个无序的 <strong>键(key) : 值(value)</strong> 的集合。</p>
+<p>键(key) 必须使用不可变类型。</p>
+<p>在同一个字典中，键(key)必须是唯一的。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">dict</span> = &#123;&#125;</span><br><span class="line"><span class="built_in">dict</span>[<span class="string">&#x27;one&#x27;</span>] = <span class="string">&quot;1 - 啦啦啦&quot;</span></span><br><span class="line"><span class="built_in">dict</span>[<span class="number">2</span>] = <span class="string">&quot;2 - 啦啦啦&quot;</span></span><br><span class="line"></span><br><span class="line">tinydict = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;code&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;site&#x27;</span>: <span class="string">&#x27;www.raintwo.wang&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">dict</span>[<span class="string">&#x27;one&#x27;</span>])       <span class="comment"># 输出键为 &#x27;one&#x27; 的值</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">dict</span>[<span class="number">2</span>])           <span class="comment"># 输出键为 2 的值</span></span><br><span class="line"><span class="built_in">print</span>(tinydict)          <span class="comment"># 输出完整的字典</span></span><br><span class="line"><span class="built_in">print</span>(tinydict.keys())   <span class="comment"># 输出所有键</span></span><br><span class="line"><span class="built_in">print</span>(tinydict.values()) <span class="comment"># 输出所有值</span></span><br></pre></td></tr></table></figure>
+
+<p>构造函数 <code>dict()</code> 可以直接从键值对序列中构建字典如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>([(<span class="string">&#x27;Runoob&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;Google&#x27;</span>, <span class="number">2</span>), (<span class="string">&#x27;Taobao&#x27;</span>, <span class="number">3</span>)])</span><br><span class="line">&#123;<span class="string">&#x27;Runoob&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Google&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Taobao&#x27;</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&#123;x: x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> (<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>)&#125;</span><br><span class="line">&#123;<span class="number">2</span>: <span class="number">4</span>, <span class="number">4</span>: <span class="number">16</span>, <span class="number">6</span>: <span class="number">36</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>(Runoob=<span class="number">1</span>, Google=<span class="number">2</span>, Taobao=<span class="number">3</span>)</span><br><span class="line">&#123;<span class="string">&#x27;Runoob&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Google&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Taobao&#x27;</span>: <span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另外，字典类型也有一些内置的函数，例如 clear()、keys()、values() 等。</p>
+<p>注意:</p>
+<ol>
+<li>字典是一种映射类型，它的元素是键值对。</li>
+<li>字典的关键字必须为不可变类型，且不能重复。</li>
+<li>创建空字典使用 <code>&#123;&#125;</code></li>
+</ol>
+<h4 id="Python数据类型转换"><a href="#Python数据类型转换" class="headerlink" title="Python数据类型转换"></a>Python数据类型转换</h4><p>有时候，我们需要对数据内置的类型进行转换，数据类型的转换，你只需要将数据类型作为函数名即可。</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int(x, [base])</td>
+<td>将 x 转换为一个整数</td>
+</tr>
+<tr>
+<td>float(x)</td>
+<td>将 x 转换到一个浮点数</td>
+</tr>
+<tr>
+<td>complex(real, [image])</td>
+<td>创建一个复数</td>
+</tr>
+<tr>
+<td>str(x)</td>
+<td>将对象 x 转换为字符串</td>
+</tr>
+<tr>
+<td>repr(x)</td>
+<td>将对象 x 转换为表达式字符串</td>
+</tr>
+<tr>
+<td>eval(str)</td>
+<td>用来计算在字符串中的有效Python表达式，并返回一个对象</td>
+</tr>
+<tr>
+<td>tuple(s)</td>
+<td>将序列 s 转换为一个元组</td>
+</tr>
+<tr>
+<td>list(s)</td>
+<td>将序列 s 转换为一个列表</td>
+</tr>
+<tr>
+<td>set(s)</td>
+<td>转换为可变集合</td>
+</tr>
+<tr>
+<td>dict(d)</td>
+<td>创建一个字典。d 必须是一个(key, value) 元组序列</td>
+</tr>
+<tr>
+<td>frozenset(s)</td>
+<td>转换为不可变集合</td>
+</tr>
+<tr>
+<td>chr(x)</td>
+<td>将一个整数转换为一个字符串</td>
+</tr>
+<tr>
+<td>ord(x)</td>
+<td>将一个字符转换为它的整数值</td>
+</tr>
+<tr>
+<td>hex(x)</td>
+<td>将一个整数转换为一个十六进制字符串</td>
+</tr>
+<tr>
+<td>oct(x)</td>
+<td>将一个整数转换为一个八进制字符串</td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
         <category>Python</category>
@@ -608,147 +831,121 @@
       </tags>
   </entry>
   <entry>
-    <title>【Python】Chapter3:基本数据类型</title>
-    <url>/2021/04/19/%E3%80%90Python%E3%80%91Chapter3-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
-    <content><![CDATA[<p>计算机顾名思义就是可以做数学计算的机器，因此，计算机程序理所当然地可以处理各种数值。但是，计算机能处理的远不止数值，还可以处理文本、图形、音频、视频、网页等各种各样的数据，不同的数据，需要定义不同的数据类型。</p>
+    <title>【Python】Chapter5:Number</title>
+    <url>/2021/04/21/%E3%80%90Python%E3%80%91Chapter5-Number/</url>
+    <content><![CDATA[<p>Python 数字数据类型用于存储数值，数据类型是不允许改变的，这就意味着如果改变数字数据类型的值，将会重新分配内存空间。</p>
+<p>Python 支持三种不同的数值类型：</p>
+<ul>
+<li><strong>整型(Int)</strong> 通常被称为是整型或整数，是正或负整数，不带小数点。Python3 整型是没有大小限制的，可以当作 Long 类型使用，所以 Python3没有 Python2 的 Long 类型。</li>
+<li><strong>浮点型(float)</strong> 浮点型由整数部分与小数部分组成，浮点型也可以使用科学计数法表示$(2.5e2 = 2.5 * 10^{2}= 250)$</li>
+<li><strong>复数(complex)</strong> 复数由实数部分和虚数部分构成，可以用 <em>a + bj</em>，或者 <code>complex(a,b)</code> 表示，复数的实部a 和虚部 b 都是浮点型。</li>
+</ul>
 <span id="more"></span>
 
-<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p>Python 中变量不需要声明。每个变量在使用前都必须赋值，变量赋值以后该变量才会被创建。在Python中，变量就是变量，它没有类型，我们所说的”类型“是变量所指的内存中对象的类型。</p>
-<p>这种变量本身类型不固定的语言称之为 <strong>动态语言</strong> ，与之相对的是 <strong>静态语言</strong>。静态语言在定义变量时必须指定变量类型，如果赋值的时候类型不匹配，就会报错。如：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">123</span>;</span><br><span class="line">a = <span class="string">&quot;ABC&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="数字类型转换"><a href="#数字类型转换" class="headerlink" title="数字类型转换"></a>数字类型转换</h4><p>有时候，我们需要对数据内置对类型进行转换，数据类型的转换，你只需要将数据类型作为函数名即可。</p>
+<ul>
+<li><strong>int(x)</strong> 将 x  转换为一个整数</li>
+<li><strong>float(x)</strong> 将 x 转换到一个浮点数</li>
+<li><strong>complex(x)</strong> 将 x 转换到一个复数，实数部分为 x ，虚数部分为0</li>
+<li><strong>complex(x, y)</strong> 将x 和 y 转换到一个复数，实数部分为 x，虚数部分为 y。x 和 x 是数字表达式</li>
+</ul>
+<h4 id="数字运算"><a href="#数字运算" class="headerlink" title="数字运算"></a>数字运算</h4><p>Python 解释器可以作为一个简单的计算器，您可以在解释器里输入一个表达式，它将输出表达式的值。</p>
+<p>表达式的语法很直白：<code>+</code> , <code>-</code> , <code>*</code> , <code>/</code>  和其他语言(如 Pascal 或 C )里一样。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 + 2</span></span><br><span class="line">4</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 50 - 5 * 6</span></span><br><span class="line">20</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; (50 - 5 * 6) / 4</span></span><br><span class="line">5.0</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 8 / 5</span></span><br><span class="line">1.6</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>和静态语言相比，动态语言更灵活，就是这个原因。</p>
+<p>注意：在不同的机器上浮点运算的结果可能会不一样</p>
 </blockquote>
-<p>等号( <code>=</code> )用来给变量赋值。等号( = )运算符左边是一个变量名，等号( = )运算符右边是存储在变量中的值。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">counter = <span class="number">100</span> <span class="comment"># 整型变量</span></span><br><span class="line">miles   = <span class="number">1000.0</span> <span class="comment"># 浮点型变量</span></span><br><span class="line">name    = <span class="string">&quot;RainTwo&quot;</span>  <span class="comment"># 字符串</span></span><br></pre></td></tr></table></figure>
+<p>在整数除法中，除法 <code>/</code> 总是返回一个浮点数，如果只想得到整数的结果，丢弃可能的分数部分，可以使用运算符 <code>//</code>  :</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 17 / 3</span></span><br><span class="line">5.666666666666667</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 17 // 3</span></span><br><span class="line">5</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 17 % 3</span></span><br><span class="line">2</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 5 * 3 + 2</span></span><br><span class="line">17</span><br></pre></td></tr></table></figure>
 
-<p>在这里Python解释器干了两件事：</p>
-<ol>
-<li>在内存中创建了一个 <code>RainTwo</code> 的字符串；</li>
-<li>在内存中创建了一个名为 <code>name</code> 的变量，并把它指向 <code>RainTwo</code>。</li>
-</ol>
-<p>也可以把一个变量 <code>a</code> 赋值给另一个变量 <code>b</code> ，这个操作实际上就是把变量 <code>b</code> 指向变量 <code>a</code> 所指向的数据。</p>
-<p>Python 允许你同时为多个变量赋值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = b = c = <span class="number">1</span></span><br><span class="line">a, b, c = <span class="number">1</span>, <span class="number">2</span>, <span class="string">&quot;RainTwo&quot;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：<code>//</code> 得到的并不一定是整数类型的数，它与分母分子的数据类型有关系</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 7 // 2</span></span><br><span class="line">3</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 7.0 // 2</span></span><br><span class="line">3.0</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 7 // 2.0</span></span><br><span class="line">3.0</span><br></pre></td></tr></table></figure>
 
-<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>所谓常量就是不能变的变量，比如常用的数字常数 π 就是一个常量。在 Python 中，通常用全部大写的变量名表示常量:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">PI = <span class="number">3.141592653</span></span><br></pre></td></tr></table></figure>
+<p>等号 <code>=</code> 用于给变量赋值。赋值之后，除了下一个提示符，解释器不会显示任何结果。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; width = 20</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; height = 5 * 9</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; width * height</span></span><br><span class="line">900</span><br></pre></td></tr></table></figure>
 
-<p>但事实上 PI 仍然是一个变量，Python 根本没有任何机制保证 PI 不会被改变，所以，用全部大写的变量名表示常量只是一个习惯上的用法，如果你一定要改变变量 PI 的值，也没人能拦住你。</p>
-<p>最后解释下整数的除法为什么也是精确的。在 Python 中，有两种除法，一种是 <code>/</code> ：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 10 / 3</span></span><br><span class="line">3.3333333333333335</span><br></pre></td></tr></table></figure>
+<p>Python 可以使用 ** 操作来进行幂运算:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 5 ** 2  <span class="comment">#  5 的平方</span></span></span><br><span class="line">25</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 ** 7  <span class="comment">#  2 的7次方</span></span></span><br><span class="line">128</span><br></pre></td></tr></table></figure>
 
-<p><code>/</code> 除法计算结果是浮点数，即使是两个整数恰好整除，结果也是浮点数：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 9 / 3</span></span><br><span class="line">3.0</span><br></pre></td></tr></table></figure>
+<p>变量在使用前必须先”定义”(即赋予变量一个值)，否则会出现错误:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; n</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">NameError: name &#x27;n&#x27; is not defined</span><br></pre></td></tr></table></figure>
 
-<p>还有一种除法是 <code>//</code> ，称为地板除，两个整数的除法仍然是整数：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 10 // 3</span></span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<p>不同类型的数混合运算时会将整数转换为浮点数：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 3 * 3.75 / 1.5</span></span><br><span class="line">7.5</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 7.0 / 2</span></span><br><span class="line">3.5</span><br></pre></td></tr></table></figure>
 
-<p>即整数的地板除 <code>//</code> 永远是整数，即使除不尽。要做精确的除法，使用 <code>/</code> 就可以。</p>
-<p>因为 // 除法只取结果的整数部分，所以 Python 还提供一个余数计算，可以得到两个整数相除的余数：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 10 % 3</span></span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<p>在交互模式中，最后被输出的表达式结果被赋值给变量 <code>_</code> 。例如：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; tax = 12.5 / 100</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; price = 100.50</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; price * tax</span></span><br><span class="line">12.5625</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; price + _</span></span><br><span class="line">113.0625</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; round(_, 2)</span></span><br><span class="line">113.06</span><br></pre></td></tr></table></figure>
 
-<h4 id="标准数据类型"><a href="#标准数据类型" class="headerlink" title="标准数据类型"></a>标准数据类型</h4><p>Python3 有六个标准的数据类型：</p>
-<ul>
-<li>Number  (数字)</li>
-<li>String  (字符串)</li>
-<li>List (列表)</li>
-<li>Tuple (元组)</li>
-<li>Set (集合)</li>
-<li>Dictionary (字典)</li>
-</ul>
-<p>分为<strong>不可变数据</strong>: Number、String、Tuple；</p>
-<p>和<strong>可变数据</strong>: List、Dictionary、Set。</p>
-<h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><p>Python3 支持 <strong>int</strong>、<strong>float</strong>、<strong>bool</strong>、<strong>complex</strong>(复数)</p>
-<p>内置的 <code>type()</code> 函数可以用来查询变量所指的对象类型:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; a, b, c, d = 20, 5.5, True, 4+3j</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(<span class="built_in">type</span>(a), <span class="built_in">type</span>(b), <span class="built_in">type</span>(c), <span class="built_in">type</span>(d))</span></span><br><span class="line">&lt;class &#x27;int&#x27;&gt; &lt;class &#x27;float&#x27;&gt; &lt;class &#x27;bool&#x27;&gt; &lt;class &#x27;complex&#x27;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>此外还可以用 <code>isinstance</code> 来判断:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; a = 111</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; isinstance(a, int)</span></span><br><span class="line">True</span><br></pre></td></tr></table></figure>
-
-<p>isinstance 和 type 的区别在于：</p>
-<ul>
-<li>type() 不会认为子类是一种父类类型</li>
-<li>isinstance() 会认为子类是一种父类类型</li>
-</ul>
-<h5 id="数值运算"><a href="#数值运算" class="headerlink" title="数值运算"></a>数值运算</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 5 + 4  <span class="comment"># 加法</span></span></span><br><span class="line">9</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 4.3 - 2 <span class="comment"># 减法</span></span></span><br><span class="line">2.3</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 3 * 7  <span class="comment"># 乘法</span></span></span><br><span class="line">21</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 / 4  <span class="comment"># 除法，得到浮点数</span></span></span><br><span class="line">0.5</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 // 4 <span class="comment"># 除法，得到整数</span></span></span><br><span class="line">0</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 17 % 3 <span class="comment"># 取余</span></span></span><br><span class="line">2</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 ** 5 <span class="comment"># 乘方</span></span></span><br><span class="line">32</span><br></pre></td></tr></table></figure>
-
-<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><p>Python 中的字符串用单引号 <code>&#39;</code> 或双引号 <code>&quot;</code> 括起来，同时使用反斜杠 <code>\</code> 转义特殊字符。</p>
-<p>加号 <code>+</code> 是字符串的连接符，星号 <code>*</code> 表示复制当前字符串，与之结合的数字为复制的次数。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">str</span> = <span class="string">&#x27;RainTwo&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>[<span class="number">0</span>:-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span> * <span class="number">2</span>)  <span class="comment"># 输出字符串两次，也可以写成 print(2 * str)  RainTwoRainTwo</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span> + <span class="string">&quot;TEST&quot;</span>)  <span class="comment"># 连接字符串 输出 RainTwoTEST</span></span><br></pre></td></tr></table></figure>
-
-<p>注意：</p>
-<ol>
-<li>反斜杠可以用来转义，使用 r 可以让反斜杠不发生转义</li>
-<li>字符串可以用 + 运算符连接在一起，用 * 运算符重复</li>
-<li>Python 中的字符串有两种索引方式，从左往右以0开始，从右往左以 -1 开始。</li>
-<li>Python 中的字符串不能改变。</li>
-</ol>
-<h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><p>List(列表) 是 Python 中使用最频繁的数据类型。</p>
-<p>列表可以完成大多数集合类的数据结构实现。列表中元素的类型可以不相同，它支持数字，字符串甚至可以包含列表(所谓嵌套)。</p>
-<p>列表是卸载方括号 <code>[]</code> 之间、用逗号分隔开的元素列表。</p>
-<p>和字符串一样，列表同样可以被索引和截取，列表被截取后返回一个包含所需元素的新列表。</p>
-<p>列表截取的语法格式：<code>变量[头下标:尾下标]</code> , 索引值以 <code>0</code> 为开始，<code>-1</code> 为从末尾的开始位置。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">t = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>]</span><br><span class="line">      <span class="number">0</span>    <span class="number">1</span>    <span class="number">2</span>    <span class="number">3</span>    <span class="number">4</span></span><br><span class="line">     -<span class="number">5</span>   -<span class="number">4</span>   -<span class="number">3</span>   -<span class="number">2</span>   -<span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<p>加号 + 是列表连接运算符，星号 * 是重复操作。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="built_in">list</span> = [<span class="string">&#x27;abcd&#x27;</span>, <span class="number">789</span>, <span class="number">2.23</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="number">70.2</span>]</span><br><span class="line">tinylist = [<span class="number">123</span>, <span class="string">&#x27;runoob&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span> * <span class="number">2</span>) <span class="comment"># 输出两次列表</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span> + tinylist) <span class="comment"># 连接列表</span></span><br></pre></td></tr></table></figure>
-
-<p>与 Python 的字符串不一样的是，列表中的元素是可以改变的。</p>
-<p>注意:</p>
-<ol>
-<li>List写在方括号之间，元素用逗号隔开。</li>
-<li>和字符串一样，List 可以被索引和切片。</li>
-<li>List 可以使用 <code>+</code> 操作符进行拼接。</li>
-<li>List 中的元素是可以改变的。</li>
-</ol>
-<p>Python 列表截取可以接收第三个参数，参数作用是截取的步长，以下实例在索引1到索引4的位置并设置步长为2(间隔一个位置)来截取字符串:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; letters = [<span class="string">&#x27;r&#x27;</span>, <span class="string">&#x27;u&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; letters[1:4:2]</span></span><br><span class="line">[&#x27;u&#x27;, &#x27;o&#x27;]</span><br></pre></td></tr></table></figure>
-
-<h4 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h4><p>元组与列表类似，不同之处在于元组的元素不能修改。元组写在小括号 <code>()</code> 里，元素之间用逗号隔开。</p>
-<p>元组中的元素类型也可以不相同:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">tuple</span> = (<span class="string">&#x27;abcd&#x27;</span>, <span class="number">789</span>, <span class="number">2.23</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="number">79.2</span>)</span><br><span class="line">tinytuple = (<span class="number">123</span>, <span class="string">&#x27;runoob&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>)             <span class="comment"># 输出元组</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">0</span>])          <span class="comment"># 输出元组第一个元素</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">1</span>:<span class="number">3</span>])        <span class="comment"># 输出从第二个元素开始到第三个元素</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">2</span>:])         <span class="comment"># 输出从第三个元素开始的所有元素</span></span><br><span class="line"><span class="built_in">print</span>(tinytuple *<span class="number">2</span>)      <span class="comment"># 输出两次元组</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span> + tinytuple) <span class="comment"># 连接元组</span></span><br></pre></td></tr></table></figure>
-
-<p>元组与字符串类似，可以被索引且下标索引从0开始，-1 为从末尾开始的位置。也可以进行截取，可以把字符串看作一种特殊的元组。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; tup = (1, 2, 3, 4, 5, 6)</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(tup[0])</span></span><br><span class="line">1</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(tup[1:5])</span></span><br><span class="line">(2, 3, 4, 5)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; tup[0] = 11</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">TypeError: &#x27;tuple&#x27; object does not support item assignment</span><br></pre></td></tr></table></figure>
-
-<p>虽然 tuple 的元素不可改变，但它可以包含可变的对象，比如 list 列表。</p>
-<p>构造包含 0 个或 1个元素的元组比较特殊，所以有一些额外的语法规则：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tup1 = ()     <span class="comment"># 空元组</span></span><br><span class="line">tup2 = (<span class="number">20</span>,)  <span class="comment"># 一个元素，需要在元素后面添加逗号</span></span><br></pre></td></tr></table></figure>
-
-<p>string、list 和 tuple 都属于 sequence(序列)。</p>
-<p>注意：</p>
-<ol>
-<li>与字符串一样，元组的元素不能修改</li>
-<li>元组也可以被索引和切片，方法一样</li>
-<li>注意构造包含0 或 1 个元素的元组的特殊语法规则</li>
-<li>元组也可以使用 <code>+</code> 操作符进行拼接</li>
-</ol>
-<h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><p>集合是由一个或数个形态各异的大小整体组成，构成集合的事物或者对象称作元素或是成员。</p>
-<p>基本功能是进行成员关系测试和删除重复元素。</p>
-<p>可以使用大括号 <code>&#123;&#125;</code> 或者 <code>set()</code> 函数创建集合，注意：创建一个空集合必须用 <code>set()</code> 而不是 <code>&#123;&#125;</code>，因为 <code>&#123;&#125;</code> 是用来创建一个空字典的。</p>
-<p>创建格式:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">parame = &#123;value01, value02, ...&#125;</span><br><span class="line"><span class="built_in">set</span>(value)</span><br><span class="line"></span><br><span class="line">sites = &#123;<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;Taobao&#x27;</span>, <span class="string">&#x27;Runoob&#x27;</span>, <span class="string">&#x27;Facebook&#x27;</span>, <span class="string">&#x27;Tencent&#x27;</span>, <span class="string">&#x27;Baidu&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(sites)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 成员测试</span></span><br><span class="line"><span class="keyword">if</span> <span class="string">&#x27;Runoob&#x27;</span> <span class="keyword">in</span> sites:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Runoob 在集合中&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Runoob 不在集合中&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># set可以进行集合运算</span></span><br><span class="line">a = <span class="built_in">set</span>(<span class="string">&#x27;abracadabra&#x27;</span>)</span><br><span class="line">b = <span class="built_in">set</span>(<span class="string">&#x27;alacazam&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(a - b)  <span class="comment"># a 和 b 的差集  &#123;&#x27;r&#x27;, &#x27;b&#x27;, &#x27;d&#x27;&#125;</span></span><br><span class="line"><span class="built_in">print</span>(a | b)  <span class="comment"># a 和 b 的并集  &#123;&#x27;b&#x27;, &#x27;c&#x27;, &#x27;a&#x27;, &#x27;z&#x27;, &#x27;m&#x27;, &#x27;r&#x27;, &#x27;l&#x27;, &#x27;d&#x27;&#125;</span></span><br><span class="line"><span class="built_in">print</span>(a &amp; b)  <span class="comment"># a 和 b 的交集  &#123;&#x27;c&#x27;, &#x27;a&#x27;&#125;</span></span><br><span class="line"><span class="built_in">print</span>(a ^ b)  <span class="comment"># a 和 b 中不同时存在的元素  &#123;&#x27;z&#x27;, &#x27;b&#x27;, &#x27;m&#x27;, &#x27;r&#x27;, &#x27;l&#x27;, &#x27;d&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h4><p>字典是 Python 中另一个非常有用的内置数据类型。</p>
-<p>列表是<strong>有序</strong>的对象集合，字典是<strong>无序</strong>的对象集合。两者之间的区别在于: 字典当中的元素是通过键来存取的，而不是通过偏移存取。</p>
-<p>字典是一种映射类型，字典用 <code>&#123;&#125;</code> 标识，它是一个无序的 <strong>键(key) : 值(value)</strong> 的集合。</p>
-<p>键(key) 必须使用不可变类型。</p>
-<p>在同一个字典中，键(key)必须是唯一的。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">dict</span> = &#123;&#125;</span><br><span class="line"><span class="built_in">dict</span>[<span class="string">&#x27;one&#x27;</span>] = <span class="string">&quot;1 - 啦啦啦&quot;</span></span><br><span class="line"><span class="built_in">dict</span>[<span class="number">2</span>] = <span class="string">&quot;2 - 啦啦啦&quot;</span></span><br><span class="line"></span><br><span class="line">tinydict = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;code&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;site&#x27;</span>: <span class="string">&#x27;www.raintwo.wang&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">dict</span>[<span class="string">&#x27;one&#x27;</span>])       <span class="comment"># 输出键为 &#x27;one&#x27; 的值</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">dict</span>[<span class="number">2</span>])           <span class="comment"># 输出键为 2 的值</span></span><br><span class="line"><span class="built_in">print</span>(tinydict)          <span class="comment"># 输出完整的字典</span></span><br><span class="line"><span class="built_in">print</span>(tinydict.keys())   <span class="comment"># 输出所有键</span></span><br><span class="line"><span class="built_in">print</span>(tinydict.values()) <span class="comment"># 输出所有值</span></span><br></pre></td></tr></table></figure>
-
-<p>构造函数 <code>dict()</code> 可以直接从键值对序列中构建字典如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>([(<span class="string">&#x27;Runoob&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;Google&#x27;</span>, <span class="number">2</span>), (<span class="string">&#x27;Taobao&#x27;</span>, <span class="number">3</span>)])</span><br><span class="line">&#123;<span class="string">&#x27;Runoob&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Google&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Taobao&#x27;</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&#123;x: x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> (<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>)&#125;</span><br><span class="line">&#123;<span class="number">2</span>: <span class="number">4</span>, <span class="number">4</span>: <span class="number">16</span>, <span class="number">6</span>: <span class="number">36</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>(Runoob=<span class="number">1</span>, Google=<span class="number">2</span>, Taobao=<span class="number">3</span>)</span><br><span class="line">&#123;<span class="string">&#x27;Runoob&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Google&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Taobao&#x27;</span>: <span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
-
-<p>另外，字典类型也有一些内置的函数，例如 clear()、keys()、values() 等。</p>
-<p>注意:</p>
-<ol>
-<li>字典是一种映射类型，它的元素是键值对。</li>
-<li>字典的关键字必须为不可变类型，且不能重复。</li>
-<li>创建空字典使用 <code>&#123;&#125;</code></li>
-</ol>
-<h4 id="Python数据类型转换"><a href="#Python数据类型转换" class="headerlink" title="Python数据类型转换"></a>Python数据类型转换</h4><p>有时候，我们需要对数据内置的类型进行转换，数据类型的转换，你只需要将数据类型作为函数名即可。</p>
+<p>此处，_ 变量应被用户视为只读变量</p>
+<h4 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h4><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>返回值(描述)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abs(x)</td>
+<td>返回数字的绝对值，如 <code>abs(-10)</code> 返回 10</td>
+</tr>
+<tr>
+<td>ceil(x)</td>
+<td>返回数字的上入整数，如 <code>math.ceil(4.1)</code> 返回 5</td>
+</tr>
+<tr>
+<td>(x&gt;y)-(x&lt;y)</td>
+<td>如果 x &lt; y 返回 -1，如果 x==y 返回0，如果 x &gt; y 返回1。</td>
+</tr>
+<tr>
+<td>exp(x)</td>
+<td>返回 e 的 x 次幂($e^{x}$)，如 <code>math.exp(1)</code> 返回 2.718281828459045</td>
+</tr>
+<tr>
+<td>fabs(x)</td>
+<td>返回数字的绝对值，如 <code>math.fabs(-10)</code> 返回 10.0</td>
+</tr>
+<tr>
+<td>floor(x)</td>
+<td>返回数字的下舍整数，如 <code>math.floor(4.9)</code> 返回 4</td>
+</tr>
+<tr>
+<td>log(x)</td>
+<td>如 <code>math.log(math.e)</code> 返回1.0，<code>math.log(100, 10</code>) 返回 2.0</td>
+</tr>
+<tr>
+<td>log10(x)</td>
+<td>返回以 10 为基数的 x 的对数，如 <code>math.log10(100)</code> 返回2.0</td>
+</tr>
+<tr>
+<td>max(x1, x2, …)</td>
+<td>返回给定参数的最大值，参数可以为序列</td>
+</tr>
+<tr>
+<td>min(x1, x2, …)</td>
+<td>返回给定参数的最小值，参数可以为序列</td>
+</tr>
+<tr>
+<td>modf(x)</td>
+<td>返回x 的整数部分与小数部分，两部分的数值符号与 x 相同，整数部分以浮点型表示</td>
+</tr>
+<tr>
+<td>pow(x, y)</td>
+<td><code>x**y</code> 运算后的值</td>
+</tr>
+<tr>
+<td>round(x [,n])</td>
+<td>返回浮点数 x 的四舍五入值，如给出 n 值，则代表舍入到小数点后到位数。其实准确的说是保留值将保留到离上一位更近的一端。</td>
+</tr>
+<tr>
+<td>sqrt(x)</td>
+<td>返回数字 x 的平方根</td>
+</tr>
+</tbody></table>
+<h4 id="随机数函数"><a href="#随机数函数" class="headerlink" title="随机数函数"></a>随机数函数</h4><p>随机数可以用于数学，游戏，安全等领域中，还经常被嵌入到算法中，用以提高算法效率，并提高程序等安全性。</p>
+<p>Python 包含以下常用随机数函数：</p>
 <table>
 <thead>
 <tr>
@@ -757,66 +954,117 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>int(x, [base])</td>
-<td>将 x 转换为一个整数</td>
+<td>choice(seq)</td>
+<td>从序列的元素中随机挑选一个元素，比如 <code>random.choice(range(10))</code>，从0 到9中随机挑选一个整数</td>
 </tr>
 <tr>
-<td>float(x)</td>
-<td>将 x 转换到一个浮点数</td>
+<td>randrange([start,] stop [,step])</td>
+<td>从指定范围内，按指定基数递增的集合中获取一个随机数，基数默认值为1</td>
 </tr>
 <tr>
-<td>complex(real, [image])</td>
-<td>创建一个复数</td>
+<td>random()</td>
+<td>随机生成下一个实数，它在 [0, 1) 范围内</td>
 </tr>
 <tr>
-<td>str(x)</td>
-<td>将对象 x 转换为字符串</td>
+<td>seed([x])</td>
+<td>改变随机数生成器的种子 seed。如果你不了解其原理，不必特别去设定seed，Python 会帮你选择 seed.</td>
 </tr>
 <tr>
-<td>repr(x)</td>
-<td>将对象 x 转换为表达式字符串</td>
+<td>shuffle(list)</td>
+<td>将序列的所有元素随机排序</td>
 </tr>
 <tr>
-<td>eval(str)</td>
-<td>用来计算在字符串中的有效Python表达式，并返回一个对象</td>
-</tr>
-<tr>
-<td>tuple(s)</td>
-<td>将序列 s 转换为一个元组</td>
-</tr>
-<tr>
-<td>list(s)</td>
-<td>将序列 s 转换为一个列表</td>
-</tr>
-<tr>
-<td>set(s)</td>
-<td>转换为可变集合</td>
-</tr>
-<tr>
-<td>dict(d)</td>
-<td>创建一个字典。d 必须是一个(key, value) 元组序列</td>
-</tr>
-<tr>
-<td>frozenset(s)</td>
-<td>转换为不可变集合</td>
-</tr>
-<tr>
-<td>chr(x)</td>
-<td>将一个整数转换为一个字符串</td>
-</tr>
-<tr>
-<td>ord(x)</td>
-<td>将一个字符转换为它的整数值</td>
-</tr>
-<tr>
-<td>hex(x)</td>
-<td>将一个整数转换为一个十六进制字符串</td>
-</tr>
-<tr>
-<td>oct(x)</td>
-<td>将一个整数转换为一个八进制字符串</td>
+<td>uniform(x, y)</td>
+<td>随机生成下一个实数，它在[x, y] 范围内</td>
 </tr>
 </tbody></table>
+<h4 id="三角函数"><a href="#三角函数" class="headerlink" title="三角函数"></a>三角函数</h4><p>Python 包含以下三角函数:</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>acos(x)</td>
+<td>返回 x 的反余弦弧度值</td>
+</tr>
+<tr>
+<td>asin(x)</td>
+<td>返回 x 的反正弦弧度值</td>
+</tr>
+<tr>
+<td>atan(x)</td>
+<td>返回 x 的反正切弧度值</td>
+</tr>
+<tr>
+<td>atan2(y, x)</td>
+<td>返回给定的 X 及 Y 坐标值的反正切值</td>
+</tr>
+<tr>
+<td>cos(x)</td>
+<td>返回 x 弧度的余弦值</td>
+</tr>
+<tr>
+<td>hypot(x, y)</td>
+<td>返回欧几里得范数 <code>sqrt(x * x + y * y)</code></td>
+</tr>
+<tr>
+<td>sin(x)</td>
+<td>返回 x 弧度的正弦值</td>
+</tr>
+<tr>
+<td>tan(x)</td>
+<td>返回 x 弧度的正切值</td>
+</tr>
+<tr>
+<td>degrees(x)</td>
+<td>将弧度转换为角度，如 <code>degrees(math.pi/2)</code>，返回90.0</td>
+</tr>
+<tr>
+<td>radians(x)</td>
+<td>将角度转换为弧度</td>
+</tr>
+</tbody></table>
+<h4 id="数字常量"><a href="#数字常量" class="headerlink" title="数字常量"></a>数字常量</h4><table>
+<thead>
+<tr>
+<th>常量</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pi</td>
+<td>数字常量pi(圆周率，一般以π来表示)</td>
+</tr>
+<tr>
+<td>e</td>
+<td>数学常量 e，e即自然常数</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Python】Chapter6:String</title>
+    <url>/2021/04/26/%E3%80%90Python%E3%80%91Chapter6-String/</url>
+    <content><![CDATA[<p>字符串是 Python 中最常用的数据类型。我们可以使用引号( ‘ 或 “ ) 来创建字符串。</p>
+<p>创建字符串很简单，只要为变量分配一个值即可。例如:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">var1 = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">var2 = <span class="string">&quot;Runoob&quot;</span></span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h4 id="访问字符串中的值"><a href="#访问字符串中的值" class="headerlink" title="访问字符串中的值"></a>访问字符串中的值</h4><p>Python 不支持单字符串类型，单字符在 Python 中也是作为一个字符串使用。</p>
+<p>Python 访问子字符串，可以使用方括号 <code>[]</code> 来截取字符串，字符串的截取的语法格式如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">变量[头下标:尾下标]</span><br></pre></td></tr></table></figure>
+
+<p>索引值以0为开始值，-1 为从末尾的开始位置。</p>
 ]]></content>
       <categories>
         <category>Python</category>

@@ -119,215 +119,165 @@
       </tags>
   </entry>
   <entry>
-    <title>【Python】Chapter3:基本数据类型</title>
-    <url>/2021/04/19/%E3%80%90Python%E3%80%91Chapter3-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
-    <content><![CDATA[<p>计算机顾名思义就是可以做数学计算的机器，因此，计算机程序理所当然地可以处理各种数值。但是，计算机能处理的远不止数值，还可以处理文本、图形、音频、视频、网页等各种各样的数据，不同的数据，需要定义不同的数据类型。</p>
+    <title>【Python】Chapter2:基础语法</title>
+    <url>/2021/04/16/%E3%80%90Python%E3%80%91Chapter2-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>Python 是一种计算机编程语言。计算机编程语言和我们日常使用的自然语言有所不同，最大的区别就是，自然语言在不同的语境下有不同的理解，而计算机要根据编程语言执行任务，就必须保证编程语言写出来的程序绝不能有歧义，所以任何一种编程语言都有自己的一套语法，编译器或者解释器就是负责把符合语法的程序代码转换成 CPU 能执行的机器码，然后执行。Python 也不例外。</p>
 <span id="more"></span>
 
-<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p>Python 中变量不需要声明。每个变量在使用前都必须赋值，变量赋值以后该变量才会被创建。在Python中，变量就是变量，它没有类型，我们所说的”类型“是变量所指的内存中对象的类型。</p>
-<p>这种变量本身类型不固定的语言称之为 <strong>动态语言</strong> ，与之相对的是 <strong>静态语言</strong>。静态语言在定义变量时必须指定变量类型，如果赋值的时候类型不匹配，就会报错。如：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">123</span>;</span><br><span class="line">a = <span class="string">&quot;ABC&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>和静态语言相比，动态语言更灵活，就是这个原因。</p>
-</blockquote>
-<p>等号( <code>=</code> )用来给变量赋值。等号( = )运算符左边是一个变量名，等号( = )运算符右边是存储在变量中的值。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">counter = <span class="number">100</span> <span class="comment"># 整型变量</span></span><br><span class="line">miles   = <span class="number">1000.0</span> <span class="comment"># 浮点型变量</span></span><br><span class="line">name    = <span class="string">&quot;RainTwo&quot;</span>  <span class="comment"># 字符串</span></span><br></pre></td></tr></table></figure>
-
-<p>在这里Python解释器干了两件事：</p>
-<ol>
-<li>在内存中创建了一个 <code>RainTwo</code> 的字符串；</li>
-<li>在内存中创建了一个名为 <code>name</code> 的变量，并把它指向 <code>RainTwo</code>。</li>
-</ol>
-<p>也可以把一个变量 <code>a</code> 赋值给另一个变量 <code>b</code> ，这个操作实际上就是把变量 <code>b</code> 指向变量 <code>a</code> 所指向的数据。</p>
-<p>Python 允许你同时为多个变量赋值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = b = c = <span class="number">1</span></span><br><span class="line">a, b, c = <span class="number">1</span>, <span class="number">2</span>, <span class="string">&quot;RainTwo&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>所谓常量就是不能变的变量，比如常用的数字常数 π 就是一个常量。在 Python 中，通常用全部大写的变量名表示常量:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">PI = <span class="number">3.141592653</span></span><br></pre></td></tr></table></figure>
-
-<p>但事实上 PI 仍然是一个变量，Python 根本没有任何机制保证 PI 不会被改变，所以，用全部大写的变量名表示常量只是一个习惯上的用法，如果你一定要改变变量 PI 的值，也没人能拦住你。</p>
-<p>最后解释下整数的除法为什么也是精确的。在 Python 中，有两种除法，一种是 <code>/</code> ：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 10 / 3</span></span><br><span class="line">3.3333333333333335</span><br></pre></td></tr></table></figure>
-
-<p><code>/</code> 除法计算结果是浮点数，即使是两个整数恰好整除，结果也是浮点数：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 9 / 3</span></span><br><span class="line">3.0</span><br></pre></td></tr></table></figure>
-
-<p>还有一种除法是 <code>//</code> ，称为地板除，两个整数的除法仍然是整数：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 10 // 3</span></span><br><span class="line">3</span><br></pre></td></tr></table></figure>
-
-<p>即整数的地板除 <code>//</code> 永远是整数，即使除不尽。要做精确的除法，使用 <code>/</code> 就可以。</p>
-<p>因为 // 除法只取结果的整数部分，所以 Python 还提供一个余数计算，可以得到两个整数相除的余数：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 10 % 3</span></span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<h4 id="标准数据类型"><a href="#标准数据类型" class="headerlink" title="标准数据类型"></a>标准数据类型</h4><p>Python3 有六个标准的数据类型：</p>
-<ul>
-<li>Number  (数字)</li>
-<li>String  (字符串)</li>
-<li>List (列表)</li>
-<li>Tuple (元组)</li>
-<li>Set (集合)</li>
-<li>Dictionary (字典)</li>
-</ul>
-<p>分为<strong>不可变数据</strong>: Number、String、Tuple；</p>
-<p>和<strong>可变数据</strong>: List、Dictionary、Set。</p>
-<h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><p>Python3 支持 <strong>int</strong>、<strong>float</strong>、<strong>bool</strong>、<strong>complex</strong>(复数)</p>
-<p>内置的 <code>type()</code> 函数可以用来查询变量所指的对象类型:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; a, b, c, d = 20, 5.5, True, 4+3j</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(<span class="built_in">type</span>(a), <span class="built_in">type</span>(b), <span class="built_in">type</span>(c), <span class="built_in">type</span>(d))</span></span><br><span class="line">&lt;class &#x27;int&#x27;&gt; &lt;class &#x27;float&#x27;&gt; &lt;class &#x27;bool&#x27;&gt; &lt;class &#x27;complex&#x27;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>此外还可以用 <code>isinstance</code> 来判断:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; a = 111</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; isinstance(a, int)</span></span><br><span class="line">True</span><br></pre></td></tr></table></figure>
-
-<p>isinstance 和 type 的区别在于：</p>
-<ul>
-<li>type() 不会认为子类是一种父类类型</li>
-<li>isinstance() 会认为子类是一种父类类型</li>
-</ul>
-<h5 id="数值运算"><a href="#数值运算" class="headerlink" title="数值运算"></a>数值运算</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 5 + 4  <span class="comment"># 加法</span></span></span><br><span class="line">9</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 4.3 - 2 <span class="comment"># 减法</span></span></span><br><span class="line">2.3</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 3 * 7  <span class="comment"># 乘法</span></span></span><br><span class="line">21</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 / 4  <span class="comment"># 除法，得到浮点数</span></span></span><br><span class="line">0.5</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 // 4 <span class="comment"># 除法，得到整数</span></span></span><br><span class="line">0</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 17 % 3 <span class="comment"># 取余</span></span></span><br><span class="line">2</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 ** 5 <span class="comment"># 乘方</span></span></span><br><span class="line">32</span><br></pre></td></tr></table></figure>
-
-<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><p>Python 中的字符串用单引号 <code>&#39;</code> 或双引号 <code>&quot;</code> 括起来，同时使用反斜杠 <code>\</code> 转义特殊字符。</p>
-<p>加号 <code>+</code> 是字符串的连接符，星号 <code>*</code> 表示复制当前字符串，与之结合的数字为复制的次数。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">str</span> = <span class="string">&#x27;RainTwo&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>[<span class="number">0</span>:-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span> * <span class="number">2</span>)  <span class="comment"># 输出字符串两次，也可以写成 print(2 * str)  RainTwoRainTwo</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span> + <span class="string">&quot;TEST&quot;</span>)  <span class="comment"># 连接字符串 输出 RainTwoTEST</span></span><br></pre></td></tr></table></figure>
-
-<p>注意：</p>
-<ol>
-<li>反斜杠可以用来转义，使用 r 可以让反斜杠不发生转义</li>
-<li>字符串可以用 + 运算符连接在一起，用 * 运算符重复</li>
-<li>Python 中的字符串有两种索引方式，从左往右以0开始，从右往左以 -1 开始。</li>
-<li>Python 中的字符串不能改变。</li>
-</ol>
-<h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><p>List(列表) 是 Python 中使用最频繁的数据类型。</p>
-<p>列表可以完成大多数集合类的数据结构实现。列表中元素的类型可以不相同，它支持数字，字符串甚至可以包含列表(所谓嵌套)。</p>
-<p>列表是卸载方括号 <code>[]</code> 之间、用逗号分隔开的元素列表。</p>
-<p>和字符串一样，列表同样可以被索引和截取，列表被截取后返回一个包含所需元素的新列表。</p>
-<p>列表截取的语法格式：<code>变量[头下标:尾下标]</code> , 索引值以 <code>0</code> 为开始，<code>-1</code> 为从末尾的开始位置。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">t = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>]</span><br><span class="line">      <span class="number">0</span>    <span class="number">1</span>    <span class="number">2</span>    <span class="number">3</span>    <span class="number">4</span></span><br><span class="line">     -<span class="number">5</span>   -<span class="number">4</span>   -<span class="number">3</span>   -<span class="number">2</span>   -<span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<p>加号 + 是列表连接运算符，星号 * 是重复操作。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="built_in">list</span> = [<span class="string">&#x27;abcd&#x27;</span>, <span class="number">789</span>, <span class="number">2.23</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="number">70.2</span>]</span><br><span class="line">tinylist = [<span class="number">123</span>, <span class="string">&#x27;runoob&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span> * <span class="number">2</span>) <span class="comment"># 输出两次列表</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span> + tinylist) <span class="comment"># 连接列表</span></span><br></pre></td></tr></table></figure>
-
-<p>与 Python 的字符串不一样的是，列表中的元素是可以改变的。</p>
-<p>注意:</p>
-<ol>
-<li>List写在方括号之间，元素用逗号隔开。</li>
-<li>和字符串一样，List 可以被索引和切片。</li>
-<li>List 可以使用 <code>+</code> 操作符进行拼接。</li>
-<li>List 中的元素是可以改变的。</li>
-</ol>
-<p>Python 列表截取可以接收第三个参数，参数作用是截取的步长，以下实例在索引1到索引4的位置并设置步长为2(间隔一个位置)来截取字符串:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; letters = [<span class="string">&#x27;r&#x27;</span>, <span class="string">&#x27;u&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; letters[1:4:2]</span></span><br><span class="line">[&#x27;u&#x27;, &#x27;o&#x27;]</span><br></pre></td></tr></table></figure>
-
-<h4 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h4><p>元组与列表类似，不同之处在于元组的元素不能修改。元组写在小括号 <code>()</code> 里，元素之间用逗号隔开。</p>
-<p>元组中的元素类型也可以不相同:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">tuple</span> = (<span class="string">&#x27;abcd&#x27;</span>, <span class="number">789</span>, <span class="number">2.23</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="number">79.2</span>)</span><br><span class="line">tinytuple = (<span class="number">123</span>, <span class="string">&#x27;runoob&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>)             <span class="comment"># 输出元组</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">0</span>])          <span class="comment"># 输出元组第一个元素</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">1</span>:<span class="number">3</span>])        <span class="comment"># 输出从第二个元素开始到第三个元素</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">2</span>:])         <span class="comment"># 输出从第三个元素开始的所有元素</span></span><br><span class="line"><span class="built_in">print</span>(tinytuple *<span class="number">2</span>)      <span class="comment"># 输出两次元组</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span> + tinytuple) <span class="comment"># 连接元组</span></span><br></pre></td></tr></table></figure>
-
-<p>元组与字符串类似，可以被索引且下标索引从0开始，-1 为从末尾开始的位置。也可以进行截取，可以把字符串看作一种特殊的元组。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; tup = (1, 2, 3, 4, 5, 6)</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(tup[0])</span></span><br><span class="line">1</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(tup[1:5])</span></span><br><span class="line">(2, 3, 4, 5)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; tup[0] = 11</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">TypeError: &#x27;tuple&#x27; object does not support item assignment</span><br></pre></td></tr></table></figure>
-
-<p>虽然 tuple 的元素不可改变，但它可以包含可变的对象，比如 list 列表。</p>
-<p>构造包含 0 个或 1个元素的元组比较特殊，所以有一些额外的语法规则：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tup1 = ()     <span class="comment"># 空元组</span></span><br><span class="line">tup2 = (<span class="number">20</span>,)  <span class="comment"># 一个元素，需要在元素后面添加逗号</span></span><br></pre></td></tr></table></figure>
-
-<p>string、list 和 tuple 都属于 sequence(序列)。</p>
-<p>注意：</p>
-<ol>
-<li>与字符串一样，元组的元素不能修改</li>
-<li>元组也可以被索引和切片，方法一样</li>
-<li>注意构造包含0 或 1 个元素的元组的特殊语法规则</li>
-<li>元组也可以使用 <code>+</code> 操作符进行拼接</li>
-</ol>
-<h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><p>集合是由一个或数个形态各异的大小整体组成，构成集合的事物或者对象称作元素或是成员。</p>
-<p>基本功能是进行成员关系测试和删除重复元素。</p>
-<p>可以使用大括号 <code>&#123;&#125;</code> 或者 <code>set()</code> 函数创建集合，注意：创建一个空集合必须用 <code>set()</code> 而不是 <code>&#123;&#125;</code>，因为 <code>&#123;&#125;</code> 是用来创建一个空字典的。</p>
-<p>创建格式:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">parame = &#123;value01, value02, ...&#125;</span><br><span class="line"><span class="built_in">set</span>(value)</span><br><span class="line"></span><br><span class="line">sites = &#123;<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;Taobao&#x27;</span>, <span class="string">&#x27;Runoob&#x27;</span>, <span class="string">&#x27;Facebook&#x27;</span>, <span class="string">&#x27;Tencent&#x27;</span>, <span class="string">&#x27;Baidu&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(sites)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 成员测试</span></span><br><span class="line"><span class="keyword">if</span> <span class="string">&#x27;Runoob&#x27;</span> <span class="keyword">in</span> sites:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Runoob 在集合中&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Runoob 不在集合中&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># set可以进行集合运算</span></span><br><span class="line">a = <span class="built_in">set</span>(<span class="string">&#x27;abracadabra&#x27;</span>)</span><br><span class="line">b = <span class="built_in">set</span>(<span class="string">&#x27;alacazam&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(a - b)  <span class="comment"># a 和 b 的差集  &#123;&#x27;r&#x27;, &#x27;b&#x27;, &#x27;d&#x27;&#125;</span></span><br><span class="line"><span class="built_in">print</span>(a | b)  <span class="comment"># a 和 b 的并集  &#123;&#x27;b&#x27;, &#x27;c&#x27;, &#x27;a&#x27;, &#x27;z&#x27;, &#x27;m&#x27;, &#x27;r&#x27;, &#x27;l&#x27;, &#x27;d&#x27;&#125;</span></span><br><span class="line"><span class="built_in">print</span>(a &amp; b)  <span class="comment"># a 和 b 的交集  &#123;&#x27;c&#x27;, &#x27;a&#x27;&#125;</span></span><br><span class="line"><span class="built_in">print</span>(a ^ b)  <span class="comment"># a 和 b 中不同时存在的元素  &#123;&#x27;z&#x27;, &#x27;b&#x27;, &#x27;m&#x27;, &#x27;r&#x27;, &#x27;l&#x27;, &#x27;d&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h4><p>字典是 Python 中另一个非常有用的内置数据类型。</p>
-<p>列表是<strong>有序</strong>的对象集合，字典是<strong>无序</strong>的对象集合。两者之间的区别在于: 字典当中的元素是通过键来存取的，而不是通过偏移存取。</p>
-<p>字典是一种映射类型，字典用 <code>&#123;&#125;</code> 标识，它是一个无序的 <strong>键(key) : 值(value)</strong> 的集合。</p>
-<p>键(key) 必须使用不可变类型。</p>
-<p>在同一个字典中，键(key)必须是唯一的。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">dict</span> = &#123;&#125;</span><br><span class="line"><span class="built_in">dict</span>[<span class="string">&#x27;one&#x27;</span>] = <span class="string">&quot;1 - 啦啦啦&quot;</span></span><br><span class="line"><span class="built_in">dict</span>[<span class="number">2</span>] = <span class="string">&quot;2 - 啦啦啦&quot;</span></span><br><span class="line"></span><br><span class="line">tinydict = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;code&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;site&#x27;</span>: <span class="string">&#x27;www.raintwo.wang&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">dict</span>[<span class="string">&#x27;one&#x27;</span>])       <span class="comment"># 输出键为 &#x27;one&#x27; 的值</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">dict</span>[<span class="number">2</span>])           <span class="comment"># 输出键为 2 的值</span></span><br><span class="line"><span class="built_in">print</span>(tinydict)          <span class="comment"># 输出完整的字典</span></span><br><span class="line"><span class="built_in">print</span>(tinydict.keys())   <span class="comment"># 输出所有键</span></span><br><span class="line"><span class="built_in">print</span>(tinydict.values()) <span class="comment"># 输出所有值</span></span><br></pre></td></tr></table></figure>
-
-<p>构造函数 <code>dict()</code> 可以直接从键值对序列中构建字典如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>([(<span class="string">&#x27;Runoob&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;Google&#x27;</span>, <span class="number">2</span>), (<span class="string">&#x27;Taobao&#x27;</span>, <span class="number">3</span>)])</span><br><span class="line">&#123;<span class="string">&#x27;Runoob&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Google&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Taobao&#x27;</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&#123;x: x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> (<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>)&#125;</span><br><span class="line">&#123;<span class="number">2</span>: <span class="number">4</span>, <span class="number">4</span>: <span class="number">16</span>, <span class="number">6</span>: <span class="number">36</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>(Runoob=<span class="number">1</span>, Google=<span class="number">2</span>, Taobao=<span class="number">3</span>)</span><br><span class="line">&#123;<span class="string">&#x27;Runoob&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Google&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Taobao&#x27;</span>: <span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
-
-<p>另外，字典类型也有一些内置的函数，例如 clear()、keys()、values() 等。</p>
-<p>注意:</p>
-<ol>
-<li>字典是一种映射类型，它的元素是键值对。</li>
-<li>字典的关键字必须为不可变类型，且不能重复。</li>
-<li>创建空字典使用 <code>&#123;&#125;</code></li>
-</ol>
-<h4 id="Python数据类型转换"><a href="#Python数据类型转换" class="headerlink" title="Python数据类型转换"></a>Python数据类型转换</h4><p>有时候，我们需要对数据内置的类型进行转换，数据类型的转换，你只需要将数据类型作为函数名即可。</p>
+<h4 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h4><p>由于计算机是美国人发明的，因此最早只有127个字符被编码到计算机中，包含大小写英文字母、数字和一些符号，这个编码被称为 <em>ASCII</em> 编码。后面中国制定了 <em>GB2312</em> 编码，将中文编了进去。这时可以想像全球有多少种文字，都在指定编码的话，难免会造成冲突，显示乱码，所以 <em>Unicode</em> 字符集应运而生，将所有语言都统一到一套编码里，这样就不会再出现乱码问题了。</p>
+<p>现在最常用的是 <em>UCS-16</em> 编码，用两个字节表示一个字符（如果非常偏僻的字符，就需要4个字节）。但现在的问题是如果所写的文本都是英文的话，<em>Unicode</em> 编码要比 <em>ASCII</em> 编码多一倍多存储空间，所以本着节约的精神，又出现了把 <em>Unicode</em> 编码转化成“可变长编码”的<em>UTF-8</em> 编码。<em>UTF-8</em> 编码把一个 Unicode 字符根据不同的数字大小编码成 1-6 个字节，常用的英文字母被编码成1个字节，汉字通常是3个字节，只有很生僻的字符才会编译成4-6个字节。</p>
 <table>
 <thead>
 <tr>
-<th>函数</th>
-<th>描述</th>
+<th align="center">字符</th>
+<th align="center">ASCII</th>
+<th align="center">Unicode</th>
+<th align="center">UTF-8</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>int(x, [base])</td>
-<td>将 x 转换为一个整数</td>
+<td align="center">A</td>
+<td align="center">01000001</td>
+<td align="center">00000000 01000001</td>
+<td align="center">01000001</td>
 </tr>
 <tr>
-<td>float(x)</td>
-<td>将 x 转换到一个浮点数</td>
-</tr>
-<tr>
-<td>complex(real, [image])</td>
-<td>创建一个复数</td>
-</tr>
-<tr>
-<td>str(x)</td>
-<td>将对象 x 转换为字符串</td>
-</tr>
-<tr>
-<td>repr(x)</td>
-<td>将对象 x 转换为表达式字符串</td>
-</tr>
-<tr>
-<td>eval(str)</td>
-<td>用来计算在字符串中的有效Python表达式，并返回一个对象</td>
-</tr>
-<tr>
-<td>tuple(s)</td>
-<td>将序列 s 转换为一个元组</td>
-</tr>
-<tr>
-<td>list(s)</td>
-<td>将序列 s 转换为一个列表</td>
-</tr>
-<tr>
-<td>set(s)</td>
-<td>转换为可变集合</td>
-</tr>
-<tr>
-<td>dict(d)</td>
-<td>创建一个字典。d 必须是一个(key, value) 元组序列</td>
-</tr>
-<tr>
-<td>frozenset(s)</td>
-<td>转换为不可变集合</td>
-</tr>
-<tr>
-<td>chr(x)</td>
-<td>将一个整数转换为一个字符串</td>
-</tr>
-<tr>
-<td>ord(x)</td>
-<td>将一个字符转换为它的整数值</td>
-</tr>
-<tr>
-<td>hex(x)</td>
-<td>将一个整数转换为一个十六进制字符串</td>
-</tr>
-<tr>
-<td>oct(x)</td>
-<td>将一个整数转换为一个八进制字符串</td>
+<td align="center">中</td>
+<td align="center">x</td>
+<td align="center">01001110 00101101</td>
+<td align="center">11100100 10111000 10101101</td>
 </tr>
 </tbody></table>
+<p>默认情况下，Python3 的源码文件以 <em>UTF-8</em> 编码的，所有字符串都是 <em>unicode</em> 字符串。当然你也可以为源码文件指定不同的编码:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: cp-1252 -*-  </span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里使用了 <em>Windows-1252</em> 字符集中的字符编码，对应适应语言是保加利亚语、白俄罗斯语、马其顿语、俄语及埃塞维亚语。</p>
+</blockquote>
+<h4 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h4><ul>
+<li>第一个字符必须是字母或下划线。</li>
+<li>标识符的其他部分由字母、数字和下划线组成</li>
+<li>标识符区分大小写</li>
+</ul>
+<p>在 Python 3中，可以用中文作为变量名，非 <em>ASCII</em> 标识符是允许的了。</p>
+<h4 id="Python-保留字"><a href="#Python-保留字" class="headerlink" title="Python 保留字"></a>Python 保留字</h4><p>即关键字，这里我们不能用作任何标识符的名称。可以通过 <code>keyword</code> 模块列出所有关键字。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; import keyword</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; keyword.kwlist</span></span><br><span class="line">[&#x27;False&#x27;, &#x27;None&#x27;, &#x27;True&#x27;, &#x27;__peg_parser__&#x27;, &#x27;and&#x27;, &#x27;as&#x27;, &#x27;assert&#x27;, &#x27;async&#x27;, &#x27;await&#x27;, &#x27;break&#x27;, &#x27;class&#x27;, &#x27;continue&#x27;, &#x27;def&#x27;, &#x27;del&#x27;, &#x27;elif&#x27;, &#x27;else&#x27;, &#x27;except&#x27;, &#x27;finally&#x27;, &#x27;for&#x27;, &#x27;from&#x27;, &#x27;global&#x27;, &#x27;if&#x27;, &#x27;import&#x27;, &#x27;in&#x27;, &#x27;is&#x27;, &#x27;lambda&#x27;, &#x27;nonlocal&#x27;, &#x27;not&#x27;, &#x27;or&#x27;, &#x27;pass&#x27;, &#x27;raise&#x27;, &#x27;return&#x27;, &#x27;try&#x27;, &#x27;while&#x27;, &#x27;with&#x27;, &#x27;yield&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p>Python 中单行注释以 <code>#</code> 开头，直到该物理行结束。注释可以在行开头，或空白符之后，但不能在字符串中。注释用于阐明代码，Python 不解释注释。即：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="comment"># 注释</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello, Python!&quot;</span>) <span class="comment"># 注释</span></span><br></pre></td></tr></table></figure>
+
+<p>多行注释可以用多个 <code>#</code> 号，还有 <code>&#39;&#39;&#39;</code> 和 <code>&quot;&quot;&quot;</code> 。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一个注释</span></span><br><span class="line"><span class="comment"># 第二个注释</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">第三个注释</span></span><br><span class="line"><span class="string">第四个注释</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">第五个注释</span></span><br><span class="line"><span class="string">第六个注释</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello, Python!&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="行与缩进"><a href="#行与缩进" class="headerlink" title="行与缩进"></a>行与缩进</h4><p>Python 最具特色的就是使用缩进来表示代码块，不需要使用大括号 <code>&#123;&#125;</code>。缩进没有规定是几个空格还是Tab，按照约定俗成的惯例，应该始终坚持使用 <strong>4个空格</strong> 的缩进。因为如果缩进的空格数不一致，会导致运行错误，故同一个代码块的语句必须包含相同的缩进空格数。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;True&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;False&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="多行语句"><a href="#多行语句" class="headerlink" title="多行语句"></a>多行语句</h4><p>Python 通常是一行写完一条语句，但如果语句很长，可以使用反斜杠( \ ) 来实现多行语句，例如:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">total = item_one + \</span><br><span class="line">        item_two + \</span><br><span class="line">        item_three</span><br></pre></td></tr></table></figure>
+
+<h4 id="数字-Number-类型"><a href="#数字-Number-类型" class="headerlink" title="数字(Number)类型"></a>数字(Number)类型</h4><p>Python 中数字有四种类型：整型、浮点型、布尔型、复数。</p>
+<ul>
+<li><strong>int (整数)</strong> 如1，只有一种整数类型 <em>int</em>，表示为长整型，没有 Python2 中的 <em>Long</em>。</li>
+<li><strong>bool (布尔值)</strong> 布尔值属于整数的子类型，与布尔代数的表示完全一致，一个布尔值只有 <code>True</code> 和 <code>False</code> 两种值，要么是 <code>True</code>，要么是 <code>False</code> .(<strong>请注意大小写</strong>) 布尔值可以用 <code>and</code> 、<code>or</code> 和 <code>not</code> 运算。<ul>
+<li><code>and</code> 运算是与运算，只有所有都为 <code>True</code>，<code>and</code> 运算结果才是 <code>True</code> 。</li>
+<li><code>or</code> 运算是或运算，只要其中有一个为 <code>True</code>，<code>or</code> 运算结果就是 <code>True</code>。</li>
+<li><code>not</code> 运算是非运算，它是一个单目运算符，把 <code>True</code> 变成 <code>False</code>，<code>False</code> 变成<code>True</code>。</li>
+</ul>
+</li>
+<li><strong>float (浮点数)</strong> 即小数。如1.23、2e-2(科学计数法，把10用e代替) 整数和浮点数在计算机内部存储的方式是不同的，整数运算永远是精确的，而浮点数运算则可能会有四舍五入的误差。</li>
+<li><strong>complex (复数)</strong> 复数包含实部和虚部，分别以一个浮点数表示，后缀 <code>j</code> 或 <code>J</code> 用于表示虚数。如 1 + 2j、1.1 +2.2j</li>
+</ul>
+<h4 id="字符串-String"><a href="#字符串-String" class="headerlink" title="字符串(String)"></a>字符串(String)</h4><p>除了数字，Python 还可以操作字符串。字符串有多种表现形式，用单引号(‘……’)或双引号(“……”) 标注的结果相同。反斜杠 <code>\</code> 用于转义。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&#x27;spam eggs&#x27;</span></span></span><br><span class="line">&#x27;spam eggs&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&#x27;doesn\&#x27;</span>t<span class="string">&#x27;</span></span></span><br><span class="line">&quot;doesn&#x27;t&quot;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&quot;doesn&#x27;t&quot;</span></span></span><br><span class="line">&quot;doesn&#x27;t&quot;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&#x27;&quot;Yes,&quot; they said.&#x27;</span></span></span><br><span class="line">&#x27;&quot;Yes,&quot; they said.&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&quot;\&quot;Yes,\&quot; they said.&quot;</span></span></span><br><span class="line">&#x27;&quot;Yes,&quot; they said.&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&#x27;&quot;Isn\&#x27;</span>t,<span class="string">&quot; they said.&#x27;</span></span></span><br><span class="line">&#x27;&quot;Isn\&#x27;t,&quot; they said.&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>在交互式解释器会为输出的字符串加注引号，特殊字符使用反斜杠转义。虽然，有时输出的字符串看起来与输入的字符串不一样(外加的引号可能会改变)，但两个字符串是相同的。如果字符串中有单引号而没有双引号，该字符串外将加注双引号，反之，则加注单引号。 <code>print()</code> 函数输出的内容更加简洁易读，它会省略两边的引号，并输出转义后的特殊字符：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&quot;\&quot;Yes,\&quot; they said.&quot;</span></span></span><br><span class="line">&#x27;&quot;Yes,&quot; they said.&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&#x27;&quot;Isn\&#x27;</span>t,<span class="string">&quot; they said.&#x27;</span></span></span><br><span class="line">&#x27;&quot;Isn\&#x27;t,&quot; they said.&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(<span class="string">&#x27;&quot;Isn\&#x27;</span>t,<span class="string">&quot;, they said.&#x27;)</span></span></span><br><span class="line">&quot;Isn&#x27;t,&quot;, they said.</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; s = <span class="string">&#x27;First line.\nSecond line.&#x27;</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; s</span></span><br><span class="line">&#x27;First line.\nSecond line.&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(s)</span></span><br><span class="line">First line.</span><br><span class="line">Second line.</span><br></pre></td></tr></table></figure>
+
+<p>如果不希望前置 <code>\</code> 的字符转义成特殊字符，可以使用原始字符串，在引号前添加 <code>r</code> 即可:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(<span class="string">&#x27;C:\some\name&#x27;</span>)</span></span><br><span class="line">C:\some</span><br><span class="line">ame</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(r<span class="string">&#x27;C:\some\name&#x27;</span>)</span></span><br><span class="line">C:\some\name</span><br></pre></td></tr></table></figure>
+
+<p>字符串字面值可以实现跨行连续输入。实现方式是用三引号：<code>&quot;&quot;&quot;...&quot;&quot;&quot;</code>  或 <code>&#39;&#39;&#39;...&#39;&#39;&#39;</code> ，字符串行尾会自动加上回车换行，如果不需要回车换行，在行尾添加 <code>\</code> 即可。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(<span class="string">&quot;&quot;</span><span class="string">&quot;\</span></span></span><br><span class="line"><span class="bash">... Usage: thingy [OPTIONS]</span></span><br><span class="line">...        -h                        Display this usage message</span><br><span class="line">...        -H hostname               Hostname to connect to</span><br><span class="line">... &quot;&quot;&quot;)</span><br><span class="line">Usage: thingy [OPTIONS]</span><br><span class="line">       -h                        Display this usage message</span><br><span class="line">       -H hostname               Hostname to connect to</span><br></pre></td></tr></table></figure>
+
+<p>字符串可以用 <code>+</code> 合并(粘到一起)，也可以用 <code>*</code> 重复:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 3 * <span class="string">&#x27;un&#x27;</span> + <span class="string">&#x27;ium&#x27;</span></span></span><br><span class="line">&#x27;unununium&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>相邻的两个或多个<em>字符串字面值</em> (引号标注的字符)会自动合并：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&#x27;Py&#x27;</span> <span class="string">&#x27;thon&#x27;</span></span></span><br><span class="line">&#x27;Python&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>拆分长字符串时，这个功能特别实用：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; text = (<span class="string">&#x27;Put serveral strings within parentheses &#x27;</span></span></span><br><span class="line">...         &#x27;to have them joined together.&#x27;)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; text</span></span><br><span class="line">&#x27;Put serveral strings within parentheses to have them joined together.&#x27;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这项功能只能用于两个字面值，不能用于变量或表达式。</p>
+</blockquote>
+<p>合并多个变量，或合并变量与字面值，要用 <code>+</code> ：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; prefix = <span class="string">&#x27;Py&#x27;</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; prefix + <span class="string">&#x27;thon&#x27;</span></span></span><br><span class="line">&#x27;Python&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>字符串支持 <em>索引</em> (下标访问)，第一个字符的索引是0。单字符没有专用的类型，就是长度为一的字符串：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word = <span class="string">&#x27;Python&#x27;</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[0]</span></span><br><span class="line">&#x27;P&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[5]</span></span><br><span class="line">&#x27;n&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>索引还支持负数，用负数索引时，从右边开始计数：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[-1]</span></span><br><span class="line">&#x27;n&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[-2]</span></span><br><span class="line">&#x27;o&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[-6]</span></span><br><span class="line">&#x27;P&#x27;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意，-0 和 0 一样，因此，负数索引从 -1开始。</p>
+</blockquote>
+<p>除了索引，字符串还支持 <em>切片</em>。索引可以提取单个字符，<em>切片</em> 则提取子字符串：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[0:2]</span></span><br><span class="line">&#x27;Py&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[2:5]</span></span><br><span class="line">&#x27;tho&#x27;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意，输出结果包含切片开始，但不包含切片结束。因此，<code>s[:i] + s[i:]</code> 总是等于 <code>s</code>：</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[:2] + word[2:]</span></span><br><span class="line">&#x27;Python&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[:4] + word[4:]</span></span><br><span class="line">&#x27;Python&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>切片索引的默认值很有用；省略开始索引时，默认值为0，省略结束索引时，默认为到字符串的结尾：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[:2]</span></span><br><span class="line">&#x27;Py&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[4:]</span></span><br><span class="line">&#x27;on&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[-2:]</span></span><br><span class="line">&#x27;on&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>还可以这样理解切片，索引指向的是字符之间，第一个字符的左侧标为0，最后一个字符的右侧标为 n, n 是字符串长度。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"> +---+---+---+---+---+---+</span><br><span class="line"> | P | y | t | h | o | n |</span><br><span class="line"> +---+---+---+---+---+---+</span><br><span class="line"> 0   1   2   3   4   5   6</span><br><span class="line">-6  -5  -4  -3  -2  -1</span><br></pre></td></tr></table></figure>
+
+<p>第一行数字是字符串中索引 0…6 的位置，第二行数字是对应的负数索引位置。i 到 j 的切片由 i 和 j 之间所有对应的字符组成。</p>
+<p>对于使用非负索引的切片，如果两个索引都不越界，切片长度就是起止索引之差。例如，<code>word[1:3]</code> 的长度是2。</p>
+<p>索引越界会报错，但是切片会自动处理越界索引：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[42]</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">IndexError: string index out of range</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[4:42]</span></span><br><span class="line">&#x27;on&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[42:]</span></span><br><span class="line">&#x27;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>Python 字符串不能修改，是 <em>immutable</em>(不可变) 的。因此，为字符串中某个索引位置赋值会报错：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[0] = <span class="string">&#x27;J&#x27;</span></span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">TypeError: &#x27;str&#x27; object does not support item assignment</span><br></pre></td></tr></table></figure>
+
+<p>要生成不同的字符串，应新建一个字符串：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&#x27;J&#x27;</span> + word[1:]</span></span><br><span class="line">&#x27;Jython&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>内置函数 <code>len()</code> 返回字符串的长度：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; s = <span class="string">&#x27;laaaaalalallalalalalalallalala&#x27;</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; len(s)</span></span><br><span class="line">30</span><br></pre></td></tr></table></figure>
+
+<h4 id="空行"><a href="#空行" class="headerlink" title="空行"></a>空行</h4><p>函数之间或类的方法之间用空行分隔，表示一段新的代码的开始。类和函数入口之间也用一行空行分隔，以突出函数入口的开始。</p>
+<p>空行与代码缩进不同，空行并不是 Python 语法的一部分。书写时不插入空行，Python解释器运行也不会出错。但是空行的作用在于分隔两段不同功能或含义的代码，便于日后代码的维护或重构。</p>
+<blockquote>
+<p>空行也是程序代码的一部分。</p>
+</blockquote>
+<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>Python提供了 <code>input()</code> 函数进行输入，并将之存放到一个变量里：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; name = input()</span></span><br><span class="line">RainTwo</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; name</span></span><br><span class="line">&#x27;RainTwo&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>可以在 <code>input()</code> 中添加字符串来进行提示:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; name = input(<span class="string">&#x27;请输入名字:&#x27;</span>)</span></span><br><span class="line">请输入名字:RainTwo</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; name</span></span><br><span class="line">&#x27;RainTwo&#x27;</span><br></pre></td></tr></table></figure>
+
+<h4 id="多个语句构成代码组"><a href="#多个语句构成代码组" class="headerlink" title="多个语句构成代码组"></a>多个语句构成代码组</h4><p>缩进相同的一组语句构成一个代码块，我们称之为代码组。</p>
+<p>像 <code>if</code>、<code>while</code>、<code>def</code> 和 <code>class</code>这样的复合语句，首行以关键字开始，以冒号(:)结束，该行之后的一行或多行代码构成代码组。</p>
+<p>我们将首行及后面的代码组称为一个子句(<em>clause</em>)。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="keyword">do</span> = True</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="keyword">if</span> <span class="keyword">do</span> :</span></span><br><span class="line">...     print(&quot;做了&quot;)</span><br><span class="line">... else:</span><br><span class="line">...     print(&quot;没做&quot;)</span><br><span class="line">...</span><br><span class="line">做了</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里注意要缩进。</p>
+</blockquote>
+<h4 id="import-与-from…import"><a href="#import-与-from…import" class="headerlink" title="import 与 from…import"></a>import 与 from…import</h4><p>在 Python 中用 <code>import</code> 或者 <code>from...import</code> 来到如相应的模块。</p>
+<p>将整个模块(<em>somemodule</em>)导入，格式为：<code>import somemodule</code> </p>
+<p>从某个模块中导入某个函数，格式为：<code>from somemodule import somefunction</code></p>
+<p>从某个模块中导入多个函数，格式为：<code>from somemodule import firstfunc, secondfunc, thirdfunc</code></p>
+<p>将某个模块中的函数全部导入，格式为：<code>from somemodule import *</code></p>
+<p>将某个模块换个别名，格式为：<code>import flask as fl</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> argv, path</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>Python</category>
@@ -906,171 +856,320 @@
       </tags>
   </entry>
   <entry>
-    <title>【Python】Chapter2:基础语法</title>
-    <url>/2021/04/16/%E3%80%90Python%E3%80%91Chapter2-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>Python 是一种计算机编程语言。计算机编程语言和我们日常使用的自然语言有所不同，最大的区别就是，自然语言在不同的语境下有不同的理解，而计算机要根据编程语言执行任务，就必须保证编程语言写出来的程序绝不能有歧义，所以任何一种编程语言都有自己的一套语法，编译器或者解释器就是负责把符合语法的程序代码转换成 CPU 能执行的机器码，然后执行。Python 也不例外。</p>
+    <title>【Python】Chapter3:基本数据类型</title>
+    <url>/2021/04/19/%E3%80%90Python%E3%80%91Chapter3-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<p>计算机顾名思义就是可以做数学计算的机器，因此，计算机程序理所当然地可以处理各种数值。但是，计算机能处理的远不止数值，还可以处理文本、图形、音频、视频、网页等各种各样的数据，不同的数据，需要定义不同的数据类型。</p>
 <span id="more"></span>
 
-<h4 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h4><p>由于计算机是美国人发明的，因此最早只有127个字符被编码到计算机中，包含大小写英文字母、数字和一些符号，这个编码被称为 <em>ASCII</em> 编码。后面中国制定了 <em>GB2312</em> 编码，将中文编了进去。这时可以想像全球有多少种文字，都在指定编码的话，难免会造成冲突，显示乱码，所以 <em>Unicode</em> 字符集应运而生，将所有语言都统一到一套编码里，这样就不会再出现乱码问题了。</p>
-<p>现在最常用的是 <em>UCS-16</em> 编码，用两个字节表示一个字符（如果非常偏僻的字符，就需要4个字节）。但现在的问题是如果所写的文本都是英文的话，<em>Unicode</em> 编码要比 <em>ASCII</em> 编码多一倍多存储空间，所以本着节约的精神，又出现了把 <em>Unicode</em> 编码转化成“可变长编码”的<em>UTF-8</em> 编码。<em>UTF-8</em> 编码把一个 Unicode 字符根据不同的数字大小编码成 1-6 个字节，常用的英文字母被编码成1个字节，汉字通常是3个字节，只有很生僻的字符才会编译成4-6个字节。</p>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p>Python 中变量不需要声明。每个变量在使用前都必须赋值，变量赋值以后该变量才会被创建。在Python中，变量就是变量，它没有类型，我们所说的”类型“是变量所指的内存中对象的类型。</p>
+<p>这种变量本身类型不固定的语言称之为 <strong>动态语言</strong> ，与之相对的是 <strong>静态语言</strong>。静态语言在定义变量时必须指定变量类型，如果赋值的时候类型不匹配，就会报错。如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">123</span>;</span><br><span class="line">a = <span class="string">&quot;ABC&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>和静态语言相比，动态语言更灵活，就是这个原因。</p>
+</blockquote>
+<p>等号( <code>=</code> )用来给变量赋值。等号( = )运算符左边是一个变量名，等号( = )运算符右边是存储在变量中的值。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">counter = <span class="number">100</span> <span class="comment"># 整型变量</span></span><br><span class="line">miles   = <span class="number">1000.0</span> <span class="comment"># 浮点型变量</span></span><br><span class="line">name    = <span class="string">&quot;RainTwo&quot;</span>  <span class="comment"># 字符串</span></span><br></pre></td></tr></table></figure>
+
+<p>在这里Python解释器干了两件事：</p>
+<ol>
+<li>在内存中创建了一个 <code>RainTwo</code> 的字符串；</li>
+<li>在内存中创建了一个名为 <code>name</code> 的变量，并把它指向 <code>RainTwo</code>。</li>
+</ol>
+<p>也可以把一个变量 <code>a</code> 赋值给另一个变量 <code>b</code> ，这个操作实际上就是把变量 <code>b</code> 指向变量 <code>a</code> 所指向的数据。</p>
+<p>Python 允许你同时为多个变量赋值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = b = c = <span class="number">1</span></span><br><span class="line">a, b, c = <span class="number">1</span>, <span class="number">2</span>, <span class="string">&quot;RainTwo&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>所谓常量就是不能变的变量，比如常用的数字常数 π 就是一个常量。在 Python 中，通常用全部大写的变量名表示常量:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">PI = <span class="number">3.141592653</span></span><br></pre></td></tr></table></figure>
+
+<p>但事实上 PI 仍然是一个变量，Python 根本没有任何机制保证 PI 不会被改变，所以，用全部大写的变量名表示常量只是一个习惯上的用法，如果你一定要改变变量 PI 的值，也没人能拦住你。</p>
+<p>最后解释下整数的除法为什么也是精确的。在 Python 中，有两种除法，一种是 <code>/</code> ：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 10 / 3</span></span><br><span class="line">3.3333333333333335</span><br></pre></td></tr></table></figure>
+
+<p><code>/</code> 除法计算结果是浮点数，即使是两个整数恰好整除，结果也是浮点数：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 9 / 3</span></span><br><span class="line">3.0</span><br></pre></td></tr></table></figure>
+
+<p>还有一种除法是 <code>//</code> ，称为地板除，两个整数的除法仍然是整数：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 10 // 3</span></span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<p>即整数的地板除 <code>//</code> 永远是整数，即使除不尽。要做精确的除法，使用 <code>/</code> 就可以。</p>
+<p>因为 // 除法只取结果的整数部分，所以 Python 还提供一个余数计算，可以得到两个整数相除的余数：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 10 % 3</span></span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<h4 id="标准数据类型"><a href="#标准数据类型" class="headerlink" title="标准数据类型"></a>标准数据类型</h4><p>Python3 有六个标准的数据类型：</p>
+<ul>
+<li>Number  (数字)</li>
+<li>String  (字符串)</li>
+<li>List (列表)</li>
+<li>Tuple (元组)</li>
+<li>Set (集合)</li>
+<li>Dictionary (字典)</li>
+</ul>
+<p>分为<strong>不可变数据</strong>: Number、String、Tuple；</p>
+<p>和<strong>可变数据</strong>: List、Dictionary、Set。</p>
+<h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><p>Python3 支持 <strong>int</strong>、<strong>float</strong>、<strong>bool</strong>、<strong>complex</strong>(复数)</p>
+<p>内置的 <code>type()</code> 函数可以用来查询变量所指的对象类型:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; a, b, c, d = 20, 5.5, True, 4+3j</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(<span class="built_in">type</span>(a), <span class="built_in">type</span>(b), <span class="built_in">type</span>(c), <span class="built_in">type</span>(d))</span></span><br><span class="line">&lt;class &#x27;int&#x27;&gt; &lt;class &#x27;float&#x27;&gt; &lt;class &#x27;bool&#x27;&gt; &lt;class &#x27;complex&#x27;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>此外还可以用 <code>isinstance</code> 来判断:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; a = 111</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; isinstance(a, int)</span></span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+
+<p>isinstance 和 type 的区别在于：</p>
+<ul>
+<li>type() 不会认为子类是一种父类类型</li>
+<li>isinstance() 会认为子类是一种父类类型</li>
+</ul>
+<h5 id="数值运算"><a href="#数值运算" class="headerlink" title="数值运算"></a>数值运算</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 5 + 4  <span class="comment"># 加法</span></span></span><br><span class="line">9</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 4.3 - 2 <span class="comment"># 减法</span></span></span><br><span class="line">2.3</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 3 * 7  <span class="comment"># 乘法</span></span></span><br><span class="line">21</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 / 4  <span class="comment"># 除法，得到浮点数</span></span></span><br><span class="line">0.5</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 // 4 <span class="comment"># 除法，得到整数</span></span></span><br><span class="line">0</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 17 % 3 <span class="comment"># 取余</span></span></span><br><span class="line">2</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 ** 5 <span class="comment"># 乘方</span></span></span><br><span class="line">32</span><br></pre></td></tr></table></figure>
+
+<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><p>Python 中的字符串用单引号 <code>&#39;</code> 或双引号 <code>&quot;</code> 括起来，同时使用反斜杠 <code>\</code> 转义特殊字符。</p>
+<p>加号 <code>+</code> 是字符串的连接符，星号 <code>*</code> 表示复制当前字符串，与之结合的数字为复制的次数。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">str</span> = <span class="string">&#x27;RainTwo&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>[<span class="number">0</span>:-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span> * <span class="number">2</span>)  <span class="comment"># 输出字符串两次，也可以写成 print(2 * str)  RainTwoRainTwo</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span> + <span class="string">&quot;TEST&quot;</span>)  <span class="comment"># 连接字符串 输出 RainTwoTEST</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ol>
+<li>反斜杠可以用来转义，使用 r 可以让反斜杠不发生转义</li>
+<li>字符串可以用 + 运算符连接在一起，用 * 运算符重复</li>
+<li>Python 中的字符串有两种索引方式，从左往右以0开始，从右往左以 -1 开始。</li>
+<li>Python 中的字符串不能改变。</li>
+</ol>
+<h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><p>List(列表) 是 Python 中使用最频繁的数据类型。</p>
+<p>列表可以完成大多数集合类的数据结构实现。列表中元素的类型可以不相同，它支持数字，字符串甚至可以包含列表(所谓嵌套)。</p>
+<p>列表是卸载方括号 <code>[]</code> 之间、用逗号分隔开的元素列表。</p>
+<p>和字符串一样，列表同样可以被索引和截取，列表被截取后返回一个包含所需元素的新列表。</p>
+<p>列表截取的语法格式：<code>变量[头下标:尾下标]</code> , 索引值以 <code>0</code> 为开始，<code>-1</code> 为从末尾的开始位置。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">t = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>]</span><br><span class="line">      <span class="number">0</span>    <span class="number">1</span>    <span class="number">2</span>    <span class="number">3</span>    <span class="number">4</span></span><br><span class="line">     -<span class="number">5</span>   -<span class="number">4</span>   -<span class="number">3</span>   -<span class="number">2</span>   -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>加号 + 是列表连接运算符，星号 * 是重复操作。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="built_in">list</span> = [<span class="string">&#x27;abcd&#x27;</span>, <span class="number">789</span>, <span class="number">2.23</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="number">70.2</span>]</span><br><span class="line">tinylist = [<span class="number">123</span>, <span class="string">&#x27;runoob&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span> * <span class="number">2</span>) <span class="comment"># 输出两次列表</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span> + tinylist) <span class="comment"># 连接列表</span></span><br></pre></td></tr></table></figure>
+
+<p>与 Python 的字符串不一样的是，列表中的元素是可以改变的。</p>
+<p>注意:</p>
+<ol>
+<li>List写在方括号之间，元素用逗号隔开。</li>
+<li>和字符串一样，List 可以被索引和切片。</li>
+<li>List 可以使用 <code>+</code> 操作符进行拼接。</li>
+<li>List 中的元素是可以改变的。</li>
+</ol>
+<p>Python 列表截取可以接收第三个参数，参数作用是截取的步长，以下实例在索引1到索引4的位置并设置步长为2(间隔一个位置)来截取字符串:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; letters = [<span class="string">&#x27;r&#x27;</span>, <span class="string">&#x27;u&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; letters[1:4:2]</span></span><br><span class="line">[&#x27;u&#x27;, &#x27;o&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h4 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h4><p>元组与列表类似，不同之处在于元组的元素不能修改。元组写在小括号 <code>()</code> 里，元素之间用逗号隔开。</p>
+<p>元组中的元素类型也可以不相同:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">tuple</span> = (<span class="string">&#x27;abcd&#x27;</span>, <span class="number">789</span>, <span class="number">2.23</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="number">79.2</span>)</span><br><span class="line">tinytuple = (<span class="number">123</span>, <span class="string">&#x27;runoob&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>)             <span class="comment"># 输出元组</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">0</span>])          <span class="comment"># 输出元组第一个元素</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">1</span>:<span class="number">3</span>])        <span class="comment"># 输出从第二个元素开始到第三个元素</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span>[<span class="number">2</span>:])         <span class="comment"># 输出从第三个元素开始的所有元素</span></span><br><span class="line"><span class="built_in">print</span>(tinytuple *<span class="number">2</span>)      <span class="comment"># 输出两次元组</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">tuple</span> + tinytuple) <span class="comment"># 连接元组</span></span><br></pre></td></tr></table></figure>
+
+<p>元组与字符串类似，可以被索引且下标索引从0开始，-1 为从末尾开始的位置。也可以进行截取，可以把字符串看作一种特殊的元组。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; tup = (1, 2, 3, 4, 5, 6)</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(tup[0])</span></span><br><span class="line">1</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(tup[1:5])</span></span><br><span class="line">(2, 3, 4, 5)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; tup[0] = 11</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">TypeError: &#x27;tuple&#x27; object does not support item assignment</span><br></pre></td></tr></table></figure>
+
+<p>虽然 tuple 的元素不可改变，但它可以包含可变的对象，比如 list 列表。</p>
+<p>构造包含 0 个或 1个元素的元组比较特殊，所以有一些额外的语法规则：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tup1 = ()     <span class="comment"># 空元组</span></span><br><span class="line">tup2 = (<span class="number">20</span>,)  <span class="comment"># 一个元素，需要在元素后面添加逗号</span></span><br></pre></td></tr></table></figure>
+
+<p>string、list 和 tuple 都属于 sequence(序列)。</p>
+<p>注意：</p>
+<ol>
+<li>与字符串一样，元组的元素不能修改</li>
+<li>元组也可以被索引和切片，方法一样</li>
+<li>注意构造包含0 或 1 个元素的元组的特殊语法规则</li>
+<li>元组也可以使用 <code>+</code> 操作符进行拼接</li>
+</ol>
+<h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><p>集合是由一个或数个形态各异的大小整体组成，构成集合的事物或者对象称作元素或是成员。</p>
+<p>基本功能是进行成员关系测试和删除重复元素。</p>
+<p>可以使用大括号 <code>&#123;&#125;</code> 或者 <code>set()</code> 函数创建集合，注意：创建一个空集合必须用 <code>set()</code> 而不是 <code>&#123;&#125;</code>，因为 <code>&#123;&#125;</code> 是用来创建一个空字典的。</p>
+<p>创建格式:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">parame = &#123;value01, value02, ...&#125;</span><br><span class="line"><span class="built_in">set</span>(value)</span><br><span class="line"></span><br><span class="line">sites = &#123;<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;Taobao&#x27;</span>, <span class="string">&#x27;Runoob&#x27;</span>, <span class="string">&#x27;Facebook&#x27;</span>, <span class="string">&#x27;Tencent&#x27;</span>, <span class="string">&#x27;Baidu&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(sites)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 成员测试</span></span><br><span class="line"><span class="keyword">if</span> <span class="string">&#x27;Runoob&#x27;</span> <span class="keyword">in</span> sites:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Runoob 在集合中&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Runoob 不在集合中&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># set可以进行集合运算</span></span><br><span class="line">a = <span class="built_in">set</span>(<span class="string">&#x27;abracadabra&#x27;</span>)</span><br><span class="line">b = <span class="built_in">set</span>(<span class="string">&#x27;alacazam&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(a - b)  <span class="comment"># a 和 b 的差集  &#123;&#x27;r&#x27;, &#x27;b&#x27;, &#x27;d&#x27;&#125;</span></span><br><span class="line"><span class="built_in">print</span>(a | b)  <span class="comment"># a 和 b 的并集  &#123;&#x27;b&#x27;, &#x27;c&#x27;, &#x27;a&#x27;, &#x27;z&#x27;, &#x27;m&#x27;, &#x27;r&#x27;, &#x27;l&#x27;, &#x27;d&#x27;&#125;</span></span><br><span class="line"><span class="built_in">print</span>(a &amp; b)  <span class="comment"># a 和 b 的交集  &#123;&#x27;c&#x27;, &#x27;a&#x27;&#125;</span></span><br><span class="line"><span class="built_in">print</span>(a ^ b)  <span class="comment"># a 和 b 中不同时存在的元素  &#123;&#x27;z&#x27;, &#x27;b&#x27;, &#x27;m&#x27;, &#x27;r&#x27;, &#x27;l&#x27;, &#x27;d&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h4><p>字典是 Python 中另一个非常有用的内置数据类型。</p>
+<p>列表是<strong>有序</strong>的对象集合，字典是<strong>无序</strong>的对象集合。两者之间的区别在于: 字典当中的元素是通过键来存取的，而不是通过偏移存取。</p>
+<p>字典是一种映射类型，字典用 <code>&#123;&#125;</code> 标识，它是一个无序的 <strong>键(key) : 值(value)</strong> 的集合。</p>
+<p>键(key) 必须使用不可变类型。</p>
+<p>在同一个字典中，键(key)必须是唯一的。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">dict</span> = &#123;&#125;</span><br><span class="line"><span class="built_in">dict</span>[<span class="string">&#x27;one&#x27;</span>] = <span class="string">&quot;1 - 啦啦啦&quot;</span></span><br><span class="line"><span class="built_in">dict</span>[<span class="number">2</span>] = <span class="string">&quot;2 - 啦啦啦&quot;</span></span><br><span class="line"></span><br><span class="line">tinydict = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;code&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;site&#x27;</span>: <span class="string">&#x27;www.raintwo.wang&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">dict</span>[<span class="string">&#x27;one&#x27;</span>])       <span class="comment"># 输出键为 &#x27;one&#x27; 的值</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">dict</span>[<span class="number">2</span>])           <span class="comment"># 输出键为 2 的值</span></span><br><span class="line"><span class="built_in">print</span>(tinydict)          <span class="comment"># 输出完整的字典</span></span><br><span class="line"><span class="built_in">print</span>(tinydict.keys())   <span class="comment"># 输出所有键</span></span><br><span class="line"><span class="built_in">print</span>(tinydict.values()) <span class="comment"># 输出所有值</span></span><br></pre></td></tr></table></figure>
+
+<p>构造函数 <code>dict()</code> 可以直接从键值对序列中构建字典如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>([(<span class="string">&#x27;Runoob&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;Google&#x27;</span>, <span class="number">2</span>), (<span class="string">&#x27;Taobao&#x27;</span>, <span class="number">3</span>)])</span><br><span class="line">&#123;<span class="string">&#x27;Runoob&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Google&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Taobao&#x27;</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&#123;x: x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> (<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>)&#125;</span><br><span class="line">&#123;<span class="number">2</span>: <span class="number">4</span>, <span class="number">4</span>: <span class="number">16</span>, <span class="number">6</span>: <span class="number">36</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>(Runoob=<span class="number">1</span>, Google=<span class="number">2</span>, Taobao=<span class="number">3</span>)</span><br><span class="line">&#123;<span class="string">&#x27;Runoob&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Google&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Taobao&#x27;</span>: <span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另外，字典类型也有一些内置的函数，例如 clear()、keys()、values() 等。</p>
+<p>注意:</p>
+<ol>
+<li>字典是一种映射类型，它的元素是键值对。</li>
+<li>字典的关键字必须为不可变类型，且不能重复。</li>
+<li>创建空字典使用 <code>&#123;&#125;</code></li>
+</ol>
+<h4 id="Python数据类型转换"><a href="#Python数据类型转换" class="headerlink" title="Python数据类型转换"></a>Python数据类型转换</h4><p>有时候，我们需要对数据内置的类型进行转换，数据类型的转换，你只需要将数据类型作为函数名即可。</p>
 <table>
 <thead>
 <tr>
-<th align="center">字符</th>
-<th align="center">ASCII</th>
-<th align="center">Unicode</th>
-<th align="center">UTF-8</th>
+<th>函数</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">A</td>
-<td align="center">01000001</td>
-<td align="center">00000000 01000001</td>
-<td align="center">01000001</td>
+<td>int(x, [base])</td>
+<td>将 x 转换为一个整数</td>
 </tr>
 <tr>
-<td align="center">中</td>
-<td align="center">x</td>
-<td align="center">01001110 00101101</td>
-<td align="center">11100100 10111000 10101101</td>
+<td>float(x)</td>
+<td>将 x 转换到一个浮点数</td>
+</tr>
+<tr>
+<td>complex(real, [image])</td>
+<td>创建一个复数</td>
+</tr>
+<tr>
+<td>str(x)</td>
+<td>将对象 x 转换为字符串</td>
+</tr>
+<tr>
+<td>repr(x)</td>
+<td>将对象 x 转换为表达式字符串</td>
+</tr>
+<tr>
+<td>eval(str)</td>
+<td>用来计算在字符串中的有效Python表达式，并返回一个对象</td>
+</tr>
+<tr>
+<td>tuple(s)</td>
+<td>将序列 s 转换为一个元组</td>
+</tr>
+<tr>
+<td>list(s)</td>
+<td>将序列 s 转换为一个列表</td>
+</tr>
+<tr>
+<td>set(s)</td>
+<td>转换为可变集合</td>
+</tr>
+<tr>
+<td>dict(d)</td>
+<td>创建一个字典。d 必须是一个(key, value) 元组序列</td>
+</tr>
+<tr>
+<td>frozenset(s)</td>
+<td>转换为不可变集合</td>
+</tr>
+<tr>
+<td>chr(x)</td>
+<td>将一个整数转换为一个字符串</td>
+</tr>
+<tr>
+<td>ord(x)</td>
+<td>将一个字符转换为它的整数值</td>
+</tr>
+<tr>
+<td>hex(x)</td>
+<td>将一个整数转换为一个十六进制字符串</td>
+</tr>
+<tr>
+<td>oct(x)</td>
+<td>将一个整数转换为一个八进制字符串</td>
 </tr>
 </tbody></table>
-<p>默认情况下，Python3 的源码文件以 <em>UTF-8</em> 编码的，所有字符串都是 <em>unicode</em> 字符串。当然你也可以为源码文件指定不同的编码:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: cp-1252 -*-  </span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这里使用了 <em>Windows-1252</em> 字符集中的字符编码，对应适应语言是保加利亚语、白俄罗斯语、马其顿语、俄语及埃塞维亚语。</p>
-</blockquote>
-<h4 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h4><ul>
-<li>第一个字符必须是字母或下划线。</li>
-<li>标识符的其他部分由字母、数字和下划线组成</li>
-<li>标识符区分大小写</li>
-</ul>
-<p>在 Python 3中，可以用中文作为变量名，非 <em>ASCII</em> 标识符是允许的了。</p>
-<h4 id="Python-保留字"><a href="#Python-保留字" class="headerlink" title="Python 保留字"></a>Python 保留字</h4><p>即关键字，这里我们不能用作任何标识符的名称。可以通过 <code>keyword</code> 模块列出所有关键字。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; import keyword</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; keyword.kwlist</span></span><br><span class="line">[&#x27;False&#x27;, &#x27;None&#x27;, &#x27;True&#x27;, &#x27;__peg_parser__&#x27;, &#x27;and&#x27;, &#x27;as&#x27;, &#x27;assert&#x27;, &#x27;async&#x27;, &#x27;await&#x27;, &#x27;break&#x27;, &#x27;class&#x27;, &#x27;continue&#x27;, &#x27;def&#x27;, &#x27;del&#x27;, &#x27;elif&#x27;, &#x27;else&#x27;, &#x27;except&#x27;, &#x27;finally&#x27;, &#x27;for&#x27;, &#x27;from&#x27;, &#x27;global&#x27;, &#x27;if&#x27;, &#x27;import&#x27;, &#x27;in&#x27;, &#x27;is&#x27;, &#x27;lambda&#x27;, &#x27;nonlocal&#x27;, &#x27;not&#x27;, &#x27;or&#x27;, &#x27;pass&#x27;, &#x27;raise&#x27;, &#x27;return&#x27;, &#x27;try&#x27;, &#x27;while&#x27;, &#x27;with&#x27;, &#x27;yield&#x27;]</span><br></pre></td></tr></table></figure>
-
-<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p>Python 中单行注释以 <code>#</code> 开头，直到该物理行结束。注释可以在行开头，或空白符之后，但不能在字符串中。注释用于阐明代码，Python 不解释注释。即：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="comment"># 注释</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello, Python!&quot;</span>) <span class="comment"># 注释</span></span><br></pre></td></tr></table></figure>
-
-<p>多行注释可以用多个 <code>#</code> 号，还有 <code>&#39;&#39;&#39;</code> 和 <code>&quot;&quot;&quot;</code> 。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一个注释</span></span><br><span class="line"><span class="comment"># 第二个注释</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">第三个注释</span></span><br><span class="line"><span class="string">第四个注释</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">第五个注释</span></span><br><span class="line"><span class="string">第六个注释</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello, Python!&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="行与缩进"><a href="#行与缩进" class="headerlink" title="行与缩进"></a>行与缩进</h4><p>Python 最具特色的就是使用缩进来表示代码块，不需要使用大括号 <code>&#123;&#125;</code>。缩进没有规定是几个空格还是Tab，按照约定俗成的惯例，应该始终坚持使用 <strong>4个空格</strong> 的缩进。因为如果缩进的空格数不一致，会导致运行错误，故同一个代码块的语句必须包含相同的缩进空格数。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;True&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;False&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="多行语句"><a href="#多行语句" class="headerlink" title="多行语句"></a>多行语句</h4><p>Python 通常是一行写完一条语句，但如果语句很长，可以使用反斜杠( \ ) 来实现多行语句，例如:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">total = item_one + \</span><br><span class="line">        item_two + \</span><br><span class="line">        item_three</span><br></pre></td></tr></table></figure>
-
-<h4 id="数字-Number-类型"><a href="#数字-Number-类型" class="headerlink" title="数字(Number)类型"></a>数字(Number)类型</h4><p>Python 中数字有四种类型：整型、浮点型、布尔型、复数。</p>
-<ul>
-<li><strong>int (整数)</strong> 如1，只有一种整数类型 <em>int</em>，表示为长整型，没有 Python2 中的 <em>Long</em>。</li>
-<li><strong>bool (布尔值)</strong> 布尔值属于整数的子类型，与布尔代数的表示完全一致，一个布尔值只有 <code>True</code> 和 <code>False</code> 两种值，要么是 <code>True</code>，要么是 <code>False</code> .(<strong>请注意大小写</strong>) 布尔值可以用 <code>and</code> 、<code>or</code> 和 <code>not</code> 运算。<ul>
-<li><code>and</code> 运算是与运算，只有所有都为 <code>True</code>，<code>and</code> 运算结果才是 <code>True</code> 。</li>
-<li><code>or</code> 运算是或运算，只要其中有一个为 <code>True</code>，<code>or</code> 运算结果就是 <code>True</code>。</li>
-<li><code>not</code> 运算是非运算，它是一个单目运算符，把 <code>True</code> 变成 <code>False</code>，<code>False</code> 变成<code>True</code>。</li>
-</ul>
-</li>
-<li><strong>float (浮点数)</strong> 即小数。如1.23、2e-2(科学计数法，把10用e代替) 整数和浮点数在计算机内部存储的方式是不同的，整数运算永远是精确的，而浮点数运算则可能会有四舍五入的误差。</li>
-<li><strong>complex (复数)</strong> 复数包含实部和虚部，分别以一个浮点数表示，后缀 <code>j</code> 或 <code>J</code> 用于表示虚数。如 1 + 2j、1.1 +2.2j</li>
-</ul>
-<h4 id="字符串-String"><a href="#字符串-String" class="headerlink" title="字符串(String)"></a>字符串(String)</h4><p>除了数字，Python 还可以操作字符串。字符串有多种表现形式，用单引号(‘……’)或双引号(“……”) 标注的结果相同。反斜杠 <code>\</code> 用于转义。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&#x27;spam eggs&#x27;</span></span></span><br><span class="line">&#x27;spam eggs&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&#x27;doesn\&#x27;</span>t<span class="string">&#x27;</span></span></span><br><span class="line">&quot;doesn&#x27;t&quot;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&quot;doesn&#x27;t&quot;</span></span></span><br><span class="line">&quot;doesn&#x27;t&quot;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&#x27;&quot;Yes,&quot; they said.&#x27;</span></span></span><br><span class="line">&#x27;&quot;Yes,&quot; they said.&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&quot;\&quot;Yes,\&quot; they said.&quot;</span></span></span><br><span class="line">&#x27;&quot;Yes,&quot; they said.&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&#x27;&quot;Isn\&#x27;</span>t,<span class="string">&quot; they said.&#x27;</span></span></span><br><span class="line">&#x27;&quot;Isn\&#x27;t,&quot; they said.&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>在交互式解释器会为输出的字符串加注引号，特殊字符使用反斜杠转义。虽然，有时输出的字符串看起来与输入的字符串不一样(外加的引号可能会改变)，但两个字符串是相同的。如果字符串中有单引号而没有双引号，该字符串外将加注双引号，反之，则加注单引号。 <code>print()</code> 函数输出的内容更加简洁易读，它会省略两边的引号，并输出转义后的特殊字符：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&quot;\&quot;Yes,\&quot; they said.&quot;</span></span></span><br><span class="line">&#x27;&quot;Yes,&quot; they said.&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&#x27;&quot;Isn\&#x27;</span>t,<span class="string">&quot; they said.&#x27;</span></span></span><br><span class="line">&#x27;&quot;Isn\&#x27;t,&quot; they said.&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(<span class="string">&#x27;&quot;Isn\&#x27;</span>t,<span class="string">&quot;, they said.&#x27;)</span></span></span><br><span class="line">&quot;Isn&#x27;t,&quot;, they said.</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; s = <span class="string">&#x27;First line.\nSecond line.&#x27;</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; s</span></span><br><span class="line">&#x27;First line.\nSecond line.&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(s)</span></span><br><span class="line">First line.</span><br><span class="line">Second line.</span><br></pre></td></tr></table></figure>
-
-<p>如果不希望前置 <code>\</code> 的字符转义成特殊字符，可以使用原始字符串，在引号前添加 <code>r</code> 即可:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(<span class="string">&#x27;C:\some\name&#x27;</span>)</span></span><br><span class="line">C:\some</span><br><span class="line">ame</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(r<span class="string">&#x27;C:\some\name&#x27;</span>)</span></span><br><span class="line">C:\some\name</span><br></pre></td></tr></table></figure>
-
-<p>字符串字面值可以实现跨行连续输入。实现方式是用三引号：<code>&quot;&quot;&quot;...&quot;&quot;&quot;</code>  或 <code>&#39;&#39;&#39;...&#39;&#39;&#39;</code> ，字符串行尾会自动加上回车换行，如果不需要回车换行，在行尾添加 <code>\</code> 即可。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(<span class="string">&quot;&quot;</span><span class="string">&quot;\</span></span></span><br><span class="line"><span class="bash">... Usage: thingy [OPTIONS]</span></span><br><span class="line">...        -h                        Display this usage message</span><br><span class="line">...        -H hostname               Hostname to connect to</span><br><span class="line">... &quot;&quot;&quot;)</span><br><span class="line">Usage: thingy [OPTIONS]</span><br><span class="line">       -h                        Display this usage message</span><br><span class="line">       -H hostname               Hostname to connect to</span><br></pre></td></tr></table></figure>
-
-<p>字符串可以用 <code>+</code> 合并(粘到一起)，也可以用 <code>*</code> 重复:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 3 * <span class="string">&#x27;un&#x27;</span> + <span class="string">&#x27;ium&#x27;</span></span></span><br><span class="line">&#x27;unununium&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>相邻的两个或多个<em>字符串字面值</em> (引号标注的字符)会自动合并：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&#x27;Py&#x27;</span> <span class="string">&#x27;thon&#x27;</span></span></span><br><span class="line">&#x27;Python&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>拆分长字符串时，这个功能特别实用：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; text = (<span class="string">&#x27;Put serveral strings within parentheses &#x27;</span></span></span><br><span class="line">...         &#x27;to have them joined together.&#x27;)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; text</span></span><br><span class="line">&#x27;Put serveral strings within parentheses to have them joined together.&#x27;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这项功能只能用于两个字面值，不能用于变量或表达式。</p>
-</blockquote>
-<p>合并多个变量，或合并变量与字面值，要用 <code>+</code> ：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; prefix = <span class="string">&#x27;Py&#x27;</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; prefix + <span class="string">&#x27;thon&#x27;</span></span></span><br><span class="line">&#x27;Python&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>字符串支持 <em>索引</em> (下标访问)，第一个字符的索引是0。单字符没有专用的类型，就是长度为一的字符串：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word = <span class="string">&#x27;Python&#x27;</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[0]</span></span><br><span class="line">&#x27;P&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[5]</span></span><br><span class="line">&#x27;n&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>索引还支持负数，用负数索引时，从右边开始计数：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[-1]</span></span><br><span class="line">&#x27;n&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[-2]</span></span><br><span class="line">&#x27;o&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[-6]</span></span><br><span class="line">&#x27;P&#x27;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意，-0 和 0 一样，因此，负数索引从 -1开始。</p>
-</blockquote>
-<p>除了索引，字符串还支持 <em>切片</em>。索引可以提取单个字符，<em>切片</em> 则提取子字符串：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[0:2]</span></span><br><span class="line">&#x27;Py&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[2:5]</span></span><br><span class="line">&#x27;tho&#x27;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意，输出结果包含切片开始，但不包含切片结束。因此，<code>s[:i] + s[i:]</code> 总是等于 <code>s</code>：</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[:2] + word[2:]</span></span><br><span class="line">&#x27;Python&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[:4] + word[4:]</span></span><br><span class="line">&#x27;Python&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>切片索引的默认值很有用；省略开始索引时，默认值为0，省略结束索引时，默认为到字符串的结尾：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[:2]</span></span><br><span class="line">&#x27;Py&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[4:]</span></span><br><span class="line">&#x27;on&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[-2:]</span></span><br><span class="line">&#x27;on&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>还可以这样理解切片，索引指向的是字符之间，第一个字符的左侧标为0，最后一个字符的右侧标为 n, n 是字符串长度。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"> +---+---+---+---+---+---+</span><br><span class="line"> | P | y | t | h | o | n |</span><br><span class="line"> +---+---+---+---+---+---+</span><br><span class="line"> 0   1   2   3   4   5   6</span><br><span class="line">-6  -5  -4  -3  -2  -1</span><br></pre></td></tr></table></figure>
-
-<p>第一行数字是字符串中索引 0…6 的位置，第二行数字是对应的负数索引位置。i 到 j 的切片由 i 和 j 之间所有对应的字符组成。</p>
-<p>对于使用非负索引的切片，如果两个索引都不越界，切片长度就是起止索引之差。例如，<code>word[1:3]</code> 的长度是2。</p>
-<p>索引越界会报错，但是切片会自动处理越界索引：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[42]</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">IndexError: string index out of range</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[4:42]</span></span><br><span class="line">&#x27;on&#x27;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[42:]</span></span><br><span class="line">&#x27;&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>Python 字符串不能修改，是 <em>immutable</em>(不可变) 的。因此，为字符串中某个索引位置赋值会报错：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; word[0] = <span class="string">&#x27;J&#x27;</span></span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">TypeError: &#x27;str&#x27; object does not support item assignment</span><br></pre></td></tr></table></figure>
-
-<p>要生成不同的字符串，应新建一个字符串：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">&#x27;J&#x27;</span> + word[1:]</span></span><br><span class="line">&#x27;Jython&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>内置函数 <code>len()</code> 返回字符串的长度：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; s = <span class="string">&#x27;laaaaalalallalalalalalallalala&#x27;</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; len(s)</span></span><br><span class="line">30</span><br></pre></td></tr></table></figure>
-
-<h4 id="空行"><a href="#空行" class="headerlink" title="空行"></a>空行</h4><p>函数之间或类的方法之间用空行分隔，表示一段新的代码的开始。类和函数入口之间也用一行空行分隔，以突出函数入口的开始。</p>
-<p>空行与代码缩进不同，空行并不是 Python 语法的一部分。书写时不插入空行，Python解释器运行也不会出错。但是空行的作用在于分隔两段不同功能或含义的代码，便于日后代码的维护或重构。</p>
-<blockquote>
-<p>空行也是程序代码的一部分。</p>
-</blockquote>
-<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>Python提供了 <code>input()</code> 函数进行输入，并将之存放到一个变量里：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; name = input()</span></span><br><span class="line">RainTwo</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; name</span></span><br><span class="line">&#x27;RainTwo&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>可以在 <code>input()</code> 中添加字符串来进行提示:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; name = input(<span class="string">&#x27;请输入名字:&#x27;</span>)</span></span><br><span class="line">请输入名字:RainTwo</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; name</span></span><br><span class="line">&#x27;RainTwo&#x27;</span><br></pre></td></tr></table></figure>
-
-<h4 id="多个语句构成代码组"><a href="#多个语句构成代码组" class="headerlink" title="多个语句构成代码组"></a>多个语句构成代码组</h4><p>缩进相同的一组语句构成一个代码块，我们称之为代码组。</p>
-<p>像 <code>if</code>、<code>while</code>、<code>def</code> 和 <code>class</code>这样的复合语句，首行以关键字开始，以冒号(:)结束，该行之后的一行或多行代码构成代码组。</p>
-<p>我们将首行及后面的代码组称为一个子句(<em>clause</em>)。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="keyword">do</span> = True</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="keyword">if</span> <span class="keyword">do</span> :</span></span><br><span class="line">...     print(&quot;做了&quot;)</span><br><span class="line">... else:</span><br><span class="line">...     print(&quot;没做&quot;)</span><br><span class="line">...</span><br><span class="line">做了</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这里注意要缩进。</p>
-</blockquote>
-<h4 id="import-与-from…import"><a href="#import-与-from…import" class="headerlink" title="import 与 from…import"></a>import 与 from…import</h4><p>在 Python 中用 <code>import</code> 或者 <code>from...import</code> 来到如相应的模块。</p>
-<p>将整个模块(<em>somemodule</em>)导入，格式为：<code>import somemodule</code> </p>
-<p>从某个模块中导入某个函数，格式为：<code>from somemodule import somefunction</code></p>
-<p>从某个模块中导入多个函数，格式为：<code>from somemodule import firstfunc, secondfunc, thirdfunc</code></p>
-<p>将某个模块中的函数全部导入，格式为：<code>from somemodule import *</code></p>
-<p>将某个模块换个别名，格式为：<code>import flask as fl</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> argv, path</span><br></pre></td></tr></table></figure>
-
 ]]></content>
       <categories>
         <category>Python</category>
       </categories>
       <tags>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【System】Chapter1:计算机系统漫游</title>
+    <url>/2021/07/28/%E3%80%90System%E3%80%91Chapter1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%BC%AB%E6%B8%B8/</url>
+    <content><![CDATA[<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello, world\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-1-信息就是位-上下文"><a href="#1-1-信息就是位-上下文" class="headerlink" title="1.1 信息就是位 + 上下文"></a>1.1 信息就是位 + 上下文</h4><p><em>源程序</em>（<em>源文件</em>） <code>hello.c</code> 由值0 和 1 组成的<em>位</em>（<em>比特</em>）序列，8个位被组织成一组，称为<em>字节</em>。</p>
+<p>大部分现代计算机系统都使用 <em>ASCII</em> 标准来表示文本符号，即用一个唯一的单字节大小的整数值来表示每个字符。</p>
+<p>系统中所有的信息——包括磁盘文件、内存中的程序、内存中存放的用户数据以及网络上传送的数据，都是由一串比特表示的。区分不同数据对象的唯一方法是我们读到这些数据对象时的上下文。</p>
+<h4 id="1-2-程序被其他程序翻译成不同的格式"><a href="#1-2-程序被其他程序翻译成不同的格式" class="headerlink" title="1.2 程序被其他程序翻译成不同的格式"></a>1.2 程序被其他程序翻译成不同的格式</h4><p>Hello.c(源程序 文本) –&gt; 预处理器(cpp) –&gt; hello.i(修改了的源程序 文本) –&gt; 编译器(ccl) –&gt; hello.s(汇编程序 文本) –&gt; 汇编器(as) –&gt; hello.o(可重定位目标程序 二进制) –&gt; 链接器(ld) –&gt; hello(可执行目标程序 二进制)</p>
+<ul>
+<li><strong>预处理阶段</strong> <em>预处理器(cpp)</em> 根据以字符 <code>#</code> 开头的命令，修改原始的C程序。即将系统头文件的内容直接插入程序文本中。得到另一个C程序，通常是以 <code>.i</code> 作为文件扩展名。</li>
+<li><strong>编译阶段</strong> <em>编译器(ccl)</em> 将文本文件 hello.i 翻译器文本文件 hello.s，它包含一个<em>汇编语言程序</em>。汇编语言为不同高级语言的不同编译器提供了通用的输出语言。</li>
+<li><strong>汇编阶段</strong> <em>汇编器(as)</em> 将 hello.s 翻译成机器语言指令，把这些指令打包成一种叫做 <em>可重定位目标程序(relocatable object program)的格式</em>，并将结果保存在目标文件 hello.o中。hello.o文件是一个二进制文件，它包含的17个字节是函数main的指令编码。</li>
+<li><strong>链接阶段</strong> 在hello程序调用了printf函数，这个函数存在于一个名为printf.o 的单独的预编译好了的目标文件中，*链接器(ld)*负责将这个文件以某种方式合并到我们的hello.o程序中，得到hello文件，它是一个可执行目标文件(或者称为可执行文件)，可以被加载到内存中，由系统执行。</li>
+</ul>
+<h4 id="1-3-了解编译程序如何工作是大有益处的"><a href="#1-3-了解编译程序如何工作是大有益处的" class="headerlink" title="1.3 了解编译程序如何工作是大有益处的"></a>1.3 了解编译程序如何工作是大有益处的</h4><ul>
+<li><strong>优化程序性能</strong> 为了在C程序中做出好的编码选择，需要了解一些机器代码以及编译器将不同的C语句转化为机器代码的方式。</li>
+<li><strong>理解链接时出现的错误</strong></li>
+<li><strong>避免安全漏洞</strong> 缓冲区溢出</li>
+</ul>
+<h4 id="1-4-处理器读并解释存储在内存中的指令"><a href="#1-4-处理器读并解释存储在内存中的指令" class="headerlink" title="1.4 处理器读并解释存储在内存中的指令"></a>1.4 处理器读并解释存储在内存中的指令</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">linux&gt;</span><span class="bash"> ./hello</span></span><br><span class="line">hello, world</span><br><span class="line"><span class="meta">linux&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Shell 是一个命令行解释器，输出一个提示符，等待输入一个命令行，然后执行这个命令。如果该命令行的第一个单词不是一个内置的shell命令，那么shell就会假设这是一个可执行文件的名字，它将加载并运行这个文件。</p>
+<h5 id="1-4-1-系统的硬件组成"><a href="#1-4-1-系统的硬件组成" class="headerlink" title="1.4.1 系统的硬件组成"></a>1.4.1 系统的硬件组成</h5><ol>
+<li><p><strong>总线</strong> 贯穿整个系统的是一组电子管道，称作<em>总线</em>，它携带信息字节并负责在各个部件间传递。通常总线被设计成传送定长的字节块，也就是<em>字</em>(word)。字中的字节数(即字长)是一个基本的系统参数，各个系统中都不尽相同。</p>
+</li>
+<li><p><strong>I/O设备</strong> I/O(输入/输出)设备是系统与外部世界的联系通道。每个I/O设备都通过一个<em>控制器</em>或<em>适配器</em>与I/O总线相连。控制器和适配器之间的区别主要在于它们的封装方式。控制器I/O设备本身或者系统的主印制电路板(通常称作主板)上的芯片组。而适配器则是一块插在主板插槽上的卡。无论如何，它们的功能都是在I/O总线和I/O设备之间传递信息。</p>
+</li>
+<li><p><strong>主存</strong> 主存是一个临时存储设备，在处理器执行程序时，用来存放程序和程序处理的数据。从物理上来说，主存是由一组*动态随机存取存储器(DRAM)*芯片组成的。从逻辑上来说，存储器是一个线性的字节数组，每个字节都有其唯一的地址(数组索引)，这些地址是从零开始的。一般来说，组成程序的每条机器指令都由不同数量的字节构成。与C程序变量相对应的数据项的大小是根据类型变化的。</p>
+</li>
+<li><p><strong>处理器</strong> <em>中央处理单元(CPU)</em> ，简称处理器，是解释(或执行)存储在主存中指令的引擎。处理器的核心是一个大小为一个字的存储设备(或<em>寄存器</em>)，称为*程序计数器(PC)*。在任何时刻，PC都指向主存中的某条机器语言指令(即含有该条指令的地址)。</p>
+<p>从系统通电开始，直到系统断电，处理器一直在不断地执行程序计数器指向的指令，再更新程序计数器，使其指向下一条指令。处理器看上去是按照一个非常简单的指令执行模型来操作的，这个模型是由指令集架构决定的。处理器从程序计数器指向的内存处读取指令，解释指令中的位，执行该指令的简单操作，然后更新PC，使其指向下一条指令，而这条指令并不一定和在内存中刚刚执行的指令相邻。</p>
+<p>这类操作围绕着主存、*寄存器文件(register file)<em>和</em>算数/逻辑单元(ALU)*进行。寄存器文件是一个小的存储设备，由一些单个字长的寄存器组成，每个寄存器都有唯一的名字。ALU计算新的数据和地址值。</p>
+<ul>
+<li><strong>加载</strong>：从主存复制一个字节或者一个字到存储器，以覆盖寄存器原来的内容。</li>
+<li><strong>存储</strong>：从寄存器复制一个字节或者一个字到主存的某个位置，以覆盖这个位置上原来的内容。</li>
+<li><strong>操作</strong>：把两个寄存器的内容复制到ALU，ALU对这两个字做算术运算，并将结果存放到一个寄存器中，以覆盖该寄存器中原来的内容。</li>
+<li><strong>跳转</strong>：从指令本身中抽取一个字，并将这个字复制到程序计数器(PC)中，以覆盖PC中原来的值。</li>
+</ul>
+<p>我们将处理器的指令集架构和处理器的微体系结构区分开来：指令集架构描述的是每条机器代码指令的效果；而微体系结构描述的是处理器实际上是如何实现的。</p>
+</li>
+</ol>
+<h5 id="1-4-2-运行-hello-程序"><a href="#1-4-2-运行-hello-程序" class="headerlink" title="1.4.2 运行 hello 程序"></a>1.4.2 运行 hello 程序</h5><p>在shell程序输入字符串 <code>./hello</code> 后，shell程序将字符串逐一读入寄存器，再把它存放到内存中。然后利用<em>直接存储器存取(DMA)</em> 技术将hello目标文件中的代码和数据从磁盘复制到主存。一旦目标文件hello中的代码和数据被加载到主存，处理器就开始执行hello程序的main程序中的机器语言指令。这些指令将”hello,world\n” 字符串中的字节从主存复制到寄存器文件，再从寄存器文件中复制到显示设备，最终现实在屏幕上。</p>
+<h4 id="1-5-高速缓存至关重要"><a href="#1-5-高速缓存至关重要" class="headerlink" title="1.5 高速缓存至关重要"></a>1.5 高速缓存至关重要</h4><p>系统花费了大量的时间把信息从一个地方挪到另一个地方，因此，系统设计者的一个主要目标就是使这些复制操作尽可能快地完成。</p>
+<p>根据机械原理，较大的存储设备要比较小的存储设备运行得慢，而快速设备的造价远高于同类的低速设备。而这些年随着半导体技术的进步，这种处理器与主存之间的的差距还在持续增大。加快处理器的运行速度比加快主存的运行速度要容易和便宜得多。</p>
+<p>针对这种处理器与主存之间的差异，系统设计者采用更小更快的存储设备，称为*高速缓存存储器(cache memory,简称 cache 或高速缓存)<em>，作为暂时的集结区域，存放处理器近期可能会需要的信息。位于处理器芯片上的L1高速缓存的容量可以达到数万字节，访问速度几乎和访问寄存器文件一样快。一个容量为数十万到数百万字节的更大的L2高速缓存通过一条特殊的总线连接到处理器。进程访问L2的时间要比访问L1高速缓存的时间长5倍，但是这仍然比访问主存的时间快5～10倍。L1和L2高速缓存是用一种叫做</em>静态随机访问存储器(SRAM)*的硬件技术实现的。比较新的、处理能力更强大的系统甚至有三级高速缓存：L1、L2和L3。系统可以获得一个很大的存储器，同时访问速度也很快，原因是利用了高速缓存的局部性原理，即程序具有访问局部区域里的数据和代码的趋势。通过让高速缓存里存放可能经常访问的数据，大部分内存操作都能在快速的高速缓存中完成。</p>
+<p>这里得出的重要结论之一就是：意识到高速缓存存储器存在的应用程序猿能够利用高速缓存将程序的性能提高一个数量级。</p>
+<h4 id="1-6-存储设备形成层次结构"><a href="#1-6-存储设备形成层次结构" class="headerlink" title="1.6 存储设备形成层次结构"></a>1.6 存储设备形成层次结构</h4><p>在处理器和一个较大较慢的设备(例如主存)之间插入一个更小更快的存储设备(例如高速缓存)的想法已经成为一个普遍的观念。每个计算机系统中的存储设备都被组织成了一个<em>存储器层次结构</em>。在这个层次结构中，从上至下，设备的访问速度越来越慢、容量越来越大，并且每字节的造价也越来越便宜。寄存器文件在层次结构中位于最顶部，也就是第0级或标记为L0。三层高速缓存L1到L3，占据存储器层次结构的第1层到第3层。主存在第4层，以此类推。</p>
+<p>存储器层次结构的主要思想是上一层的存储器作为低一层存储器的高速缓存。正如可以运用不同的高速缓存的知识来提高程序性能一样，程序员同样可以利用对整个存储器层次结构的理解来提高程序性能。</p>
+<h4 id="1-7-操作系统管理硬件"><a href="#1-7-操作系统管理硬件" class="headerlink" title="1.7 操作系统管理硬件"></a>1.7 操作系统管理硬件</h4><p>我们可以把操作系统看成是应用程序和硬件之间插入的一层软件。所有应用程序对硬件的操作尝试都必须通过操作系统。操作系统有两个基本功能：(1)防止硬件被失控的应用程序滥用；(2)向应用程序提供简单一致的机制来控制复杂而又通常大不相同的低级硬件设备。操作系统通过几个基本的抽象概念(进程、虚拟内存和文件)来实现这两个功能。即文件是对I/O设备的抽象表示，虚拟内存是对主存和磁盘I/O设备的抽象表示，进程则是对处理器、主存和I/O设备的抽象表示。</p>
+<h5 id="1-7-1-进程"><a href="#1-7-1-进程" class="headerlink" title="1.7.1 进程"></a>1.7.1 进程</h5><p>进程是操作系统对一个正在运行的程序的一种抽象。在一个系统上可以同时运行多个进程，而每个进程都好像在独占地使用硬件。而并发运行，则是说一个进程的指令和另一个进程的指令是交错执行的。在大多数系统中，需要运行的进程数是多于可以运行它们的CPU个数的。传统系统在一个时刻只能执行一个程序，而先进的多核处理器同时能够执行多个程序。无论是在单核还是多核系统中，一个CPU看上去都像是在并发地执行个多进程，这是通过处理器在进程间切换来实现的。操作系统实现这种交错执行的机制称为上下文切换。</p>
+<p>操作系统保持跟踪进程运行所需的所有状态信息。这种状态，也就是<em>上下文</em>，包括许多信息，比如PC和寄存器文件的当前值，以及主存的内容。当操作系统决定要把控制权从当前进程转移到某个新进程时，就会进行<em>上下文切换</em>，即保存当前进程的上下文、恢复新进程的上下文，然后将控制权传递到新进程。新进程就会从它上次停止的地方开始。</p>
+<p>从一个进程到另一个进程的转换是由操作系统*内核(kernel)<em>管理的。内核是操作系统代码常驻主存的部分。当应用程序需要操作系统的某些操作时，比如读写文件，它就执行一条特殊的</em>系统调用(system call)*指令，将控制权传递给内核。然后内核执行被请求的操作并返回应用程序。注意，内核不是一个独立的进程。相反，它是系统管理全部进程所用代码和数据结构的集合。</p>
+<p>实现进程这个抽象概念需要低级硬件和操作系统软件之间的紧密合作。</p>
+<h5 id="1-7-2-线程"><a href="#1-7-2-线程" class="headerlink" title="1.7.2 线程"></a>1.7.2 线程</h5><p>在现代系统中，一个进程实际上可以由多个称为<em>线程</em>的执行单元组成，每个线程都运行在进程的上下文中，并共享同样的代码和全局数据。由于网络服务器中对并行处理的需要，线程存成为越来越重要的编程模型，因为多线程之间比多进程之间更容易共享数据，也因为线程一般来说都比进程更高效。当有多个处理器可用的时候，多线程也是一种使得程序可以运行得更快的方法。</p>
+<h5 id="1-7-3-虚拟内存"><a href="#1-7-3-虚拟内存" class="headerlink" title="1.7.3 虚拟内存"></a>1.7.3 虚拟内存</h5><p><em>虚拟内存</em>时一个抽象概念，它为每个进程提供了一个假象，即每个进程都在独占地使用主存。每个进程看到的内存都是一致的，称为<em>虚拟地址空间</em>。在Linux中，地址空间最上面的区域是保留给操作系统中的代码和数据的，这对所有进程来说都是一样。地址空间的底部区域存放用户进程定义的代码和数据。这里的地址是从下往上增大的。</p>
+<ul>
+<li><strong>程序代码和数据</strong> 对所有的进程来说，代码是从同一固定地址开始，紧接着的是和C全局变量相对应的数据位置。代码和数据区是直接按照可执行目标文件的内容初始化的，在示例中就是可执行文件hello。</li>
+<li><strong>堆</strong> 代码和数据区后紧随着的是运行时<em>堆</em>。代码和数据区在进程一开始运行时就被指定了大小，与此不同，当调用像 <code>malloc</code> 和 <code>free</code> 这样的 C 标准库函数时，堆可以在运行时动态地拓展和收缩。</li>
+<li><strong>栈</strong> 位于用户虚拟地址空间顶部的是<em>用户栈</em>，编译器用它来实现函数调用。和堆一样，用户栈在程序执行期间可以动态地拓展和收缩。特别地，每次我们调用一个函数时，栈就会增长；从一个函数返回时，栈就会收缩。</li>
+<li><strong>内核虚拟内存</strong> 地址空间顶部的区域是为了内核保留的。不允许应用程序读写这个区域的内容或者直接调用内核代码定义的函数。相反，它们必须调用内核来执行这些操作。</li>
+</ul>
+<p>虚拟内存的运作需要硬件和操作系统软件之间精密复杂的交互，包括对处理器生成的每个地址的硬件翻译。基本思想是把一个进程虚拟内存的内容存储在磁盘上，然后用主存作为磁盘的高速缓存。</p>
+<h4 id="1-7-4-文件"><a href="#1-7-4-文件" class="headerlink" title="1.7.4 文件"></a>1.7.4 文件</h4><p><em>文件</em>就是字节序列，仅此而已。每个I/O设备，包括磁盘、键盘、显示器，甚至网络，都可以看成文件。系统中的所有输入输出都是通过使用一小组称为 Unix I/O 的系统函数调用读写文件来实现的。</p>
+<p>文件这个简单而精致的概念是非常强大的，因为它向应用程序提供了一个统一的视图，来看待系统中可能含有的所有各式各样的I/O设备。</p>
+<h4 id="1-8-系统之间利用网络通信"><a href="#1-8-系统之间利用网络通信" class="headerlink" title="1.8 系统之间利用网络通信"></a>1.8 系统之间利用网络通信</h4><p>现在系统经常通过网络和其他系统连接到一起。从一个单独的系统来看，网络可视为一个I/O设备。随着Internet这样的全球网络的出现，从一台主机复制信息到另一台主机已经成为计算机系统最重要的用途之一。</p>
+<h4 id="1-9-重要主题"><a href="#1-9-重要主题" class="headerlink" title="1.9 重要主题"></a>1.9 重要主题</h4><p>系统不仅仅是硬件，系统是硬件和系统软件互相交织的集合体，它们必须共同协作以达到运行应用程序的最终目的。</p>
+<h5 id="1-9-1-Amadahl-定律"><a href="#1-9-1-Amadahl-定律" class="headerlink" title="1.9.1 Amadahl 定律"></a>1.9.1 Amadahl 定律</h5><p>Gene Amdahl，计算领域的早期先锋之一，对提升系统某一部分性能所带来的效果做出了简单却有见地的观察。这个观察被称为 *Amdahl定律(Amdahl’s law)*。该定律的主要思想是，当我们对系统的某个部分加速时，其对系统整体性能的影响取决于该部分的重要性和加速程度。即要想显著加速整个系统，必须提升全系统中相当大的部分的速度。</p>
+<h5 id="1-9-2-并发和并行"><a href="#1-9-2-并发和并行" class="headerlink" title="1.9.2 并发和并行"></a>1.9.2 并发和并行</h5><p>数字计算机的整个历史中，有两个需求是驱动进步的持续动力：一个是我们想要计算机做得更多，另一个是我们想要计算机运行得更快。当处理器能够同时做更多的事情时，这两个因素都会改进。我们用的术语<em>并发(concurrency)</em> 是一个通用的概念，指一个同时具有多个活动的系统；而术语*并行(parallelism)*指的是用并发来使一个系统运行得更快。并行可以在计算机系统的多个抽象层次上运用。</p>
+<ol>
+<li><p><strong>线程级并发</strong></p>
+<p>构建在进程这个抽象之上，我们能够设计出同时有多个程序执行的系统，这就导致了并发。使用线程，我们甚至能够在一个进程中执行多个控制流。在以前，这种并发执行只是模拟出来的，是通过一台计算机在它正在执行的进程间快速切换来实现的，这种并发形式允许多个用户同时与系统交互。当然即使处理器在多个任务间切换，大多数实际的计算也都是由一个处理器来完成的。这种配置称为<em>单处理器系统</em>。</p>
+<p>当构建一个由单操作系统内核控制的多处理器组成的系统时，我们就得到了一个<em>多处理器系统</em>。直到最近，锁着多核处理器和*超线程(hyperthreading)*的出现，这种系统才变得常见。</p>
+<p>多核处理器是将多个CPU(称为”核”)集成到一个集成电路芯片上。</p>
+<p>超线程，有时称为*同时多线程(simultaneous multi-threading)*，是一项允许一个CPU执行多个控制流的技术。它涉及CPU某些硬件有多个备份，比如程序计数器和寄存器文件，而其他的硬件部分只有一份，比如执行浮点算数运算单元。常规的处理器需要大约20000个时钟周期做不同线程间的转换，而超线程的处理器可以在单个周期的基础上决定要执行哪一个线程。这使得CPU能够更好地利用它的处理资源。比如，假设一个线程必须等到某些数据被装载到高速缓存中，那CPU就可以继续去执行另外的线程。</p>
+<p>多处理器的使用可以从两个方面提高系统性能。首先，它减少了在执行多个任务时模拟并发的需要。其次，它可以使应用程序运行得更快，当然，这必须要求程序是以多线程的方式来书写的，这些线程可以并行地高效执行。因此，虽然并发原理的形成和研究已经超过50年的时间了，但是多核和超线程系统的出现才极大地激发了一种愿望，即找到书写应用程序的方法利用硬件开发线程级并行性。</p>
+</li>
+<li><p><strong>指令级并行</strong></p>
+<p>在较低的抽象层次上，现代处理器可以同时执行多条指令的属性称为指令级并行。最近的处理器可以保持每个时钟周期2～4条指令的执行速率。其实每条指令从开始到结束需要长得多的时间，大约20个或者更多周期，但是处理器使用了非常多的聪明技巧来同时处理多达100条指令。在*流水线(pipelining)*中，将执行一条指令所需要的活动划分成不同的步骤，将处理器的硬件组成一系列的阶段，每个阶段执行一个步骤。这些阶段可以并行地操作，用来处理不同指令的不同部分。</p>
+<p>如果处理器可以达到比一个周期一条指令更快的执行速率，就称之为*超标量(super-scalar)*处理器。大多数现代处理器都支持超标量操作。</p>
+</li>
+<li><p><strong>单指令、多数据并行</strong></p>
+<p>在最低层次上，许多现代处理器拥有特殊的硬件，允许一条指令产生多个可以并行执行的操作，这种方式称为<em>单指令</em>、<em>多数据</em>，即SIMD并行。</p>
+<p>提供这些SIMD指令多是为了提高处理影像、声音和视频数据应用的执行速度。虽然有些编译器会试图从C程序中自动抽取SIMD并行性，但是更可靠的方法是用编译器支持的特殊的向量数据类型来写程序，比如GCC就支持向量数据类型。</p>
+</li>
+</ol>
+<h5 id="1-9-3-计算机系统中抽象的重要性"><a href="#1-9-3-计算机系统中抽象的重要性" class="headerlink" title="1.9.3 计算机系统中抽象的重要性"></a>1.9.3 计算机系统中抽象的重要性</h5><p><em>抽象</em>的使用是计算机科学中最重要的概念之一。文件是对I/O设备的抽象，虚拟内存是对程序存储器的抽象，进程是对一个正在运行的程序的抽象。<em>虚拟机</em>，提供对整个计算机的抽象，包括操作系统、处理器和程序。虚拟机的思想是IBM在20世纪60年代提出来的，但是最近才显示出其管理计算机方式上的优势，因为一些计算机必须能够运行为不同的操作系统或同一操作系统的不同版本设计的程序。</p>
+<h4 id="1-10-小结"><a href="#1-10-小结" class="headerlink" title="1.10 小结"></a>1.10 小结</h4><p>计算机系统是由硬件和系统软件组成的，它们共同协作以运行应用程序。计算机内部的信息被表示为一组组的位，它们依据上下文有不同的解释方式。程序被其他程序翻译成不同的形式，开始时是ACSII文本，然后被编译器和链接器翻译成二进制可执行文件。</p>
+<p>处理器读取并解释存放在主存里的二进制指令。因为计算机花费了大量的时间在内存、I/O设备和CPU寄存器之间复制数据，所以将系统中的存储设备划分成层次结构——CPU寄存器在顶部，接着是多层的硬件高速缓存存储器、DRAM主存和磁盘存储器。在层次模型中，位于更高层的存储设备比底层的存储设备要更快，单位比特造价也更高。层次结构中较高层次的存储设备可以作为较低层次设备的高速缓存。通过理解和运用这种存储层次的知识，程序员可以优化C程序的性能。</p>
+<p>操作系统内核是应用程序和硬件之间的媒介。它提供三个基本的抽象：1）文件是对I/O设备的抽象；2）虚拟内存是对主存和磁盘的抽象；3）进程是处理器、主存和I/O设备的抽象。</p>
+<p>最后，网络提供了计算机系统之间通信的手段。从特殊系统的角度来看，网络就是一种I/O设备。</p>
+]]></content>
+      <categories>
+        <category>System</category>
+      </categories>
+      <tags>
+        <tag>System</tag>
       </tags>
   </entry>
 </search>

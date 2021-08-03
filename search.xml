@@ -505,6 +505,227 @@
       </tags>
   </entry>
   <entry>
+    <title>【Python】Chapter5:Number</title>
+    <url>/2021/04/21/%E3%80%90Python%E3%80%91Chapter5-Number/</url>
+    <content><![CDATA[<p>Python 数字数据类型用于存储数值，数据类型是不允许改变的，这就意味着如果改变数字数据类型的值，将会重新分配内存空间。</p>
+<p>Python 支持三种不同的数值类型：</p>
+<ul>
+<li><strong>整型(Int)</strong> 通常被称为是整型或整数，是正或负整数，不带小数点。Python3 整型是没有大小限制的，可以当作 Long 类型使用，所以 Python3没有 Python2 的 Long 类型。</li>
+<li><strong>浮点型(float)</strong> 浮点型由整数部分与小数部分组成，浮点型也可以使用科学计数法表示$(2.5e2 = 2.5 * 10^{2}= 250)$</li>
+<li><strong>复数(complex)</strong> 复数由实数部分和虚数部分构成，可以用 <em>a + bj</em>，或者 <code>complex(a,b)</code> 表示，复数的实部a 和虚部 b 都是浮点型。</li>
+</ul>
+<span id="more"></span>
+
+<h4 id="数字类型转换"><a href="#数字类型转换" class="headerlink" title="数字类型转换"></a>数字类型转换</h4><p>有时候，我们需要对数据内置对类型进行转换，数据类型的转换，你只需要将数据类型作为函数名即可。</p>
+<ul>
+<li><strong>int(x)</strong> 将 x  转换为一个整数</li>
+<li><strong>float(x)</strong> 将 x 转换到一个浮点数</li>
+<li><strong>complex(x)</strong> 将 x 转换到一个复数，实数部分为 x ，虚数部分为0</li>
+<li><strong>complex(x, y)</strong> 将x 和 y 转换到一个复数，实数部分为 x，虚数部分为 y。x 和 x 是数字表达式</li>
+</ul>
+<h4 id="数字运算"><a href="#数字运算" class="headerlink" title="数字运算"></a>数字运算</h4><p>Python 解释器可以作为一个简单的计算器，您可以在解释器里输入一个表达式，它将输出表达式的值。</p>
+<p>表达式的语法很直白：<code>+</code> , <code>-</code> , <code>*</code> , <code>/</code>  和其他语言(如 Pascal 或 C )里一样。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 + 2</span></span><br><span class="line">4</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 50 - 5 * 6</span></span><br><span class="line">20</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; (50 - 5 * 6) / 4</span></span><br><span class="line">5.0</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 8 / 5</span></span><br><span class="line">1.6</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：在不同的机器上浮点运算的结果可能会不一样</p>
+</blockquote>
+<p>在整数除法中，除法 <code>/</code> 总是返回一个浮点数，如果只想得到整数的结果，丢弃可能的分数部分，可以使用运算符 <code>//</code>  :</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 17 / 3</span></span><br><span class="line">5.666666666666667</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 17 // 3</span></span><br><span class="line">5</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 17 % 3</span></span><br><span class="line">2</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 5 * 3 + 2</span></span><br><span class="line">17</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：<code>//</code> 得到的并不一定是整数类型的数，它与分母分子的数据类型有关系</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 7 // 2</span></span><br><span class="line">3</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 7.0 // 2</span></span><br><span class="line">3.0</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 7 // 2.0</span></span><br><span class="line">3.0</span><br></pre></td></tr></table></figure>
+
+<p>等号 <code>=</code> 用于给变量赋值。赋值之后，除了下一个提示符，解释器不会显示任何结果。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; width = 20</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; height = 5 * 9</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; width * height</span></span><br><span class="line">900</span><br></pre></td></tr></table></figure>
+
+<p>Python 可以使用 ** 操作来进行幂运算:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 5 ** 2  <span class="comment">#  5 的平方</span></span></span><br><span class="line">25</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 ** 7  <span class="comment">#  2 的7次方</span></span></span><br><span class="line">128</span><br></pre></td></tr></table></figure>
+
+<p>变量在使用前必须先”定义”(即赋予变量一个值)，否则会出现错误:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; n</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">NameError: name &#x27;n&#x27; is not defined</span><br></pre></td></tr></table></figure>
+
+<p>不同类型的数混合运算时会将整数转换为浮点数：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 3 * 3.75 / 1.5</span></span><br><span class="line">7.5</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 7.0 / 2</span></span><br><span class="line">3.5</span><br></pre></td></tr></table></figure>
+
+<p>在交互模式中，最后被输出的表达式结果被赋值给变量 <code>_</code> 。例如：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; tax = 12.5 / 100</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; price = 100.50</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; price * tax</span></span><br><span class="line">12.5625</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; price + _</span></span><br><span class="line">113.0625</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; round(_, 2)</span></span><br><span class="line">113.06</span><br></pre></td></tr></table></figure>
+
+<p>此处，_ 变量应被用户视为只读变量</p>
+<h4 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h4><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>返回值(描述)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abs(x)</td>
+<td>返回数字的绝对值，如 <code>abs(-10)</code> 返回 10</td>
+</tr>
+<tr>
+<td>ceil(x)</td>
+<td>返回数字的上入整数，如 <code>math.ceil(4.1)</code> 返回 5</td>
+</tr>
+<tr>
+<td>(x&gt;y)-(x&lt;y)</td>
+<td>如果 x &lt; y 返回 -1，如果 x==y 返回0，如果 x &gt; y 返回1。</td>
+</tr>
+<tr>
+<td>exp(x)</td>
+<td>返回 e 的 x 次幂($e^{x}$)，如 <code>math.exp(1)</code> 返回 2.718281828459045</td>
+</tr>
+<tr>
+<td>fabs(x)</td>
+<td>返回数字的绝对值，如 <code>math.fabs(-10)</code> 返回 10.0</td>
+</tr>
+<tr>
+<td>floor(x)</td>
+<td>返回数字的下舍整数，如 <code>math.floor(4.9)</code> 返回 4</td>
+</tr>
+<tr>
+<td>log(x)</td>
+<td>如 <code>math.log(math.e)</code> 返回1.0，<code>math.log(100, 10</code>) 返回 2.0</td>
+</tr>
+<tr>
+<td>log10(x)</td>
+<td>返回以 10 为基数的 x 的对数，如 <code>math.log10(100)</code> 返回2.0</td>
+</tr>
+<tr>
+<td>max(x1, x2, …)</td>
+<td>返回给定参数的最大值，参数可以为序列</td>
+</tr>
+<tr>
+<td>min(x1, x2, …)</td>
+<td>返回给定参数的最小值，参数可以为序列</td>
+</tr>
+<tr>
+<td>modf(x)</td>
+<td>返回x 的整数部分与小数部分，两部分的数值符号与 x 相同，整数部分以浮点型表示</td>
+</tr>
+<tr>
+<td>pow(x, y)</td>
+<td><code>x**y</code> 运算后的值</td>
+</tr>
+<tr>
+<td>round(x [,n])</td>
+<td>返回浮点数 x 的四舍五入值，如给出 n 值，则代表舍入到小数点后到位数。其实准确的说是保留值将保留到离上一位更近的一端。</td>
+</tr>
+<tr>
+<td>sqrt(x)</td>
+<td>返回数字 x 的平方根</td>
+</tr>
+</tbody></table>
+<h4 id="随机数函数"><a href="#随机数函数" class="headerlink" title="随机数函数"></a>随机数函数</h4><p>随机数可以用于数学，游戏，安全等领域中，还经常被嵌入到算法中，用以提高算法效率，并提高程序等安全性。</p>
+<p>Python 包含以下常用随机数函数：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>choice(seq)</td>
+<td>从序列的元素中随机挑选一个元素，比如 <code>random.choice(range(10))</code>，从0 到9中随机挑选一个整数</td>
+</tr>
+<tr>
+<td>randrange([start,] stop [,step])</td>
+<td>从指定范围内，按指定基数递增的集合中获取一个随机数，基数默认值为1</td>
+</tr>
+<tr>
+<td>random()</td>
+<td>随机生成下一个实数，它在 [0, 1) 范围内</td>
+</tr>
+<tr>
+<td>seed([x])</td>
+<td>改变随机数生成器的种子 seed。如果你不了解其原理，不必特别去设定seed，Python 会帮你选择 seed.</td>
+</tr>
+<tr>
+<td>shuffle(list)</td>
+<td>将序列的所有元素随机排序</td>
+</tr>
+<tr>
+<td>uniform(x, y)</td>
+<td>随机生成下一个实数，它在[x, y] 范围内</td>
+</tr>
+</tbody></table>
+<h4 id="三角函数"><a href="#三角函数" class="headerlink" title="三角函数"></a>三角函数</h4><p>Python 包含以下三角函数:</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>acos(x)</td>
+<td>返回 x 的反余弦弧度值</td>
+</tr>
+<tr>
+<td>asin(x)</td>
+<td>返回 x 的反正弦弧度值</td>
+</tr>
+<tr>
+<td>atan(x)</td>
+<td>返回 x 的反正切弧度值</td>
+</tr>
+<tr>
+<td>atan2(y, x)</td>
+<td>返回给定的 X 及 Y 坐标值的反正切值</td>
+</tr>
+<tr>
+<td>cos(x)</td>
+<td>返回 x 弧度的余弦值</td>
+</tr>
+<tr>
+<td>hypot(x, y)</td>
+<td>返回欧几里得范数 <code>sqrt(x * x + y * y)</code></td>
+</tr>
+<tr>
+<td>sin(x)</td>
+<td>返回 x 弧度的正弦值</td>
+</tr>
+<tr>
+<td>tan(x)</td>
+<td>返回 x 弧度的正切值</td>
+</tr>
+<tr>
+<td>degrees(x)</td>
+<td>将弧度转换为角度，如 <code>degrees(math.pi/2)</code>，返回90.0</td>
+</tr>
+<tr>
+<td>radians(x)</td>
+<td>将角度转换为弧度</td>
+</tr>
+</tbody></table>
+<h4 id="数字常量"><a href="#数字常量" class="headerlink" title="数字常量"></a>数字常量</h4><table>
+<thead>
+<tr>
+<th>常量</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pi</td>
+<td>数字常量pi(圆周率，一般以π来表示)</td>
+</tr>
+<tr>
+<td>e</td>
+<td>数学常量 e，e即自然常数</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【Python】Chapter4:运算符</title>
     <url>/2021/04/20/%E3%80%90Python%E3%80%91Chapter4-%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
     <content><![CDATA[<p>运算符用于执行程序代码运算，会针对一个以上操作数项目来进行运算。例如 <code>4 + 5 = 9</code> 中 4 和 5 被称为<strong>操作数</strong> ， <code>+</code> 被称为<strong>运算符</strong>。</p>
@@ -831,227 +1052,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【Python】Chapter5:Number</title>
-    <url>/2021/04/21/%E3%80%90Python%E3%80%91Chapter5-Number/</url>
-    <content><![CDATA[<p>Python 数字数据类型用于存储数值，数据类型是不允许改变的，这就意味着如果改变数字数据类型的值，将会重新分配内存空间。</p>
-<p>Python 支持三种不同的数值类型：</p>
-<ul>
-<li><strong>整型(Int)</strong> 通常被称为是整型或整数，是正或负整数，不带小数点。Python3 整型是没有大小限制的，可以当作 Long 类型使用，所以 Python3没有 Python2 的 Long 类型。</li>
-<li><strong>浮点型(float)</strong> 浮点型由整数部分与小数部分组成，浮点型也可以使用科学计数法表示$(2.5e2 = 2.5 * 10^{2}= 250)$</li>
-<li><strong>复数(complex)</strong> 复数由实数部分和虚数部分构成，可以用 <em>a + bj</em>，或者 <code>complex(a,b)</code> 表示，复数的实部a 和虚部 b 都是浮点型。</li>
-</ul>
-<span id="more"></span>
-
-<h4 id="数字类型转换"><a href="#数字类型转换" class="headerlink" title="数字类型转换"></a>数字类型转换</h4><p>有时候，我们需要对数据内置对类型进行转换，数据类型的转换，你只需要将数据类型作为函数名即可。</p>
-<ul>
-<li><strong>int(x)</strong> 将 x  转换为一个整数</li>
-<li><strong>float(x)</strong> 将 x 转换到一个浮点数</li>
-<li><strong>complex(x)</strong> 将 x 转换到一个复数，实数部分为 x ，虚数部分为0</li>
-<li><strong>complex(x, y)</strong> 将x 和 y 转换到一个复数，实数部分为 x，虚数部分为 y。x 和 x 是数字表达式</li>
-</ul>
-<h4 id="数字运算"><a href="#数字运算" class="headerlink" title="数字运算"></a>数字运算</h4><p>Python 解释器可以作为一个简单的计算器，您可以在解释器里输入一个表达式，它将输出表达式的值。</p>
-<p>表达式的语法很直白：<code>+</code> , <code>-</code> , <code>*</code> , <code>/</code>  和其他语言(如 Pascal 或 C )里一样。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 + 2</span></span><br><span class="line">4</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 50 - 5 * 6</span></span><br><span class="line">20</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; (50 - 5 * 6) / 4</span></span><br><span class="line">5.0</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 8 / 5</span></span><br><span class="line">1.6</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：在不同的机器上浮点运算的结果可能会不一样</p>
-</blockquote>
-<p>在整数除法中，除法 <code>/</code> 总是返回一个浮点数，如果只想得到整数的结果，丢弃可能的分数部分，可以使用运算符 <code>//</code>  :</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 17 / 3</span></span><br><span class="line">5.666666666666667</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 17 // 3</span></span><br><span class="line">5</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 17 % 3</span></span><br><span class="line">2</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 5 * 3 + 2</span></span><br><span class="line">17</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：<code>//</code> 得到的并不一定是整数类型的数，它与分母分子的数据类型有关系</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 7 // 2</span></span><br><span class="line">3</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 7.0 // 2</span></span><br><span class="line">3.0</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 7 // 2.0</span></span><br><span class="line">3.0</span><br></pre></td></tr></table></figure>
-
-<p>等号 <code>=</code> 用于给变量赋值。赋值之后，除了下一个提示符，解释器不会显示任何结果。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; width = 20</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; height = 5 * 9</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; width * height</span></span><br><span class="line">900</span><br></pre></td></tr></table></figure>
-
-<p>Python 可以使用 ** 操作来进行幂运算:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 5 ** 2  <span class="comment">#  5 的平方</span></span></span><br><span class="line">25</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 2 ** 7  <span class="comment">#  2 的7次方</span></span></span><br><span class="line">128</span><br></pre></td></tr></table></figure>
-
-<p>变量在使用前必须先”定义”(即赋予变量一个值)，否则会出现错误:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; n</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">NameError: name &#x27;n&#x27; is not defined</span><br></pre></td></tr></table></figure>
-
-<p>不同类型的数混合运算时会将整数转换为浮点数：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 3 * 3.75 / 1.5</span></span><br><span class="line">7.5</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 7.0 / 2</span></span><br><span class="line">3.5</span><br></pre></td></tr></table></figure>
-
-<p>在交互模式中，最后被输出的表达式结果被赋值给变量 <code>_</code> 。例如：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; tax = 12.5 / 100</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; price = 100.50</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; price * tax</span></span><br><span class="line">12.5625</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; price + _</span></span><br><span class="line">113.0625</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; round(_, 2)</span></span><br><span class="line">113.06</span><br></pre></td></tr></table></figure>
-
-<p>此处，_ 变量应被用户视为只读变量</p>
-<h4 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h4><table>
-<thead>
-<tr>
-<th>函数</th>
-<th>返回值(描述)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>abs(x)</td>
-<td>返回数字的绝对值，如 <code>abs(-10)</code> 返回 10</td>
-</tr>
-<tr>
-<td>ceil(x)</td>
-<td>返回数字的上入整数，如 <code>math.ceil(4.1)</code> 返回 5</td>
-</tr>
-<tr>
-<td>(x&gt;y)-(x&lt;y)</td>
-<td>如果 x &lt; y 返回 -1，如果 x==y 返回0，如果 x &gt; y 返回1。</td>
-</tr>
-<tr>
-<td>exp(x)</td>
-<td>返回 e 的 x 次幂($e^{x}$)，如 <code>math.exp(1)</code> 返回 2.718281828459045</td>
-</tr>
-<tr>
-<td>fabs(x)</td>
-<td>返回数字的绝对值，如 <code>math.fabs(-10)</code> 返回 10.0</td>
-</tr>
-<tr>
-<td>floor(x)</td>
-<td>返回数字的下舍整数，如 <code>math.floor(4.9)</code> 返回 4</td>
-</tr>
-<tr>
-<td>log(x)</td>
-<td>如 <code>math.log(math.e)</code> 返回1.0，<code>math.log(100, 10</code>) 返回 2.0</td>
-</tr>
-<tr>
-<td>log10(x)</td>
-<td>返回以 10 为基数的 x 的对数，如 <code>math.log10(100)</code> 返回2.0</td>
-</tr>
-<tr>
-<td>max(x1, x2, …)</td>
-<td>返回给定参数的最大值，参数可以为序列</td>
-</tr>
-<tr>
-<td>min(x1, x2, …)</td>
-<td>返回给定参数的最小值，参数可以为序列</td>
-</tr>
-<tr>
-<td>modf(x)</td>
-<td>返回x 的整数部分与小数部分，两部分的数值符号与 x 相同，整数部分以浮点型表示</td>
-</tr>
-<tr>
-<td>pow(x, y)</td>
-<td><code>x**y</code> 运算后的值</td>
-</tr>
-<tr>
-<td>round(x [,n])</td>
-<td>返回浮点数 x 的四舍五入值，如给出 n 值，则代表舍入到小数点后到位数。其实准确的说是保留值将保留到离上一位更近的一端。</td>
-</tr>
-<tr>
-<td>sqrt(x)</td>
-<td>返回数字 x 的平方根</td>
-</tr>
-</tbody></table>
-<h4 id="随机数函数"><a href="#随机数函数" class="headerlink" title="随机数函数"></a>随机数函数</h4><p>随机数可以用于数学，游戏，安全等领域中，还经常被嵌入到算法中，用以提高算法效率，并提高程序等安全性。</p>
-<p>Python 包含以下常用随机数函数：</p>
-<table>
-<thead>
-<tr>
-<th>函数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>choice(seq)</td>
-<td>从序列的元素中随机挑选一个元素，比如 <code>random.choice(range(10))</code>，从0 到9中随机挑选一个整数</td>
-</tr>
-<tr>
-<td>randrange([start,] stop [,step])</td>
-<td>从指定范围内，按指定基数递增的集合中获取一个随机数，基数默认值为1</td>
-</tr>
-<tr>
-<td>random()</td>
-<td>随机生成下一个实数，它在 [0, 1) 范围内</td>
-</tr>
-<tr>
-<td>seed([x])</td>
-<td>改变随机数生成器的种子 seed。如果你不了解其原理，不必特别去设定seed，Python 会帮你选择 seed.</td>
-</tr>
-<tr>
-<td>shuffle(list)</td>
-<td>将序列的所有元素随机排序</td>
-</tr>
-<tr>
-<td>uniform(x, y)</td>
-<td>随机生成下一个实数，它在[x, y] 范围内</td>
-</tr>
-</tbody></table>
-<h4 id="三角函数"><a href="#三角函数" class="headerlink" title="三角函数"></a>三角函数</h4><p>Python 包含以下三角函数:</p>
-<table>
-<thead>
-<tr>
-<th>函数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>acos(x)</td>
-<td>返回 x 的反余弦弧度值</td>
-</tr>
-<tr>
-<td>asin(x)</td>
-<td>返回 x 的反正弦弧度值</td>
-</tr>
-<tr>
-<td>atan(x)</td>
-<td>返回 x 的反正切弧度值</td>
-</tr>
-<tr>
-<td>atan2(y, x)</td>
-<td>返回给定的 X 及 Y 坐标值的反正切值</td>
-</tr>
-<tr>
-<td>cos(x)</td>
-<td>返回 x 弧度的余弦值</td>
-</tr>
-<tr>
-<td>hypot(x, y)</td>
-<td>返回欧几里得范数 <code>sqrt(x * x + y * y)</code></td>
-</tr>
-<tr>
-<td>sin(x)</td>
-<td>返回 x 弧度的正弦值</td>
-</tr>
-<tr>
-<td>tan(x)</td>
-<td>返回 x 弧度的正切值</td>
-</tr>
-<tr>
-<td>degrees(x)</td>
-<td>将弧度转换为角度，如 <code>degrees(math.pi/2)</code>，返回90.0</td>
-</tr>
-<tr>
-<td>radians(x)</td>
-<td>将角度转换为弧度</td>
-</tr>
-</tbody></table>
-<h4 id="数字常量"><a href="#数字常量" class="headerlink" title="数字常量"></a>数字常量</h4><table>
-<thead>
-<tr>
-<th>常量</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>pi</td>
-<td>数字常量pi(圆周率，一般以π来表示)</td>
-</tr>
-<tr>
-<td>e</td>
-<td>数学常量 e，e即自然常数</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【Python】Chapter6:String</title>
     <url>/2021/04/26/%E3%80%90Python%E3%80%91Chapter6-String/</url>
     <content><![CDATA[<p>字符串是 Python 中最常用的数据类型。我们可以使用引号( ‘ 或 “ ) 来创建字符串。</p>
@@ -1098,8 +1098,25 @@
 </blockquote>
 <h5 id="2-1-2-字数据大小"><a href="#2-1-2-字数据大小" class="headerlink" title="2.1.2 字数据大小"></a>2.1.2 字数据大小</h5><p>每台计算机都有一个<em>字长</em>（word size），指明指针数据的<em>标称大小</em>（normal size）。因为虚拟地址是以这样的一个字来编码的，所以字长决定的最重要的系统参数就是虚拟地址空间的最大大小。也就是说，对于一个字长位 w 位的机器而言，虚拟地址的范围为 0 ~ $2^w -1$，程序最多访问$2^w$个字节。</p>
 <p>最近这些年，出现了大规模的从32位字长机器到64位字长机器到迁移。这种情况首先出现在为大型科学和数据库应用设计的高端机器上，之后是台式机和笔记本电脑，最近则出现在智能手机的处理器上。32位字长限制虚拟地址空间为4千兆字节（写作4GB），也就是说，刚刚超过$4 \times 10^9$字节。扩展到64位字长使得虚拟地址空间为16EB，大约是$1.84 \times 10^{19}$​字节。</p>
-<p>大多数64位机器也可以运行32位机器编译的程序，这是一种向后兼容。</p>
-]]></content>
+<p>大多数64位机器也可以运行32位机器编译的程序，这是一种向后兼容。我们将程序称为“32位程序”或“64位程序”时，区别在于该程序时如何编译的，而不是其运行的机器类型。</p>
+<p>计算机和编译器支持多种不同方式编码的数字格式，如不同长度的整数和浮点数。比如，许多机器都有处理单个字节的指令，也有处理表示为2字节、4字节或者8字节整数的指令，还有些指令支持表示为4字节和8字节的浮点数。</p>
+<p>C语言支持整数和浮点数的多种数据格式。有些数据类型的确切字节数依赖于程序是如何被编译的。整数或者为有符号的，即可以表示负数、零和正数；或者为无符号的，即只能表示非负数。C的数据类型char 表示一个单独的字节。尽管”char”是由于它被用来存储文本串中的单个字符这一事实而得名，但它也能被用来存储整数值。数据类型 short、int 和 long 可以提供各种数据大小。即使是为64位系统编译，数据类型 int 通常也只有4个字节。数据类型 long 一般在32位程序中为4字节，在64位程序中则为8字节。</p>
+<p>为了避免由于依赖“典型”大小和不同编译器设置带来的奇怪行为，ISO C99引入了一类数据类型，其大小是固定的，不随编译器和机器设置而变化。其中就有数据类型 int32_t 和 int64_t，它们分别为4个字节和8个字节。使用确定大小的整数类型是程序员准确控制数据表示的最佳途径。</p>
+<p>大部分数据类型都编码为有符号数值，除非有前缀关键字 unsigned 或对确定大小的数据类型使用了特定的无符号声明。数据类型 char 是一个例外。尽管大多数编译器和机器将它们视为有符号数，但C标准不保证这一点。相反，正如方括号指示的那样，程序员应该用有符号字符的声明来保证其为一个字节的有符号数值。不过，在很多情况下，程序行为对数据类型 char 是有符号的还是无符号的并不敏感。</p>
+<p>程序员应该力图使他们的程序在不同的机器和编译器上可移植。可移植性的一个方面就是使程序对不同数据类型的确切大小不敏感。C语言标准对不同数据类型的数字范围设置了下界，但是却没有上界。</p>
+<h5 id="2-1-3-寻址和字节顺序"><a href="#2-1-3-寻址和字节顺序" class="headerlink" title="2.1.3 寻址和字节顺序"></a>2.1.3 寻址和字节顺序</h5><p>对于跨越多字节的程序对象，我们必须建立两个规则：这个对象的地址是什么，以及在内存中如何排列这些字节。在几乎所有的机器上，多字节对象都被存储为连续的字节序列，对象的地址为所使用字节中最小的地址。</p>
+<p>排列表示一个对象的字节有两个通用的规则。考虑一个 w 位的整数，其位表示为[x<sub>w-1</sub>, x<del>w-2</del>, …, x<del>1</del>, x<del>0</del>]，其中x<del>w-1</del>是最高有效位，而x<del>0</del>是最低有效位。假设 w 是8的倍数，这些位就能被分组成为字节，其中最高有效字节包含位[x<del>w-1</del>, x<del>w-2</del>, … , x<del>w-8</del>]，而最低有效字节包含位[x<del>7</del>, x<del>6</del>, … , x<del>0</del>]，其他字节包含中间的位。某些机器选择在内存中按照从最低有效字节到最高有效字节的顺序存储对象，而另一些机器则是按照从最高有效字节到最低有效字节到顺序存储。前一种规则——最低有效字节在最前面的方式，成为<em>小端法</em>(little endian)。后一种规则——最高有效字节在最前面的方式，称为<em>大端法</em>(big endian)。</p>
+<p>许多比较新的微处理器是<em>双端法</em>(big-endian)，也就是说可以把它们配置成作为大端或者小端的机器运行。然而，实际情况是：一旦选择了特定操作系统，那么字节顺序也就固定下来了。</p>
+<p>对于大多数应用程序猿来说，其机器所使用的字节顺序是完全不可见的。无论是哪种类型的机器所编译的程序都会得到同样的结果。不过有时候，字节顺序会成为问题。首先是在不同类型的机器之间通过网络传送二进制数据时，一个常见的问题是当小端法机器产生的数据被发送到大端法机器或者反过来时，接受程序会发现，字里的字节成了反序的。为了避免这类问题，网络应用程序的代码编写必须遵守已建立的关于字节顺序的规则，以确保发送方机器将它的内部表示转换成网络标准，而接收方机器则将网络标准转换为它的内部表示。</p>
+<p>第二种情况是，当阅读表示整数数据的字节序列时字节顺序也很重要。这通常发生在检查机器级程序时。</p>
+<p>字节顺序变得重要的第三种情况是编写规避正常的类型系统的程序时。在C语言中，可以通过使用<em>强制类型转换</em>(cast)或<em>联合</em>(union)来允许以一种数据类型引用一个对象，而这种数据类型与创建这个对象时定义的数据类型不同。大多数应用编程都强烈不推荐这种编码技巧，但是它们对系统级编程来说是非常有用的，甚至是必须的。</p>
+<h5 id="2-1-4-表示字符串"><a href="#2-1-4-表示字符串" class="headerlink" title="2.1.4 表示字符串"></a>2.1.4 表示字符串</h5><p>C语言中字符串被编码为一个以 null (其值为 0 )的字符结尾的字符数组。每个字符都由某个标准编码来表示，最常见的是 ASCII 字符串。在使用ASCII 码作为字符码的任何系统上都将得到相同的结果，与字节顺序和字大小规则无关。因此，文本数据比二进制数据具有更强的平台独立性。</p>
+<blockquote>
+<p>基本编码，称为 Unicode 的“统一字符集”，使用32位来表示字符。这好像要求文本串中每个字符要占4个字节。不过，可以有一些替代编码，常见的字符只需要1个或2个字节，而不太常用的字符需要多一些的字节数。特别地，UTF-8 表示将每个字符编码为一个字节序列，这样标准 ASCII 字符还是使用和它们在 ASCII 中一样的单字节编码，这也就意味着所有的 ASCII 字节序列用ASCII码表示和用 UTF-8 表示是一样的。</p>
+</blockquote>
+<h5 id="2-1-5-表示代码"><a href="#2-1-5-表示代码" class="headerlink" title="2.1.5 表示代码"></a>2.1.5 表示代码</h5><p>当我们在机器上编译，生成字节表示的机器代码，我们会发现指令编码是不同的。不同的机器类型使用不同的且不兼容的指令和编码方式。即使是完全一样的进程，运行在不同的操作系统上也会有不同的编码规则，因此二进制代码是不兼容的。二进制代码很少能在不同机器和操作系统组合之间移植。</p>
+<p>计算机系统的一个基本概念就是，从机器的角度来看，程序仅仅是字节序列。机器没有关于原始源程序的任何信息，除了可能有些用来帮助调试的辅助表以外。</p>
+<h5 id="2-1-6-布尔代数简介"><a href="#2-1-6-布尔代数简介" class="headerlink" title="2.1.6 布尔代数简介"></a>2.1.6 布尔代数简介</h5>]]></content>
       <categories>
         <category>System</category>
       </categories>
